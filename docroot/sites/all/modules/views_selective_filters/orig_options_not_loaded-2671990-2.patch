@@ -1,0 +1,14 @@
+diff --git a/views_handler_filter_selective.inc b/views_handler_filter_selective.inc
+index faabe12..11bfeed 100644
+--- a/views_handler_filter_selective.inc
++++ b/views_handler_filter_selective.inc
+@@ -508,7 +508,8 @@ class views_handler_filter_selective extends views_handler_filter_in_operator {
+       $original_filter = new $class();
+       if (is_callable(array($original_filter, 'get_value_options'))) {
+         $original_filter->set_definition($this->definition);
+-        $options = $original_filter->get_value_options();
++        $original_filter->get_value_options();
++        $options = $original_filter->value_options;
+         // We store only non-empty array.
+         if (is_array($options) && !empty($options)) {
+           $this->originalOptions = $options;

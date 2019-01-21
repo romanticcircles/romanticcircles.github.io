@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Services RC feature.
+ */
+
+include_once 'services_rc.features.inc';

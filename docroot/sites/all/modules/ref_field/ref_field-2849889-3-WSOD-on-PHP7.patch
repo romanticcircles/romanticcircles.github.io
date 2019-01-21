@@ -1,0 +1,25 @@
+From 63c0de139c9bfedf5547a323fd6e2d0e938d7e88 Mon Sep 17 00:00:00 2001
+From: Axel Rutz <axel.rutz@clever-systems.net>
+Date: Sun, 5 Feb 2017 16:39:31 +0100
+Subject: [PATCH] Issue #2849889: WSOD on PHP7
+
+---
+ ref_field_sync.module | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ref_field_sync.module b/ref_field_sync.module
+index 0401cb2..1389707 100755
+--- a/ref_field_sync.module
++++ b/ref_field_sync.module
+@@ -48,7 +48,7 @@ function ref_field_sync_form_field_ui_field_edit_form_alter(&$form, &$form_state
+ 
+     // Entity must support entity_save().
+     if (!entity_type_supports($entity, 'save')) {
+-      continue;
++      return;
+     }
+     $entity_info = entity_get_info($entity);
+ 
+-- 
+2.7.4
+

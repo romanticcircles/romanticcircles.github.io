@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Reviews and Ficrep feature.
+ */
+
+include_once 'reviews_and_ficrep.features.inc';

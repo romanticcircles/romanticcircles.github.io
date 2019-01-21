@@ -1,0 +1,12 @@
+diff --git a/node_convert.module b/node_convert.module
+index 12382b7..5abb467 100755
+--- a/node_convert.module
++++ b/node_convert.module
+@@ -181,6 +181,7 @@ function node_convert_action_info() {
+       'type' => 'node',
+       'configurable' => TRUE,
+       'triggers' => array('any' => TRUE),
++      'behavior' => array('creates_property'),
+     ),
+   );
+ }
