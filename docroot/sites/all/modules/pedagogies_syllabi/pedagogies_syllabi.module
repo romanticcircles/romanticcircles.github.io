@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Pedagogies Syllabi feature.
+ */
+
+include_once 'pedagogies_syllabi.features.inc';

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the RC Data feature.
+ */
+
+include_once 'rc_data.features.inc';

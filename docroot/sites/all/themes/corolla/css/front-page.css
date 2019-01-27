@@ -1,0 +1,611 @@
+/*************************************
+
+CSS Modifying the Front Page
+
+*************************************/
+
+/*** General modifications and Global Resets ***/
+
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+.ui-widget.ui-widget-content, .ui-widget-header {
+    border: none;
+    background: none;
+    border-radius: 0px;
+    color: #222;
+}
+.panels-flexible-region-81-left .views-field-title {
+    display: block;
+}
+.content-style {
+    border: none;
+    background-color: #f9f9f9;
+}
+
+.front #main-content {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+/*** Defining the Header ***/
+
+/* Super subtle bg noise generated at codeblock.at/base64-noise-generator/ */
+#header-wrapper {
+    padding: 40px 0px 0px;
+    /*border-bottom: 2px solid #e16c51;*/
+    /* background-color: #b3c0d0; */
+    background:#b4c0cf url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwAgMAAAAqbBEUAAAADFBMVEUAAAC0wtS8wsy0wswsYZWLAAAAAXRSTlMAQObYZgAAAd9JREFUKJEVUs1q20AQnpdsDwmNTyUQQ3xKSyMqvUVLG2KfiklNvDcZa5HnLWoSUe8pMZWw9lQJ7bDzVb3P9z8kH8wvP4MRuYjUxm7CsVDuvysF9juWQnYVGnLmrq2Xf19bDIaKdTB+5348A6BORbmall57kFeGjSVOgzEk6vYI7oiRiDhyxX4CjVNL6i2wq6eHY7Ih41ytybQfaga5rJGm04DSGjJvvra99vcW2ZJ4IZWPPhke65bYwl0hfPHdSihKMUeW5xM8b6kzsk4yPOvPPlKZ9DzssmwvhqllHOrq9xUmymRzz+4V5rH7qCRQtcZjpnwkdUUoBbEVHiNsuqeX2m95USopGua+w6c2guTWF0Zqt/UjZrx2Bt2NRk4Jh5LVex9M8d8ol7vUz3q/Bz06cS3nfr9BR2J1ptqeooRXwjzrNsvQJNWyovMmniCKJGwGAqxjNeusQSTlPAUaWV0PnhjfnL1tmkPl4tj1Deb3gOPNA4W8Ks8e7hfv1eV05+Js+rlwmiKl4oh4cb3qrfRM5cgl8xZLPxH6w7VeZmls0vQtNSLvUK7L9LTYErpUnmZQ8NibMypItVOHbBRtQ2CjK1zOKFNrs2oioTkraEyvGs8X486enPfjoONnZHj5B6bg1+UiMTaHAAAAAElFTkSuQmCC);
+    /*background: #b4c0d0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwAgMAAAAqbBEUAAAADFBMV…9DDhI0bTwy3n0GQKxyNrQP80VpdZSOcRzLZU6gWQY7kX8BkbEJub1eYzoAAAAASUVORK5CYII=);*/
+    background-repeat: repeat;
+}
+.bb-n {
+    background-color: #f9f9f9;
+}
+/*
+#menu-bar-wrapper {
+    top: 0;
+}
+*/
+img.site-logo {
+    max-width: 500px !important;
+}
+@media only screen and (max-width: 520px) {
+    #site-slogan {
+        display: none;
+    }
+    #branding {
+        width: 100%;
+        display: block;
+        padding: 0px 0px 0px 87px;
+    }
+    .region-header {
+        display: block;
+        width: 100%;
+    }
+}
+
+/*** Responsiveness and Media Calls ***/
+
+.panels-flexible-row-96-main-row {
+    padding-bottom: 5em !important;
+}
+@media only screen and (max-width: 1150px) {
+    .panels-flexible-region-136-about {
+        width: 100%;
+    }
+    .panels-flexible-region-136-slider {
+        width: 100%;
+    }
+}
+@media only screen and (min-width:481px) and (max-width:768px) {
+    .view-frontpage-slider-2 {
+        display: block !important;
+    }
+}
+@media only screen and (min-width:321px) and (max-width:480px) {
+    .view-frontpage-slider-2 {
+        display: block !important;
+    }
+}
+@media only screen and (max-width:320px) {
+    .view-frontpage-slider-2 {
+        display: block !important;
+    }
+}
+.views_slideshow_cycle_main {
+    width: 100%;
+}
+.views_slideshow_cycle_main .views-slideshow-cycle-main-frame {
+    width: 100% !important;
+    height: auto;
+}
+.views_slideshow_cycle_main .views-slideshow-cycle-main-frame-row {
+    width: 100% !important;
+    height: auto;
+}
+/*Is this necessary?*/
+.front .views_slideshow_cycle_main .field-content {
+    max-width: 100%;
+    width: 100%;
+}
+.front .views-field-title {
+    font-size: 90%;
+}
+
+@media only screen and (min-width:769px) {
+.front .block-region-content h2.block-title {
+  font-size: 130%;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'PT Sans';
+}
+}
+
+/*********** Distinguishing and shaping sections ***********/
+
+/*** Top Slider and About ***/
+.top-slider {
+
+}
+.about-front {
+ color:white;
+}
+
+.about-front a{
+ color:white;
+text-decoration:underline;
+}
+
+/*** Core Sections ***/
+.front-top {
+    background-color: /*#84828f*/#84828f;
+    margin: -25px -1000px 0px -1000px !important;
+    padding: 50px 1000px 50px 1000px !important;
+}
+.explore-tabs {
+    padding: 50px 0px !important;
+}
+.core-sections {
+    background-color: #3e4c5e;
+    margin: 0px -1000px -50px -1000px !important;
+    padding: 50px 1000px 50px 1000px !important;
+}
+.core-sections h1 {
+    color: white;
+}
+
+.front #content-wrapper, .front #content-column {
+margin-bottom:0;
+}
+
+.panels-flexible-row-96-3 {
+    margin-top: 5em;
+}
+.pub-vertical {
+    border: 1px black solid;
+    width: 24%;
+    height: 250px;
+    display: inline-block !important;
+    float: left;
+    text-align: center;
+    margin-right: 1%;
+    margin-top: 1%;
+    background-color: #0a4e83;
+    color: white;
+    position:relative;
+}
+.pub-vertical .contentHover {
+    position: relative;
+    padding: 0 5% 0 4%;
+    text-align: center;
+    width: 100%;
+}
+.pub-vertical .contentHover:hover {
+    opacity: 1;
+}
+.pub-vertical .contentHover {
+    position: relative;
+    padding: 0 5% 0 4%;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(63, 73, 83, 0.70);
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
+}
+.pub-title {
+    font-size: 2.3em;
+    font-family:'PT Serif';
+    padding: 5% 5% 0 4%;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.pub-vertical:hover {
+    background-color: orange;
+}
+
+.pub-vertical img {
+    height: 100%;
+    width: 100%;
+    display: block;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+}
+.pub-caption {
+    margin-top: 25%;
+    display: block;
+    font-size: 1.4em;
+}
+
+@media only screen and (max-width: 825px) {
+    .pub-vertical {
+        float: none;
+        width: 100%;
+    }
+}
+
+/* Tabbed Interface */
+.tabbed-interface {
+
+}
+#tabs-0-test h1 {
+    text-align: center;
+    font-size:2.7em;
+    margin-bottom: 2rem;
+}
+
+/****** Tabs themselves ******/
+.ui-tabs-nav li a {
+    box-sizing: border-box;
+    font-size: 160%;
+    background-color: transparent;
+    color: white !important;
+    display: inline-block;
+    padding: 80px 1em 0.5em !important;
+    border-bottom: 0;
+    border-radius: 0.4rem 0.4rem 0 0;
+    width: 100%;
+    }
+
+.ui-tabs-nav li {
+    width: 32%;
+    background-color: #0a4e83 !important;
+    border-bottom: 0 !important;
+    border-radius: 0.4rem 0.4rem 0 0;
+}
+
+li.ui-tabs-active {
+    background-color: /*#D64933*/#e16c51 !important;
+}
+
+/* Fixes the tabs font size */
+#tabs-0-test {
+    font-size: 125%;
+}
+
+/* This code makes them stack on top of each other on small screens */
+
+@media only screen and (max-width: 580px) {
+    #tabs-0-test.ui-tabs .ui-tabs-nav li {
+        width: 100%;
+    }
+}
+
+/****** Sliders ******/
+
+/*A subtle bottom border for each slider. Helps keep more link from feeling unmoored. */
+
+.view-gallery-slider2, .view-romantic-circles-people-front, .view-genre-sliders, .view-poetry-genre-slider, .view-genre-slider-correspondence, .page-reviews-and-receptions .view {
+    border-bottom: 1px solid #ECEAE2;
+    margin-bottom: 5px;
+}
+
+#tabs-0-test-1 .views_slideshow_cycle_slide .views-field-body {
+    font-size: 0.9em;
+}
+@media only screen and (max-width: 520px) {
+    #tabs-0-test-1 .views_slideshow_cycle_slide .views-field-body {
+        display: none;
+    }
+    .view-display-id-block_1 .views-slideshow-cycle-main-frame-row-item {
+        width: 100% !important;
+    }
+    #mini-panel-front_page_genres .panel-pane {
+        padding-top: 1rem;
+    }
+    #mini-panel-people .panels-flexible-region, #tabs-0-test-4 .panels-flexible-region {
+        width: 100% !important;
+        display: block;
+    }
+    #views_slideshow_cycle_div_gallery_slider2-block_0 .field-content {
+        font-size: 0.5rem;
+    }
+    #mini-panel-footer .panel-panel {
+        display: block;
+        width: 100%;
+    }
+}
+
+div#views_slideshow_cycle_main_gallery_slider-slider {
+    width: 955px;
+    margin: auto;
+}
+
+.view-gallery-slider .view-content {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+.view-display-id-slider .views-row {
+ float: left;
+}
+
+.view-display-id-slider {
+    background-color: #eeeeee;
+    padding: 20px;
+    border: 1px solid #b2b2b2;
+}
+.view-display-id-slider .views-field-field-galleryimage {
+    margin-right: 5px;
+}
+
+.view-display-id-slider .views-slideshow-cycle-main-frame-row div:nth-child(5) .views-field-field-galleryimage {
+    margin-right: 0px;
+}
+
+img.image-style-gallery-small {
+    border: 1px solid #E0E0E0;
+    padding: 5px;
+    background: #EAEAEA;
+    /*width:100%;*/
+}
+
+div#views_slideshow_controls_text_gallery_slider-slider {
+    position: relative;
+}
+
+#views_slideshow_controls_text_next_frontpage_slider-block {
+    top: 20%;
+}
+
+#views_slideshow_controls_text_previous_frontpage_slider-block {
+    top:20%;
+}
+
+.view-id-genre_slider_theory_crit .views-row {
+width: 100% !important;
+}
+
+#views_slideshow_cycle_teaser_section_gallery_slider2-block {
+  height: 400px;
+}
+
+#mini-panel-front_page_genres .views-row {
+    float: left;
+    width: 33.333333%;
+    display: inline;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#views_slideshow_cycle_main_gallery_slider2-block .views-row {
+    float: left;
+    width: 20%;
+    display: inline;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.views-slideshow-controls-text-previous {
+background: url(http://dev-rc-distro.pantheonsite.io/sites/default/files/arrow-previous.png) no-repeat rgba(255,255,255,0.3);
+    position: absolute;
+    z-index: 200;
+    top: 50px;
+    left: 4px;
+    width: 40px;
+    height: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    float: left;
+}
+
+.views-slideshow-controls-text-next {
+background: url(http://dev-rc-distro.pantheonsite.io/sites/default/files/arrow-next.png) no-repeat rgba(255,255,255,0.3);
+    position: absolute;
+    z-index: 200;
+    top: 50px;
+    right: 4px;
+    width: 40px;
+    height: 0px;
+    padding-top: 50px;
+    overflow: hidden;
+    float: right;
+}
+
+.views-slideshow-controls-text-pause  {
+    display: none;
+}
+
+.view-gallery-slider .views-row .views-field.views-field-title {
+    width: 187px;
+    text-align: center;
+}
+
+/****** More specific mods for Authors ******/
+
+/* Fixes the Historical Authors */
+.view-romantic-circles-people-front .views_slideshow_cycle_slide .views-row {
+    float: left;
+    width: 16.666666%;
+    display: inline;
+    padding: 5px;
+    box-sizing: border-box;
+}
+#views_slideshow_cycle_div_romantic_circles_people_front-page_0, #views_slideshow_cycle_div_romantic_circles_people_front-panel_pane_1_0, #views_slideshow_cycle_div_romantic_circles_people_front-panel_pane_1_1, #views_slideshow_cycle_div_romantic_circles_people_front-panel_pane_1_2 {
+    height: 300px !important;
+}
+#views_slideshow_cycle_teaser_section_romantic_circles_people_front-page, #views_slideshow_cycle_teaser_section_romantic_circles_people_front-panel_pane_1 {
+    height: 300px !important;
+}
+
+img.image-style-cropped-rc-people {
+    border: 1px solid #E0E0E0;
+    padding: 5px;
+    background: #EAEAEA;
+    margin: auto;
+    width: 100%;
+}
+
+/* Analytics */
+.analytics {
+    background-color: #616f97;
+    margin: 50px -1000px 50px -100px !important;
+    padding: 50px 1000px 50px 100px !important;
+}
+.analytics h1 {
+    color: white;
+}
+
+/* Footer */
+.pubInfo img {
+    border-radius: 50%;
+}
+
+.image-style-index-banner {
+    width: 100%;
+}
+
+/* Standardizing metadata */
+.links {
+    background: rgba(191,183,173,0.18);
+    margin: 5px 0px 5px 0px;
+    padding: 10px;
+    font-size: 120%;
+}
+.links a, .links a:hover {
+    border-bottom: none !important;
+}
+
+/* Reviews and Receptions Tweaks */
+.panels-flexible-row-new-15 {
+    height: 100px;
+}
+.view-display-id-block_5 {
+    border-bottom: 0px !important;
+}
+.page-reference-ficrep-thumbs .view-content .views-row {
+    width: 19%;
+}
+#views_slideshow_cycle_div_review_entries-panel_pane_1_0 {
+    margin-left: 5%;
+    width: 90% !important;
+}
+
+/* Fixing Data and Redesign Page */
+.data-page p {
+    font-size: 135% !important;
+}
+#button-faq {
+    background: rgba(191,183,173,0.18);
+    border: 1px solid #E6E5E3;
+    padding: 10px;
+    font-size: 85% !important;
+}
+.page-redesign p {
+  font-size: 135% !important;
+}
+.one-half,
+.one-third,
+.two-thirds,
+.three-fourths,
+.one-fourth
+{
+	float:left;
+	margin-bottom: 1rem;
+	margin-right:4%;
+	position:relative;
+	display:inline;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.one-fourth {
+	width:22%;
+}
+.one-half {
+	width:48%;
+}
+.one-third {
+	width:30.66%;
+}
+.two-thirds {
+	width:65.33%;
+}
+.three-fourths {
+	width:74%;
+}
+.column-last {
+	clear:right;
+	margin-right:0;
+}
+.column-bottom {
+	margin-bottom: 0.75rem;
+}
+
+/* Corpus Buttons */
+.corpus-column {
+  float: left;
+  width: 32%;
+  margin-right: 1%;
+  height: 240px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  text-align: center;
+  background: #084d82;
+  color: white;
+}
+.corpus-btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: rgb(159,3,3);
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+.corpus-title {
+  font-size: 2em;
+}
+.corpus-info {
+  height: 120px;
+  font-size: 120%;
+}
+.corpus-column p > a {
+  color: white;
+  text-decoration: underline;
+}
+.fun-list {
+  font-size: 120%;
+}
+legend {
+  background-color: #084d82 !important;
+}
+
+/* R&R Fixes */
+.panels-flexible-row-new-15-inside {
+  padding-top: 75px;
+}
+.view-display-id-block_5 .more-link {
+  margin-top: 115px;
+}
+
+/* Individual Corpus Pages */
+.page-corpus p {
+  font-size: 135%;
+}
+.page-corpus h1 {
+  font-size: 200%;
+}
+.page-corpus h2 {
+  text-align: center;
+}

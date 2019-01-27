@@ -1,0 +1,14 @@
+name = Pedagogies Syllabi
+core = 7.x
+package = Features
+dependencies[] = better_exposed_filters
+dependencies[] = reviews_and_ficrep
+dependencies[] = text
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[field_instance][] = node-webform-body
+features[node][] = webform
+features[views_view][] = online_syllabi
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][features] = features

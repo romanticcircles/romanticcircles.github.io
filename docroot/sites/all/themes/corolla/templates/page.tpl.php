@@ -1,6 +1,7 @@
 <?php // Corolla ?>
 <div id="page-wrapper">
   <div id="page" class="<?php print $classes; ?>">
+
 <?php if ($menubar = render($page['menu_bar'])): ?>
       <div id="menu-bar-wrapper">
         <div class="container clearfix">
@@ -8,6 +9,21 @@
         </div>
       </div>
     <?php endif; ?>
+
+<div id="header-top">
+    <div style="background-color: #084d81;
+    z-index: 1;
+    font-size: 16px;
+    padding: 2px 0px;
+    text-align: center;
+    position:relative;
+    top:38px;">
+    <div style="padding: 0px 20px 0px 20px;
+    width: 100%;
+    display: block;
+    color: white;"/>Romantic Circles has a new look! Find out more about our redesign and other plans for the future <a style="color:white; border-bottom:1px dashed white" href="/redesign">here</a>.
+    </div></div>
+    </div>
 
     <div id="header-wrapper">
       <div class="container clearfix">
@@ -46,6 +62,7 @@
 
       </div>
     </div>
+
 
     <?php if (
       $page['three_33_top'] ||

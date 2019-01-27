@@ -11,7 +11,7 @@
 }
 
 .sf-menu.sf-style-rc2 li.sf-depth-1 {
-border-left: 3px solid #D9A300;
+border-left: 3px solid #e16c51;
 border-radius: 30px 0px 0px 30px;
 }
 
@@ -24,10 +24,13 @@ border-radius: 30px 0px 0px 30px;
 }
 
 .sf-menu.sf-style-rc2 .sf-depth-2 a {
-  border-bottom: 1px solid #61707A;
-  color: #3D3D3D;
-  padding: 0.75em 0 0.75em 0;
-  font-weight:bold;
+  /*border-bottom: 1px solid #e16c51;*/
+    color: #3D3D3D;
+    padding: 0.25em 0 0.25em 0.5em;
+    /* font-weight: bold; */
+    margin: 0.1em 0;
+    line-height: 1.2em;
+    font-size:1em;
 }
 
 .sf-menu.sf-style-rc2 .sf-depth-3 a {
@@ -69,7 +72,8 @@ border-radius: 30px 0px 0px 30px;
 .sf-menu.sf-style-rc2 a:active,
 .sf-menu.sf-style-rc2.sf-navbar li li {
   /*background: #dc5300;*/
-  color: #D9A300;
+  border-left: 1px solid #e16c51;
+  color: #e16c51;
 }
 .sf-menu.sf-style-rc2.sf-navbar li ul {
   /*background-color: #dc5300;*/

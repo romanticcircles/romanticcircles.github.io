@@ -138,6 +138,12 @@ function corolla_preprocess_page(&$variables) {
   drupal_add_library('system', 'ui.accordion');
   drupal_add_library('system', 'effects.highlight');
   drupal_add_js('jQuery(document).ready(function(){jQuery("#accordion").accordion({ collapsible: true, heightStyle: content });});', 'inline');
+  drupal_add_js('/sites/all/themes/corolla/hamburger-scrollstop.js', array('type' => 'file'));
+  if('genres' === arg(0)) {
+    drupal_add_js('/sites/all/themes/corolla/dependent-select.js', array('type' => 'file'));
+  }
+
+  $vars['scripts'] = drupal_get_js();
 }
 
 function corolla_print_format_link() {
@@ -168,4 +174,10 @@ function corolla_css_alter(&$css) {
  foreach ($names as $file) {
     $css["misc/ui/jquery.$file.css"]['data'] = $csspath . 'jquery.' . $file . '.css';
   }
+}
+function corolla_facetapi_title($variables) {
+  return t('@title', array('@title' => drupal_strtolower($variables['title'])));
+}
+function corolla_apachesolr_search_page_alter() {
+  drupal_set_title('Search Romantic Circles');
 }

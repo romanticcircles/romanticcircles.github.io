@@ -1,0 +1,41 @@
+/* MOVE TO MOBILE WHEN I FIGURE OUT WHY IT'S NOT LOADING */
+
+@media only screen and (max-width: 480px) {
+    /* Fixing Essay Pages on Phone Widths */
+    .not-front.no-sidebars #main-content {
+        margin: 0px 0px 0px 0px;
+    }
+    ul#gn-menu {
+        position: fixed;
+        margin-top: 2rem !important;
+    }
+    .panels-flexible-region-new-about {
+        float: none;
+        width: 100%;
+    }
+    .panels-flexible-region-new-center {
+        width: 100%;
+    }
+
+    /* Front page tweaks */
+    #views_slideshow_cycle_teaser_section_gallery_slider2-block {
+        height: 16em !important;
+    }
+    #views_slideshow_cycle_teaser_section_gallery_slider2-block .field-content {
+        font-size: 0.5em !important;
+    }
+
+    /* R&R */
+    .panels-flexible-column, .panels-flexible-region {
+        width: 100%;
+    }
+
+    .form-item {
+        width: 100% !important;
+    }
+    .corpus-column {
+      margin-top: 5%;
+      width: 100% !important;
+    }
+
+}

@@ -207,7 +207,7 @@ function reviews_and_ficrep_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 21,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -225,24 +225,17 @@ function reviews_and_ficrep_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'shs',
-      'settings' => array(
-        'shs' => array(
-          'create_new_levels' => 0,
-          'create_new_terms' => 0,
-          'force_deepest' => 0,
-          'node_count' => 0,
-        ),
-      ),
-      'type' => 'taxonomy_shs',
-      'weight' => 26,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 23,
     ),
   );
 
   // Exported field_instance: 'node-media-field_characters'.
   $field_instances['node-media-field_characters'] = array(
     'bundle' => 'media',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -270,15 +263,8 @@ function reviews_and_ficrep_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'auto_creation' => 0,
-        'content_taxonomy_opt_groups' => FALSE,
-        'size' => 60,
-        'suggest_only_unique' => 0,
-        'suggestion_size' => 10,
-        'synonyms_autocomplete_path' => 'synonyms/autocomplete',
-      ),
-      'type' => 'options_select',
+      'settings' => array(),
+      'type' => 'options_buttons',
       'weight' => 24,
     ),
   );
@@ -286,7 +272,7 @@ function reviews_and_ficrep_field_default_field_instances() {
   // Exported field_instance: 'node-media-field_color'.
   $field_instances['node-media-field_color'] = array(
     'bundle' => 'media',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -295,7 +281,7 @@ function reviews_and_ficrep_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 18,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -314,23 +300,16 @@ function reviews_and_ficrep_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'auto_creation' => 0,
-        'content_taxonomy_opt_groups' => FALSE,
-        'size' => 60,
-        'suggest_only_unique' => 0,
-        'suggestion_size' => 10,
-        'synonyms_autocomplete_path' => 'synonyms/autocomplete',
-      ),
-      'type' => 'options_select',
-      'weight' => 23,
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 26,
     ),
   );
 
   // Exported field_instance: 'node-media-field_conflict'.
   $field_instances['node-media-field_conflict'] = array(
     'bundle' => 'media',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -339,7 +318,7 @@ function reviews_and_ficrep_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 22,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -358,16 +337,9 @@ function reviews_and_ficrep_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'auto_creation' => 0,
-        'content_taxonomy_opt_groups' => FALSE,
-        'size' => 60,
-        'suggest_only_unique' => 0,
-        'suggestion_size' => 10,
-        'synonyms_autocomplete_path' => 'synonyms/autocomplete',
-      ),
-      'type' => 'options_select',
-      'weight' => 27,
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 25,
     ),
   );
 
@@ -466,7 +438,7 @@ function reviews_and_ficrep_field_default_field_instances() {
   // Exported field_instance: 'node-media-field_font'.
   $field_instances['node-media-field_font'] = array(
     'bundle' => 'media',
-    'default_value' => array(),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -475,7 +447,7 @@ function reviews_and_ficrep_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 17,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -494,16 +466,9 @@ function reviews_and_ficrep_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'auto_creation' => 0,
-        'content_taxonomy_opt_groups' => FALSE,
-        'size' => 60,
-        'suggest_only_unique' => 0,
-        'suggestion_size' => 10,
-        'synonyms_autocomplete_path' => 'synonyms/autocomplete',
-      ),
-      'type' => 'options_select',
-      'weight' => 22,
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 27,
     ),
   );
 
@@ -927,7 +892,7 @@ function reviews_and_ficrep_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 20,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -945,17 +910,10 @@ function reviews_and_ficrep_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'shs',
-      'settings' => array(
-        'shs' => array(
-          'create_new_levels' => 0,
-          'create_new_terms' => 0,
-          'force_deepest' => 0,
-          'node_count' => 0,
-        ),
-      ),
-      'type' => 'taxonomy_shs',
-      'weight' => 25,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 22,
     ),
   );
 

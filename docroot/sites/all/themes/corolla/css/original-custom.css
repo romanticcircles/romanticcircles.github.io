@@ -1,0 +1,3362 @@
+/* Add any valid CSS declarations */
+/*
+  *
+  Custom Romantic Circles styles
+ */
+img.site-logo {
+  width: 200px;
+/*
+  border: 2px solid #084d82;
+  border-radius: 40px;
+  padding:2px;
+ */
+}
+/* The page background */
+.bb-n {
+/* background: url('/sites/default/files/adaptivetheme/corolla_files/oldpaperbg.jpg') no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+/* background-color: white; */
+  background-color: white;
+}
+a {
+  text-decoration:none;
+}
+/* In cases where an anchors spans some text (in older materials), this will override any link coloration */
+a[name] {
+  color: inherit;
+}
+/*
+  .content-style {
+  background: rgba(255,255,255,.7);
+  -webkit-box-shadow: 2px 5px 20px rgba(206, 206, 206, 0.7);
+  -moz-box-shadow: 2px 5px 20px rgba(206, 206, 206, 0.7);
+  box-shadow: 2px 5px 20px rgba(206, 206, 206, 0.7);
+  box-shadow: 0 0 10px rgb(226, 221, 199) inset;
+  border:0;
+  }
+ */
+/* Overrides background color for superfish menus */
+/*
+  #header-wrapper {
+  position: relative;
+  z-index: 1;
+  background: url('/sites/default/files/adaptivetheme/corolla_files/menu-bg.png') no-repeat 92% 0%;
+  }
+ */
+@media only screen and (min-width:769px) {
+.region-header .block-superfish {
+  margin-top: 0px;
+  position: absolute;
+  right:20px;
+  top: 0;
+}
+}
+ul.menu ul {
+  margin-left: 7px;
+}
+ul.menu li {
+  margin: 0;
+  padding: 0;
+}
+/* The secondary menu in the footer */
+.pane-menu-secondary-menu ul.menu li {
+  list-style-image: none;
+  list-style-type: none;
+  text-align: center;
+  margin: 1px;
+  padding: 10px;
+}
+.pane-menu-secondary-menu ul.menu li a {
+  font-size:120%;
+}
+/* There are some places, especially editions where strictly presentational hr's have made it through import. Here, I'm setting them not to display at all. */
+div.field-name-body hr {
+  display:none;
+}
+/* Just want a simple rule to make active menu item text black. Helps hold the context of the menu. */
+li.active-trail a.active-trail {
+  color:black;
+}
+.block-menu-block a:hover {
+  color:white;
+}
+.block-menu-block {
+  font-size: 105%;
+}
+/* Important: Effectively creates a wide margin for pages in which there are no sidebars, mostly interal essay and editions pages, as well as views pages, but not main landing pages and some others. */
+.not-front.no-sidebars #main-content {
+  margin: 0 100px;
+}
+/*Also creates left margin when there's no left sidebar. Esp. good for TOC pages.*/
+.not-front.one-sidebar.sidebar-second section#main-content {
+    margin: 0 100px;
+}
+/* Experimenting with getting rid of hard-coded titles in some places. This first one says not to display the first h3 of any parent under two conditions: that the node type be praxis page and the the h2 fall in the .field-name-body class, i.e. not header or sidebars. This could be useful for getting rid of the hard-coded volume title in a Praxis essay but could break down when there is more than one h2 in a .field-name-body class--and possibly other ways as well. The h3 rule could be used for the Praxis essay title as well, letting the node title do the work. */
+/*
+  body.node-type-praxis-page div.field-name-body h3:first-child {
+  display:none;
+  }
+ */
+body.node-type-praxis-page div.field-name-body h2:first-child {
+  display:none;
+}
+body.node-type-praxis-page div.node-content .field-name-field-resource-index {
+  font-size:150%;
+  text-align:center;
+  color:#33C;
+  font-weight:600;
+}
+/*
+   Causes problems with some of the newer praxis volumes where note items also have class note
+  .note {
+  text-align:left;
+  font-size: 12px;
+  line-height: 22px;
+  border: 5px solid #d9c600;
+  padding: 5px 20px;
+  }
+ */
+.field-name-body .abstract {
+  display:none;
+}
+p.RCabstract {
+  display:none;
+}
+.field-name-body {
+  font-size: 125%;
+  line-height: 1.5;
+  border-bottom: 1px solid #DADADA;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  position:relative;
+}
+.ui-widget-content {
+  border: 0;
+/* font-size: 125%; */
+}
+.ui-widget-content a {
+  color: #084d82;
+}
+ul.tabs.primary {
+  margin: 10px 0px;
+}
+.gn-scroller {
+  z-index: 999;
+}
+.field-name-body.view-mode-teaser {
+  font-size: 135%;
+  line-height: 1.4;
+  border-bottom: none;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  position: relative;
+}
+/*
+  .field-name-body li, p {
+  margin-top: 0.75em;
+  margin-bottom:0.75em;
+  }
+ */
+/*
+  h1, h2, h3, h4 {
+  font-size:100%;
+  }
+ */
+/* Overriding Corolla's default table borders and alignment */
+.field-name-body .stanza table, .field-name-body .poetry table, .field-name-body #IndexContent table {
+  border: none;
+}
+.field-name-body table {
+  border: 1px solid gray;
+}
+.field-name-body table, tbody, tr, td {
+  font-size: 100%;
+  border: none;
+}
+table,
+td,
+th {
+  vertical-align:top;
+  padding:none;
+}
+td th {
+  vertical-align:top;
+  padding:none;
+}
+tr td:last-child {
+  border-right: none;
+}
+tbody {
+  border-top:none;
+}
+table.fixed {
+table-layout:fixed;
+}
+/* This is currently not in use in favor of the approach below, which brings a View into the panel so that we can get captions to display properly */
+.field-name-field-profile-picture {
+  float:left;
+  margin-right:10px;
+/* margin-bottom:10px; */
+}
+.panel-pane.pane-views.pane-profile-picture-caption.no-title.block {
+  float: left;
+}
+/* Basic styling for the image caption. For some reason the Image Field Caption module wraps the caption in a blockquote element. Also, when creating a view, the caption shows up automatically, and since we want to display the image title underneath the caption (for compatibility with all extant image galleries), I'm hiding for the Image Gallery content type. */
+blockquote.image-field-caption {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align:center;
+}
+blockquote.image-field-caption p {
+  margin: 0;
+}
+.node-type-gallery-image .region-two-66-33-second .field {
+/* display: inline-block; */
+  background: rgba(191,183,173,0.18);
+/* width: 74%; */
+  margin: 5px 0px 5px 20px;
+  padding: 10px;
+  font-size: 120%;
+}
+.node-type-gallery blockquote.image-field-caption, .page-reviews-blog blockquote.image-field-caption, .page-taxonomy-term blockquote.image-field-caption {
+  display:none;
+}
+.view-image-gallery .views-field.views-field-field-gallery-image {
+  max-width: 175px;
+}
+.field-name-field-first-name {
+  display:inline-block;
+  margin-right: 7px;
+  font-size:150%;
+}
+.field-name-field-middle-name {
+  display:inline-block;
+  margin-right: 7px;
+  font-size:150%;
+}
+.field-name-field-last-name {
+  display:inline-block;
+  margin-right: 7px;
+  font-size:150%;
+}
+#block-views-praxis-sidebar-icon-block img.image-style-100px-prax-icon {
+  position:relative;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  opacity: 0.75;
+  filter:alpha(opacity=75);
+}
+img.image-style-100px-prax-icon:hover {
+  opacity:1.0;
+  filter:alpha(opacity=100);
+/* For IE8 and earlier */
+}
+.field-name-field-audio {
+  float:right;
+  margin: 0px 0px 10px 10px;
+}
+/*
+  body.front img.site-logo
+  {visibility:hidden;}
+ */
+.sf-menu.sf-style-space-orange {
+  float: left;
+  margin-bottom: 0;
+  padding: 0;
+}
+/* Turns off display of node titles. Might be necessary in some cases but must do so selectively, i.e. to display for blogs but not for Praxis, Editions, etc. */
+body.node-type-pedagogies-page #page-title {
+  display:none;
+}
+body.node-type-pedagogies-index-page #page-title {
+  display:none;
+}
+body.node-type-praxis-page #page-title {
+  display:none;
+}
+body.node-type-praxis-index-page #page-title {
+  display:none;
+}
+body.node-type-reference-page #page-title {
+  display:none;
+}
+body.node-type-reference-index-page #page-title {
+  display:none;
+}
+body.node-type-editions-page #page-title {
+  display:none;
+}
+body.node-type-editions-index-page #page-title {
+  display:none;
+}
+body.node-type-forthcoming-page #page-title {
+  display:none;
+}
+body.node-type-forthcoming-resource #page-title {
+  display:none;
+}
+/* Turns off display of node body in the forthcoming content types. Allows anonymous users to navigate to the node but not see the content */
+/* body.node-type-forthcoming-resource.role-anonymous-user .field-name-body {display:none;} */
+/* body.node-type-forthcoming-page.role-anonymous-user .field-name-body {display:none;} */
+/* Turns off display of the title field in the node edit form field only. Since we want users to be able to edit the metadata within nodes but not the body and title, this is a simple solution. */
+/*
+  .role-editor .form-item-title {
+  display:none;
+  }
+ */
+.role-author .form-item-title {
+  display:none;
+}
+.role-blog-author .form-item-title {
+  display:none;
+}
+.role-blog-editor .form-item-title {
+  display:none;
+}
+/* Turns off display of node titles for items of the Standalone Note type when they open in a Colorbox */
+article.node-standalone-note h1.node-title {
+  display: none;
+}
+h1#page-title {
+  text-transform: uppercase;
+}
+
+.block-region-sidebar-second, .block-region-sidebar-first {
+  padding: 20px 5px 5px 5px;
+  background-color: whitesmoke;
+}
+.block-title {
+  font-variant:small-caps;
+  letter-spacing:2px;
+}
+/* Add any valid CSS declarations */
+#menu-bar-wrapper {
+  background-color: #4b4b4b;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  position: fixed;
+  width: 100%;
+  z-index:998;
+/* height: 60px; */
+}
+#menu-bar .block {
+  clear: none;
+  float: right;
+  margin-bottom: 0;
+}
+div#footer-wrapper {
+  background-color: #e7e7e7;
+/* color: white; */
+  padding-top: 50px;
+}
+div#footer-wrapper .panel-3col-33 .panel-col {
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  height: 550px;
+}
+nav#block-nice-menus-6 {
+  margin-left:4px;
+  margin-right:4px;
+  float:right;
+}
+#site-name a {
+  letter-spacing: 2px;
+}
+hr {
+  clear:both;
+}
+/* Turn off display of abstract/about/search bar in newest generation of Praxis */
+div#menu {
+  display:none;
+}
+/* Turn off display of old printer-friendly link in newest generation of Praxis */
+div#print {
+  display:none;
+}
+/* Turn off display of breadcrumb for War Poetry volume */
+span.breadcrumb {
+  display:none;
+}
+/* Class for hardcoded previous/next pagers as in War Poetry volume */
+.manPager {
+  border-bottom: 1px solid whitesmoke;
+  border-top: 1px solid whitesmoke;
+  text-align: center;
+}
+p {
+  margin: 0.75em 0 0.75em;
+  padding: 0;
+}
+/* Working with doc sections, blockquotes and poetry lines */
+div.section, div.citations {
+  margin-top: 0.75em;
+}
+blockquote p {
+  margin-top: 0.75em;
+  margin-bottom:0.75em;
+  font-style:normal;
+}
+blockquote {
+  font-size: 90%;
+  line-height: 1.3;
+  margin-left: 3em;
+  margin-right: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  letter-spacing: 0.2px;
+  font-style:normal;
+}
+.blockquote {
+  font-size: 90%;
+  line-height: 1.3;
+  margin-left: 3em;
+  margin-right: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  letter-spacing: 0.2px;
+  font-style:normal;
+  display:block;
+}
+blockquote.blockquote {
+  margin-left:0;
+  margin-right:0;
+}
+blockquote.blockquote p {
+  font-size: 90%;
+  line-height: 1.3;
+  margin-left: 3em;
+  margin-right: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  letter-spacing: 0.2px;
+  font-style:normal;
+}
+.stanza {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+.lineNumber {
+  float: right;
+/* margin-right: 15%; */
+}
+/* Making room here for page image thumbnails, which are floated to the right on pages where we have them */
+.poetry .indent1, .poetry .l {
+  width: 80%;
+/* text-indent: -30px; */
+/* margin-left: 30px; */
+}
+/* Also clearing the way so that headers don't get pushed over from center */
+.poetry h2, .poetry h3, .poetry h4, .poetry h5, .poetry h6 {
+  margin: auto;
+  width: 70%;
+}
+.stanza td {
+  font-size: 90%;
+  line-height: 110%;
+  letter-spacing: 0.2px;
+  margin-right: 5em;
+  margin-top: 0.75em;
+  margin-bottom:0.75em;
+}
+.blockquote .stanza td {
+  line-height: 110%;
+  letter-spacing: 0.2px;
+  margin-right: 5em;
+  font-style:normal;
+}
+.blockquote .stanza td div {
+  line-height: 110%;
+  font-style:normal;
+}
+div#container dd {
+  margin: 0px;
+}
+/*
+  table tbody tr td div.l {
+  font-size: 9pt;
+  line-height: 10pt;
+  letter-spacing: 0.2px;
+  }
+ */
+.lineNumbers {
+  float: right;
+  margin-right: 250px;
+  display: block;
+  position: relative;
+  z-index: 100;
+  clear: none;
+}
+.ab {
+  display: block;
+}
+.hang {
+  font-size: 10pt;
+  text-indent: -30px;
+  margin-left: 30px;
+  line-height: 20px;
+}
+.indent {
+  font-size: 10pt;
+  text-indent: 30px;
+  margin-left: 1pt;
+  line-height: 20px;
+}
+.nolineheight {
+  color: #000000;
+  font-size: 12pt;
+  line-height: 16pt
+}
+.blue {
+  color: #084D82;
+}
+.boldblue {
+  font-size: 12pt;
+  font-weight: bold;
+  color: #004999;
+}
+.boldblueBig {
+  font-size: 15pt;
+  font-weight: bold;
+  color: #004999;
+}
+.bluebox {
+  font-size: 11pt;
+  line-height: 16pt;
+  font-weight: bold;
+  color: #ffffff
+}
+.blueboxsm {
+  font-size: 9pt;
+  font-weight: bold;
+  color: #ffffff
+}
+.epigraph {text-align:center;}
+
+/* A special rule for letters (esp. Southey), where certain texts have long texts coded as epigraphs and the gray color looks awkward 
+.letter .epigraph {
+color: #2e2e2e;
+}*/
+.citations {
+  text-indent: -30px;
+  margin-left: 30px;
+}
+.mediumBoldBlack {
+  font-weight:600;
+}
+/* Style for the Poems (1773) edition */
+.notes {
+  font-size: 85%;
+}
+.smalltext {
+  font-size: 8pt;
+}
+.desc {
+  font-size:10pt;
+  line-height:14pt;
+  margin:5px 0px 5px 0px;
+}
+.list-title {
+  font-size: 11pt;
+  font-weight: bold;
+}
+.links {
+  font-size: 12pt;
+  font-weight: bold;
+}
+.smmenu {
+  font-size: 9pt
+}
+.descbig {
+  background: rgba(191,183,173,0.18);
+  width: 75%;
+  margin: 20px auto;
+  font-size: 130%;
+  padding: 10px 30px;
+  font-family: 'PT Sans';
+/* font-weight: bold; */
+  border: 1px solid #E6E5E3;
+}
+.footer {
+  font-size: 110%;
+  line-height: 20px;
+  text-align: center;
+}
+li.horizontal {
+  width: 100%;
+  margin-right: 7%;
+  margin-left: auto;
+  list-style-type: none;
+  display: inline;
+  line-height: 10pt;
+}
+ul.horizontal {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: inline;
+}
+span.term {
+  font-weight:bold;
+}
+/*
+  This is for the icons that appear in the Related Resources block--and perhaps others.
+ */
+img.image-style-40px-icon {
+  float:left;
+  margin:7px 10px 7px 0px;
+}
+/*
+  Styles that control display of landing pages for the main sections: Praxis, Editions, Etc.
+ */
+/*
+  For all landing pages
+ */
+.teaserItem .views-field-title {
+  font-size: 13pt;
+  font-weight:bold;
+}
+.teaserItem .views-field-body, .views-field-field-notes-comments {
+  font-size: 10pt;
+  line-height: 16pt;
+}
+.teaserItem .views-field-field-description {
+  font-size: 10pt;
+  line-height: 16pt;
+}
+.teaserItem .views-field-field-author-primary {
+  text-align:right;
+  display:block;
+  margin-top:8px;
+  font-size:10pt;
+  font-weight:bold;
+  color:gray;
+}
+.teaserItem .views-field-field-author {
+  text-align:right;
+  display:block;
+  margin-top:8px;
+  font-size:10pt;
+  font-weight:bold;
+  color:gray;
+}
+.teaserItem .views-field-field-editor, .views-field-field-edited-by {
+  text-align:right;
+  display:block;
+  margin-top:8px;
+  font-size:10pt;
+  font-weight:bold;
+  color:gray;
+}
+.teaserItem .attribution {
+  text-align:right;
+  display:block;
+  margin-top:8px;
+  font-size:10pt;
+  font-weight:bold;
+  color:gray;
+}
+.teaserItem span.views-field-field-original-publication-date {
+  font-size: 12pt;
+  font-weight: bold;
+  color: #000099;
+  line-height:40px;
+  display:inline-block;
+}
+.teaserItem span.separator {
+  font-size: initial;
+}
+/*
+  .teaserItem span.views-field-field-original-publication-date:before {
+  content: "(";
+  }
+  .teaserItem span.views-field-field-original-publication-date:after {
+  content: ")";
+  }
+ */
+/*
+  Praxis specific
+ */
+.teaserItem .views-field-field-prax-icon {
+  float:left;
+  margin-right:10px;
+  margin-bottom:10px;
+  margin-top:10px;
+}
+/*
+  .teaserItem .date-display-single {
+  font-size: 12pt;
+  font-weight: bold;
+  color: #000099;
+  line-height:40px;
+  }
+ */
+.teaserItem .views-row {
+  padding: 15px 12px 12px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #EBE7D3;
+  overflow: auto;
+/* width: 100%; */
+  margin-bottom: 10px;
+}
+.teaserItemSimple .views-row {
+  padding: 3px 0px 3px 0px;
+  border-bottom: 1px solid #D3D7EB;
+  overflow: auto;
+  margin-bottom: 5px;
+}
+/*.floatViewBlocks {
+  padding: 3px 5px 3px 5px;
+  border-bottom: 1px dotted #e16c51;
+}*/
+
+.panels-flexible-region-last .view-node-metadata, .panels-flexible-region-last .view-abstracts, .panels-flexible-region-last .view-about-the-author-s- {
+    text-align: center;
+}
+.panels-flexible-region-last .view-node-metadata a, .panels-flexible-region-last .view-abstracts a, .panels-flexible-region-last .view-about-the-author-s- a {
+    border-bottom: 1px dotted #e16c51;
+    padding-bottom: 5px;
+}
+/*
+  Editions specific
+ */
+.teaserItem .views-field-field-ed-icon {
+  float:left;
+  margin-right:10px;
+  margin-bottom:10px;
+  margin-top:10px;
+}
+/*
+  Scholarly Resources Specific
+ */
+.teaserItem .views-field-field-ref-icon {
+  float:left;
+  margin-right:10px;
+  margin-bottom:10px;
+  margin-top:10px;
+}
+/*
+  Pedagogies specific
+ */
+.teaserItem .views-field-field-ped-icon {
+  float:left;
+  margin-right:10px;
+  margin-bottom:10px;
+  margin-top:10px;
+}
+/*
+  *
+  * Styles for blog formatting.
+ */
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.alignleft {
+  float: left;
+  margin-right: 10px;
+  text-align: left;
+}
+.alignright {
+  float: right;
+  margin-left: 10px;
+  text-align: right;
+}
+#caption {
+  background: #F4F5F7;
+  border: 1px solid #CCCCCC;
+  margin-bottom: 5px;
+  padding: 5px;
+  width: 249px;
+  font-size:80%;
+}
+.caption {
+  font-size:80%
+}
+/* Rule for the caption on the Image Gallery Content type (not the Gallery Image type, i.e for the RC Gallery. */
+.galleryCaption {
+  width: 100%;
+  text-align: center;
+  clear: both;
+}
+/* Removing the last link in the top-level drop-down menu for smaller screens so that they don't break across multiple lines */
+@media only screen and (min-width:769px) and (max-width:1024px) {
+li.sf-item-8 {
+  display:none;
+}
+}
+ /*The two declarations below represent a replacement of the image slider on the front page with a simpler "Newest Resources" block. Here, the latter is set not to display in standard display or Tablet landscape display. For tablet portrait and smartphone layouts, it should appear instead of the image slider.  See above for removals of the full-size image slider. */
+@media only screen and (min-width:1025px) {
+#block-views-newest-resources-block {
+  display:none;
+}
+}
+@media only screen and (min-width:769px) and (max-width:1024px) {
+#block-views-newest-resources-block {
+  display:none;
+}
+}
+#block-views-newest-resources-block {
+  background-color: rgba(226, 228, 240, 1);
+  margin: 10px 0px 10px 0px;
+  padding: 10px 7px 10px 7px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+}
+.views-slideshow-controls-top {
+  width: 100%;
+  position:relative;
+}
+.lt-ie9 .image-style-front-banner {
+  margin-left:auto;
+  margin-right:auto;
+  width: 710px;
+}
+.image-style-front-banner {
+  margin-left: auto;
+  margin-right: auto;
+/* width: 100%; */
+  max-width: 100%;
+  max-height: 100%;
+}
+.frontpageSliderText {
+  color: white;
+  margin:10px;
+/* display:block; */
+}
+.lt-ie9 .views-content-field-slider-image {
+  display:none;
+/*
+  float: left;
+  margin-left: 0.5px;
+  margin-right: 0px;
+ */
+}
+.views-content-field-slider-image {
+  float: left;
+  margin-left: 2px;
+  margin-right:2px;
+}
+/*
+  .views-field-field-slider-image {
+  margin-left:auto;
+  margin-right:auto;
+  width:100%;
+  }
+ */
+/* Styles for the frontpage slider 2 */
+/* Style for front page slider */
+@media only screen and (min-width:481px) and (max-width:768px) {
+.view-frontpage-slider-2 {
+  display:none;
+}
+}
+@media only screen and (min-width:321px) and (max-width:480px) {
+.view-frontpage-slider-2 {
+  display:none;
+}
+}
+@media only screen and (max-width:320px) {
+.view-frontpage-slider-2 {
+  display:none;
+}
+}
+.lt-ie9 .image-style-front-banner {
+  margin-left:auto;
+  margin-right:auto;
+  width: 710px;
+}
+.image-style-front-banner {
+  margin-left:auto;
+  margin-right:auto;
+  width:100%;
+}
+.view-frontpage-slider-2 {
+  background-color: #3e4c5e;
+/* margin: -25px -25px 10px -25px; */
+  padding: 10px 3px 10px 3.5px;
+}
+.frontpageSliderText {
+  color: white;
+  margin:10px;
+/* display:block; */
+}
+.lt-ie9 .views-slideshow-pager-field-item {
+  float: left;
+  width: 18%;
+  text-align: center;
+  margin-left: 0.5px;
+  margin-right: 0px;
+}
+.views-slideshow-pager-field-item {
+  float: left;
+  margin-left: 1%;
+  margin-right: 1%;
+  width: 18%;
+  text-align: center;
+}
+#header-wrapper header {
+  padding: 10px 0px;
+}
+#branding {
+  display: table-cell;
+  padding: 0px 0px 0px 130px;
+  vertical-align: middle;
+}
+#logo {
+  display:table-cell !important;
+}
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+#logo   { 
+margin: auto;
+    display: block;
+    width: 100%;
+    padding: 0;
+}}
+
+/* Lining up site just to right of logo */
+#branding .h-group {
+  display: table-cell !important;
+  vertical-align: top;
+  width: 160px;
+  font-size: 1em;
+  height: 110px;
+}
+
+#site-slogan {
+color:#084d82;
+}
+.region-header {
+  display: table-cell;
+/* padding: 30px 25px 33px 0; */
+  vertical-align: middle;
+  padding: 0;
+}
+.region-header .block {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  width: 200px;
+  margin: auto;
+  float:none;
+}
+span.header-colophon {
+  font-size:0.8em;
+  color:white;
+}
+/* Expandable Search box with icon; adapted from a codepen here: codepen.io/912lab/pen/LsplC */
+input {
+  outline: none;
+}
+input[type=search] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none;
+}
+input[type=search] {
+background:url('/sites/all/themes/corolla/css/images/search-icon.svg') no-repeat 9px center;
+  border: 0;
+  padding: 3px 4px 3px 32px;
+  width: 55px;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  transition: all .5s;
+}
+input[type=search]:focus {
+  width: 130px;
+  background-color: #fafafa;
+  border-color: #094d82;
+  -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+  -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+  box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+input:-moz-placeholder {
+  color: #999;
+}
+input::-webkit-input-placeholder {
+  color: #999;
+}
+#block-search-form form {
+  margin-bottom:0;
+}
+#block-search-form input[type=search] {
+  width: 15px;
+  padding-left: 12px;
+  color: transparent;
+  cursor: pointer;
+  border-radius:0;
+  margin-bottom:0;
+}
+#block-search-form input[type=search]:focus {
+  width: 150px;
+  padding-left: 5px;
+  color: #000;
+  background-color: #fff;
+  cursor: auto;
+}
+#block-search-form input:-moz-placeholder {
+  color: transparent;
+}
+#block-search-form input::-webkit-input-placeholder {
+  color: transparent;
+}
+/* Below is the Genre browser link. Inching it closer to the search box */
+div#block-block-105 {
+  margin-top: -30px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+.node-content .field-name-field-index-banner {
+  margin-bottom:10px;
+}
+
+/* Styles for TOC */
+#IndexContent {
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -28px;
+  background: rgba(255,255,255,.5);
+}
+ul#TOCContent {
+  margin-top: 20px;
+    list-style: none;
+    padding: 5px;
+    margin-left: 0px;
+}
+.about {
+  font-size: 12pt;
+  font-variant:small-caps;
+  font-weight: bold;
+  float: left;
+/* margin-left: 20px; */
+  padding: 8px;
+}
+h2.TOC {
+  font-weight: bold;
+  text-align: center;
+}
+h2.EdRole1 {
+  font-size: 110%;
+  font-weight: bold;
+  text-align: center;
+  font-variant:small-caps;
+  display: block;
+  padding: 15px 0 0 0;
+  margin: 0 0 0 0;
+  letter-spacing:2px;
+}
+h2.EdRole2 {
+  font-weight: bold;
+  text-align: center;
+  font-variant:small-caps;
+  display: block;
+  padding: 15px 0 0 0;
+  margin: 0 0 0 0;
+  letter-spacing:2px;
+}
+h3.EdName1 {
+  text-align: center;
+  display: block;
+  padding: 0 0 0 0;
+  margin:0;
+  color: gray;
+}
+h3.EdName2 {
+  text-align: center;
+  display: block;
+  padding: 0 0 0 0;
+  margin:0;
+  color: gray;
+}
+.LargeObject {
+  padding: 0px 5px 0px 5px;
+  font-size: 110%;
+  list-style: none;
+  margin-top: 7px;
+}
+.object {
+  padding: 0px 5px 0px 5px;
+  list-style: none;
+}
+.EssayTitle {
+  background: none;
+  display: block;
+  font-weight: normal;
+  margin-left: 25px;
+  margin-top: .75em;
+}
+.AuthorInfo {
+  background: none;
+  margin-left: 25px;
+  padding: 0px;
+  display: inline-block;
+  width: 60%;
+  margin-bottom: .5em;
+}
+.ChildContent {
+  padding: 0 10px;
+  text-align: right;
+  display:inline;
+  float:right;
+  margin-bottom: 0.5em;
+}
+p.IndexText {
+  margin: 20px;
+  list-style: none;
+  font-size: 80%;
+}
+li.paratext {
+/* background: none; */
+  display: block;
+  font-weight: normal;
+  margin-left: 50px;
+  margin-top: .25em;
+  font-size: 80%;
+/* list-style-type: disc; */
+/* list-style-image: inherit; */
+}
+.tocLogoFirst {
+  margin-bottom: 5px;
+  display: inline-block;
+  margin-right: 20px;
+}
+.tocLogo {
+  margin-bottom: 5px;
+  margin-right: 20px;
+  display: inline-block;
+}
+.tocLogoLast {
+  margin-bottom: 5px;
+  display: inline-block;
+}
+.logos {
+  display: block;
+  text-align: center;
+  border-top: 1px solid rgb(231, 231, 231);
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px 7px 7px 7px;
+}
+.logoHead {
+  font-weight: bold;
+  text-align: center;
+  background-color: rgb(170, 182, 197);
+  margin-bottom: 3px;
+  padding: 3px;
+}
+/* Adding classes for TEI-specific pages */
+.indent1 {
+  text-indent: 40px;
+}
+.indent2 {
+  text-indent: 80px;
+}
+.indent3 {
+  text-indent: 120px;
+}
+.indent4 {
+  text-indent: 160px;
+}
+.indent5 {
+  text-indent: 200px;
+}
+.indent6 {
+  text-indent: 240px;
+}
+.indent7 {
+  text-indent: 280px;
+}
+.indent8 {
+  text-indent: 320px;
+}
+.indent9 {
+  text-indent: 360px;
+}
+.indent10 {
+  text-indent: 400px;
+}
+.indent11 {
+  text-indent: 440px;
+}
+.indent12 {
+  text-indent: 480px;
+}
+.indent13 {
+  text-indent: 520px;
+}
+.indent14 {
+  text-indent: 560px;
+}
+.indent15 {
+  text-indent: 600px;
+}
+.bold {
+  font-weight:bold;
+}
+.center {
+  text-align: center;
+}
+span.center {
+  text-align: center;
+  display: block;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.small {
+  font-size: 12pt;
+}
+.large {
+  font-size: 1.2em;
+}
+.largest {
+  font-size: 18pt;
+}
+.smallest {
+  font-size: 10pt;
+}
+.titlem {
+  font-style: italic;
+}
+.titlej {
+  font-style: italic;
+}
+.italic {
+  font-style: italic;
+}
+.figure {
+  text-align: center;
+  font-size: 12pt;
+}
+.sup {
+  vertical-align: super;
+}
+.sub {
+  vertical-align: sub;
+}
+.lineno {
+  float:right;
+  margin-right:20px;
+}
+/* important declaration from the Quarterly Review Archive */
+.smallprint {
+  font-size: 80%;
+}
+.qr_notes_text {
+  font-size: 80%;
+}
+.standard_margin {
+  margin-left: 10px;
+   margin-right: 10px
+}
+.title1 {
+  font-size: 120%;
+   font-weight: bold
+}
+.subtitle1 {
+   font-size: 110%
+}
+.subscript {
+  font-size: 80%;
+  color: #FF0000;
+}
+.redbold {
+  font-weight: bold;
+   color: #660000
+}
+/* important declaration from Robespierre edition */
+.stagesm {
+  font-variant: small-caps
+}
+/* important declaration from Temple of Nature edition */
+.citecolor {
+  color: #090;
+}
+span.notenum {
+  vertical-align:super;
+  font-size:70%;
+}
+span.smallcaps {
+  font-variant:small-caps;
+}
+span.allcaps {
+    text-transform: uppercase;
+}
+span.role {
+  padding: 0 3px 0 3px;
+  margin-left:7px;
+}
+.titlePage {
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+  width:70%;
+}
+span.mainTitle {
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+span.subTitle {
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+.fwHead {
+  display:none;
+}
+.pageNumberInline {
+  font-size:12px;
+  color:gray;
+  text-align:right;
+  font-weight: normal;
+  line-height: 10px;
+  vertical-align:super;
+}
+.pageLine {
+  border:1px solid gray;
+}
+.fw {
+  display:none;
+}
+.catch {
+  display:none;
+}
+.pbHead {
+  display:none;
+}
+.underline {
+  text-decoration:underline;
+}
+.doubleUnderline {
+  border-bottom: 3px double;
+}
+.dateline {
+  text-align:left;
+}
+.titlePart {
+  font-size:18px;
+  font-weight:bold;
+}
+.stage {
+  display:block;
+}
+.rightFloat {
+  float: right;
+  margin-left: 5px;
+  display: block;
+  position: relative;
+  z-index: 100;
+  clear: none;
+  margin-bottom: 5px;
+}
+.pageFloat {
+  float: right;
+  margin-left: 5px;
+  display: block;
+  position: relative;
+  z-index: 100;
+  clear: both;
+  margin-bottom: 5px;
+}
+.leftFloat {
+  float: left;
+  margin-right: 5px;
+  display: block;
+  position: relative;
+  z-index: 100;
+  clear: none;
+  margin-bottom: 5px;
+}
+.inlineNote {
+  margin-left: 20px;
+  font-size: 85%;
+  padding-left: 10px;
+  border-left: 2px solid rgb(223, 223, 223);
+}
+/* These margin-based rules are for the column widths on the Baillie Chronology. I had to write them like this because the Views is applying the class to the <th> element above it rather than the <span>, which it should be */
+.marginRight1 span {
+  margin-right:20px;
+}
+.marginRight2 span {
+  margin-right:80px;
+}
+.marginRight3 span {
+  margin-right:60px;
+}
+.marginRight4 span {
+  margin-right:80px;
+}
+.pane-node-field-bio {
+  clear:none;
+  font-size:120%;
+}
+.border1 {
+  border:1px solid black;
+  padding:2px;
+}
+/*
+  .field-name-field-published {color:gray;
+  margin-bottom: 5px;
+  text-align:right;}
+ */
+a, a.active, li a.active {
+  text-decoration:none;
+}
+/* This should cover the majority of section landing pages, but I'm hesitant to use this for all h1#page-title for fear of unintended consequences. */
+body.page-blog-rc section#main-content #page-title, .block-91, body.page-reviews-blog section#main-content #page-title, body.page-pop-blog section#main-content #page-title, body.page-pedagogies-pedagogies-blog section#main-content #page-title, .galleryBanner, .section-reviews-and-receptions h1#page-title, .page-gallery h1#page-title, .page-praxis h1#page-title, .page-editions h1#page-title, .page-pedagogies h1#page-title, .page-reference h1#page-title, .page-audio h1#page-title, .page-data h1#page-title, .page-redesign h1#page-title {
+  font-family: 'PT Sans';
+font-weight: 500;
+  font-size: 3.5em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #2F2F2F;
+  letter-spacing: 2px;
+/* padding-top: 30px; */
+/* padding-bottom: 10px; */
+  background: none;
+ /* margin: 0px; */
+}
+
+/*
+  body.section-blog-rc article.article {
+  margin-bottom: 30px;
+  background-color: #F1F3FA;
+  padding: 20px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  }
+  body.section-reviews-blog article.article {
+  margin-bottom: 30px;
+  background-color: #F1F3FA;
+  padding: 20px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  }
+  body.section-pop-blog article.article {
+  margin-bottom: 30px;
+  background-color: #F1F3FA;
+  padding: 20px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  }
+  body.page-pedagogies-pedagogies-blog article.article {
+  margin-bottom: 30px;
+  background-color: #F1F3FA;
+  padding: 20px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  }
+  body.node-type-pedagogies-entry article.article {
+  margin-bottom: 30px;
+  background-color: #F1F3FA;
+  padding: 20px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  }
+ */
+ul.links li.blog_usernames_blog {
+  display:none
+}
+body.page-search-site section#block-top-google-searches-block {
+  float: right;
+  margin: 0 0 20px 20px;
+  display:inline;
+}
+.grayBox {
+  background-color: whiteSmoke;
+  color: #D9C600;
+  padding: 2px 5px 2px 5px;
+}
+.more-link {
+  text-align: right;
+  font-weight: 700;
+  margin:5px;
+}
+.more-link a {
+  padding: 5px 7px;
+  background-color: #084d82;
+  color: white !important;
+  margin-bottom: 4px;
+}
+a.views-more-link {
+  float:right;
+  font-weight: 700;
+}
+.field-name-field-index-banner {
+  margin: auto;
+  /*  width: 750px; */
+    display: block;
+}
+/*
+  #content-column {
+  margin-bottom:25px;
+  }
+ */
+.sf-vertical, .sf-vertical li {
+  width: 16em;
+}
+/* Making block titles a bit bigger on certain landing pages*/
+@media only screen and (min-width:769px) {
+.page-reviews-and-receptions .block-region-content h2.block-title {
+  font-size: 1.8em;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'PT Sans';
+  margin-bottom:20px;
+}
+}
+.node-type-gallery figure {
+  float:left;
+  margin: 5px;
+}
+/* Styles for Video */
+/*
+   video {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:15px;
+  display: block;
+  background-color:black;
+  border: 2px solid rgb(87, 114, 155);
+  padding: 5px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 0 7px rgba(76, 76, 76, 0.7);
+  -moz-box-shadow: 0 0 7px rgba(76, 76, 76, 0.7);
+  }
+ */
+.video-js {
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:15px;
+}
+/* Special declarations for the Island in the Moon resource */
+.contentIsland table {
+  display:block;
+}
+.contentIsland .noBreakIndent {
+  margin-left:18%;
+}
+.block-gallery-slider-block {
+  background: url(/sites/default/files/adaptivetheme/corolla_files/color-line1.png) repeat-x scroll left top rgba(255,255,255,.7);
+  margin-bottom: 20px;
+  padding: 20px 5px 5px 5px;
+/* max-width: 250px; */
+  box-shadow: 0 0 10px rgb(226,221,199) inset;
+}
+.galleryGrid {
+  width: 15%;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #D3D7EB;
+  margin-bottom: 10px;
+  clear: none;
+}
+.galleryGrid2 {
+  width: 120px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #D3D7EB;
+  border: 1px solid #D3D7EB;
+  margin-bottom: 10px;
+  clear: none;
+}
+.gallerygrid {
+  width: 20%;
+  box-sizing: border-box;
+}
+.view-gallery-contributor-section .views-field-title {
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+.view-gallery-contributor-section .views-field-field-text-date {
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+.galleryContribRegion {
+  padding-left:20px;
+  border-left:1px solid rgb(230, 230, 230);
+}
+/*.view-gallery-slider .image-style-gallery-slideshow, .image-style-gallery-small {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+}
+*/
+.view-gallery-contributor-section img {
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+}
+.item-list ul.pager {
+  text-align: center;
+  font-weight: bold;
+  font-size: 120%;
+  border-bottom: 1px solid #ECEAE2;
+  margin-bottom:5px;
+}
+.teaserItem .views-field-field-galleryimage {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.teaserItem .views-field-field-exhibit-icon {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.section-gallery .at-panel {
+  font-size:120%;
+}
+body.section-gallery div.block {
+  margin-bottom:0px;
+}
+.region-two-66-33-first {
+  margin-bottom:12px;
+}
+.section-gallery .region-two-66-33-second {
+  font-size:80%;
+}
+.rounded-corner .panel-separator {
+  height:20px;
+}
+.section-gallery h2.field-label {
+  margin-top:12px;
+}
+h2.section-label {
+  font-size: 1em;
+  font-weight: 700;
+  line-height: inherit;
+  margin: 0;
+  margin-top: 12px;
+}
+.section-gallery .region-two-66-33-second h2.field-label {
+  margin-top:0;
+}
+.field-name-field-exhibit-tags ul li {
+  display:block;
+}
+.field-name-field-gallery-location ul li {
+  display:block;
+}
+/*
+  .node-type-gallery-image .block {
+  margin-bottom:0px;
+  }
+ */
+/* This rule, meant especially for the gallery, effectively customizes the height of break tags. Done this way because the Gallery fields were encoded without paragraphs originally. The div surrounds the break tags and effectively overrides them */
+.customBreak {
+  line-height:30%;
+  visibility:hidden;
+}
+
+/*
+  .node-type-gallery-image .panel-col-last {
+  background: rgba(226,228,240,1);
+  background: -moz-linear-gradient(-45deg,rgba(226,228,240,1) 0%,rgba(253,253,255,1) 100%);
+  background: -webkit-gradient(linear,left top,right bottom,color-stop(0%,rgba(226,228,240,1)),color-stop(100%,rgba(253,253,255,1)));
+  background: -webkit-linear-gradient(-45deg,(226,228,240,1) 0%,rgba(253,253,255,1) 100%);
+  background: -o-linear-gradient(-45deg,rgba(226,228,240,1) 0%,rgba(253,253,255,1) 100%);
+  background: -ms-linear-gradient(-45deg,rgba(226,228,240,1) 0%,rgba(253,253,255,1) 100%);
+  background: linear-gradient(-45deg,rgba(226,228,240,1) 0%,rgba(253,253,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e5e8fd',endColorstr='#fdfdff',GradientType=1);
+  margin-bottom: 10px;
+  }
+ */
+.section-gallery .view-gallery-exhibit-images .view-grouping {
+  background: url("color-line1.png") repeat-x scroll left top whiteSmoke;
+  margin-bottom: 20px;
+  padding: 20px 5px 5px 5px;
+  border-left: 2px solid #EBEBEB;
+  border-bottom: 2px solid #EBEBEB;
+  border-right: 2px solid #EBEBEB;
+  -moz-border-radius: 9px 0px 20px;
+  -webkit-border-radius: 9px 0px 20px;
+  border-radius: 9px 0px 20px;
+  overflow:auto;
+}
+.section-gallery .view-gallery-exhibit-images .view-grouping-header {
+  display:none;
+}
+
+.view-gallery-exhibit-images h3 {
+  font-size: 1em;
+  font-weight: normal;
+}
+.section-gallery .view-gallery-exhibit-images .teaserItem .views-row {
+  width: 40%;
+  display: block;
+  background: rgba(226, 228, 240, 1)
+  background: -moz-linear-gradient(-45deg, rgba(226, 228, 240, 1) 0%, rgba(253, 253, 255, 1) 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(226, 228, 240, 1)), color-stop(100%,rgba(253, 253, 255, 1)));
+  background: -webkit-linear-gradient(-45deg, (226, 228, 240, 1) 0%,rgba(253, 253, 255, 1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(226, 228, 240, 1) 0%,rgba(253, 253, 255, 1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(226, 228, 240, 1) 0%,rgba(253, 253, 255, 1) 100%);
+  background: linear-gradient(-45deg, rgba(226, 228, 240, 1) 0%,rgba(253, 253, 255, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e8fd', endColorstr='#fdfdff',GradientType=1 );
+  padding: 5px;
+  border: 1px solid #D3D7EB;
+  overflow: auto;
+  margin-bottom: 10px;
+  margin-right: 0px;
+  margin-left: auto;
+}
+.section-gallery .view-gallery-exhibit-images .view-grouping-content h3 {
+  float: left;
+  width: 55%;
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 15px;
+  display: block;
+  overflow: auto;
+  margin-right:10px;
+}
+.flag-action {
+  background-color: rgb(48, 48, 48);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 700;
+  outline: 1px solid rgb(255, 255, 255);
+  padding: 2px 6px 2px 6px;
+  -moz-background-size: 100% 200%;
+  -webkit-background-size: 100% 200%;
+  background-size: 100% 200%;
+  -moz-outline-radius: 4px;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+.unflag-action {
+  background-color: rgb(52, 141, 52);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  border: 2px solid rgb(177, 186, 233);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 700;
+  outline: 1px solid rgb(255, 255, 255);
+  padding: 2px 6px 2px 6px;
+  -moz-background-size: 100% 200%;
+  -webkit-background-size: 100% 200%;
+  background-size: 100% 200%;
+  -moz-outline-radius: 4px;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+.quickView {
+  text-align: right;
+  margin-top: 7px;
+}
+.quickView a {
+  border: 1px solid rgb(194, 168, 66);
+  background: rgb(54, 54, 54);
+  color: #f1dec6;
+  font-weight: bold;
+  padding: 1px 3px 2px 3px;
+  border-radius: 4px 4px 4px 4px;
+  text-align: center;
+  font-size: 80%;
+}
+.fullView {
+  text-align: right;
+  margin-top: 7px;
+}
+.fullView a {
+  background: rgb(194, 143, 54);
+  color: #ffffff;
+  border: 1px solid #f1dec6;
+  font-weight: bold;
+  padding: 1px 3px 2px 3px;
+  border-radius: 4px 4px 4px 4px;
+  text-align: center;
+  font-size: 80%;
+}
+/* Style for Nobody, Gipsy Prince, and other plays */
+.leftFloat {
+  float:left;
+  margin-right:5px;
+}
+.border1 {
+  border:1px solid black;
+  padding:2px;
+}
+.stageInline {
+  display: inline;
+}
+.noBreak {
+  display: inline-block;
+  float: left;
+}
+.noBreakIndent {
+  display: block;
+  margin-left: 16%;
+}
+.underline {
+  text-decoration:underline;
+}
+.foreign {
+  font-style:italic;
+}
+.poemIndent {
+  margin-left: 1em;
+}
+.paraIndent {
+  text-indent: 2em;
+}
+.castList {
+  list-style-type:none;
+  font-weight: normal;
+}
+.pageNumber {
+  font-size:12px;
+  color:gray;
+  text-align:center;
+  font-weight: normal;
+  line-height: 10px;
+  margin-bottom: 3px;
+  display:block;
+}
+/*
+  .pane-node-metadata {
+  float: right;
+  display: inline-block;
+  width: 33.333333333%;
+  clear: none;
+  margin-left: 20px;
+  margin-right: -20px;
+  padding: 20px;
+  background: url("color-line1.png") repeat-x scroll left top #f1f1eb;
+  margin-bottom: 20px;
+  border-left: 2px solid #EBEBEB;
+  border-bottom: 2px solid #EBEBEB;
+  border-right: 2px solid #EBEBEB;
+  -moz-border-radius: 9px 0px 20px;
+  -webkit-border-radius: 9px 0px 20px;
+  border-radius: 9px 0px 0px 9px;
+  }
+  .bodyFloat .block {
+  clear:none;
+  }
+ */
+.bodyFloat {
+  clear:none;
+}
+#content .panel-display .block {
+  margin-bottom:10px;
+}
+.view-exhibit-add-link .view-grouping .view-grouping-content .view-grouping .view-grouping-header {
+  margin: 10px 0px 5px 0px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align:left;
+}
+.view-exhibit-add-link .view-grouping .view-grouping-header:first-child {
+  text-align:center;
+  margin: 5px 0px 5px 0px;
+}
+.view-exhibit-add-link .view-grouping-content h3 {
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+article.node-poets-on-poets-entry .field-name-field-embed-code {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 15px;
+  width: 400px;
+}
+article.node-general-audio .field-name-field-embed-code {
+  float: right;
+  margin-left: 7px;
+  display: block;
+  margin-top: 15px;
+  width:400px;
+}
+body.node-type-praxis-page .field-name-field-embed-code,
+body.node-type-reference-page .field-name-field-embed-code,
+body.node-type-editions-page .field-name-field-embed-code,
+body.node-type-pedaogies-page .field-name-field-embed-code,
+body.node-type-forthcoming-page .field-name-field-embed-code,
+body.node-type-video .field-name-field-embed-code {
+  text-align: center;
+}
+.more {
+  display: none;
+  background: white;
+  color: black;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  padding: 20px;
+  margin: 20px;
+}
+a.showLink, a.hideLink {
+  text-decoration: none;
+  color: #36f;
+  margin-left: 80px;
+}
+a.showLink:hover, a.hideLink:hover {
+  border-bottom: 1px dotted #36f;
+
+}
+.smcap {
+  font-variant:small-caps;
+}
+/* Some new declarations for the Treewalk menu-based pager. Currently only enabled for the Island in the Moon resource */
+.treewalk-prev-next {
+  border-bottom: 1px solid #DADADA;
+  padding-bottom: 20px;
+}
+.treewalk-prev {
+  float: left;
+  font-size: 120%;
+}
+.treewalk-next {
+  float: right;
+  font-size: 120%;
+}
+/* This fixes a problem with the pager when the next or previous item is "nolink" (functionality provided by the Special Menu Items module) */
+.treewalk-prev-next span.nolink {
+  display:none;
+}
+.pubInfo {
+  font-size: 125%;
+  font-weight: normal;
+  font-family: 'PT Sans';
+/*
+  float:right;
+  background-color: whiteSmoke;
+  border:2px solid white;
+  padding:5px 0px;
+  border-radius:9px;
+  width:420px;
+  margin-top:20px;
+ */
+}
+/*
+  @media only screen and (min-width:1px) and (max-width:768px) {
+  .pubInfo {
+  display:none;
+  }
+  }
+ */
+/* When using table sorting in Views, I don't have control over the markup that Views outputs. Here, I'm just increasing the size of the person's name */
+.view-romantic-circles-people-2 .view-grouping-header {
+  font-size: 130%;
+  font-weight: bold;
+}
+.view-romantic-circles-people-2 caption {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a.teiButton {
+  background: rgb(159,3,3);
+  padding: 1px 8px 1px 8px;
+  color: white;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 10px;
+/* font-weight: bold; */
+  letter-spacing: 2px;
+  border: 3px double white;
+}
+/* And a more generalized Export Button that looks the same */
+a.exportButton {
+  background: rgb(159,3,3);
+  padding: 1px 8px 1px 8px;
+  color: white;
+  font-family: "Trebuchet MS",Helvetica,sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  border: 3px double white;
+}
+/* Just a little css to make links in Openlayers pop-up panes readable over a dark background */
+.openlayers-map .openlayers-tooltip-name {
+  font-weight: bold;
+  font-size: 120%;
+}
+.openlayers-map .openlayers-tooltip-name a {
+  color:#EEEEEE;
+}
+.spread {
+  text-align:center;
+}
+.spread .views-summary {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: bold;
+  font-size: 125%;
+  border-right: 2px solid gray;
+}
+body.page-gallery-gallery-map .openlayers-popup.openlayers-tooltip-description {
+  width: 425px;
+  min-height: 100px;
+}
+body.page-gallery-gallery-map .openlayers-popup.openlayers-tooltip-name {
+  width: 400px;
+}
+.views-field-field-profile-picture-1 {
+  margin-right:10px;
+}
+.views-field.views-field-field-profile-picture-1 blockquote {
+  margin:0;
+  padding:0;
+  text-align:center;
+  width:174px;
+}
+
+/*.view-ficrep .views-field-field-profile-picture {
+  float: left;
+  margin-right: 5px;
+  width: 110px;
+}*/
+.view-ficrep img.image-style-thumbnail {
+  margin: auto;
+  display: block;
+  border: 2px solid rgb(200, 200, 200);
+  padding: 6px 3px;
+  box-shadow: 0px 0px 3px 1px rgb(219, 219, 219) inset;
+}
+.view-ficrep .views-field-field-director, .view-ficrep .views-field-field-author, .view-ficrep .views-field-field-recording-artist {
+  text-align: left;
+  color: #2e2e2e;
+  font-weight: normal;
+  font-size: 120%;
+  margin: 0px 15px 0px 0px;
+}
+.view-ficrep .views-field-body p {
+  clear: both;
+  font-size: 110%;
+}
+.side-filters select {
+  margin-bottom: 3px;
+  padding: 7px;
+  border: 3px solid rgb(216, 216, 216);
+  font-family: 'Trebuchet MS','Helvetica Neue',Arial,Helvetica,sans-serif;
+  color: #2e2e2e;
+  box-shadow: 0px 0px 8px rgb(210, 210, 210) inset;
+}
+input.form-button, input.form-submit {
+  background: #084d82;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  transition: .3s;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px 0 0;
+  padding: 5px 11px;
+  height: 28px;
+  border-radius: 4px;
+}
+#menu-bar #search-block-form input.form-button, #menu-bar #search-block-form input.form-submit {
+display:none;
+}
+
+.side-filters input.form-submit {
+  border: 2px solid rgb(160, 160, 160);
+  color: rgb(102, 102, 102);
+  font-weight: bold;
+}
+.side-filters .form-item label {
+  font-weight: bold;
+}
+.side-filters .views-exposed-form .views-exposed-widget {
+  float: none;
+  padding: .5em 1em 0 0;
+  margin-left: 25px;
+}
+/* For some reason (bug), it's not possible to turn of the title of the view inserted in the panel when that pane is a "Views pane" so I'm turning it off here */
+section.pane-ficrep-panel-pane-1 h2.pane-title {
+  display:none;
+}
+body.page-reference-ficrep-panel h1#page-title {
+  display:none;
+}
+.view-southey-people .views-field.views-field-field-source-print, .view-southey-people-addressed .views-field.views-field-field-source-print, .view-southey-people-basic- .views-field.views-field-field-source-print {
+  display: inline-block;
+  padding-left: 5px;
+  border-left: 1px solid rgb(161, 161, 161);
+  font-weight: 600;
+  line-height:1.5;
+  margin-top:7px;
+}
+.view-southey-people p.views-field.views-field-field-bio, .view-southey-people-addressed p.views-field.views-field-field-bio, .view-southey-people-basic- p.views-field.views-field-field-bio {
+  clear: both;
+}
+.field.field-name-field-source-print.field-type-text.field-label-hidden.view-mode-_custom_display {
+  font-style: italic;
+}
+/* Begin Recent work on Reviews and Romanticism and Pop Culture (Ficrep) */
+
+/* For sliders on ficrep home page*/
+
+.page-reviews-and-receptions .panels-flexible-row.clearfix {
+    padding: 15px 0px;
+}
+
+.view-review-entries .views-slideshow-cycle-main-frame-row-item.views-row {
+    float: left;
+    width: 33.333333%;
+    display: inline;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.views-slideshow-cycle-main-frame .leftFloat {
+  float: none;
+}
+
+#views_slideshow_cycle_teaser_section_review_entries-block_5 .field-content {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#views_slideshow_cycle_teaser_section_review_entries-block_4 .views-slideshow-cycle-main-frame-row-item {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/* The recent posts slider is really short, so need to adjust the controls*/
+
+#views_slideshow_controls_text_review_entries-panel_pane_1 .views-slideshow-controls-text-previous, #views_slideshow_controls_text_review_entries-panel_pane_1 .views-slideshow-controls-text-next {
+top:7px;
+}
+/* Manually set a height since Audio and Book Chats sliders are floated next to each other*/
+div#views_slideshow_cycle_main_review_entries-block_5, #views_slideshow_cycle_main_review_entries-block_9 {
+    height: 400px;
+}
+/* For the audio block, we're not splitting 3 rows per slide, just one, so overriding above. */
+#block-audio .views-slideshow-cycle-main-frame-row-item.views-row {
+
+}
+#views_slideshow_cycle_main_review_entries-block_5 .views-slideshow-cycle-main-frame-row-item, #views_slideshow_cycle_main_review_entries-block_4 .views-slideshow-cycle-main-frame-row-item, #views_slideshow_cycle_teaser_section_review_entries-block_6 .views-slideshow-cycle-main-frame-row-item, #block-audio .views-slideshow-cycle-main-frame-row-item.views-row {
+  float: none;
+    width: 100%;
+    display: block;
+}
+.view-ficrep .views-slideshow-cycle-main-frame-row-item.views-row {
+float: left;
+    width: 19%;
+    display: inline;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+/*Remove this after the video slider on R&R homepage is converted to use an embed code field. */
+.view.view-review-entries.view-id-review_entries.view-display-id-block_5 {
+    height: 480px;
+}
+
+.view-ficrep h3 {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.view-ficrep img.image-style-thumbnail {
+  margin: auto;
+  display: block;
+  border: 2px solid rgb(200, 200, 200);
+  padding: 6px 3px;
+  box-shadow: 0px 0px 3px 1px rgb(219, 219, 219) inset;
+}
+.view-ficrep .views-field-field-director, .view-ficrep .views-field-field-author, .view-ficrep .views-field-field-recording-artist {
+  text-align: left;
+  color: #2e2e2e;
+  font-weight: normal;
+  font-size: 120%;
+  margin: 0px 10x 0px 0px;
+}
+.view-ficrep .views-field-body p {
+  clear: both;
+  font-size: 110%;
+}
+.side-filters select {
+  margin-bottom: 3px;
+  padding: 7px;
+  border: 3px solid rgb(216, 216, 216);
+  font-family: 'Trebuchet MS','Helvetica Neue',Arial,Helvetica,sans-serif;
+  color: #2e2e2e;
+  box-shadow: 0px 0px 8px rgb(210, 210, 210) inset;
+}
+.side-filters input.form-submit {
+  border: 2px solid rgb(160, 160, 160);
+  color: rgb(102, 102, 102);
+  font-weight: bold;
+}
+.side-filters .form-item label {
+  font-weight: bold;
+}
+.side-filters .views-exposed-form .views-exposed-widget {
+  float: none;
+  padding: .5em 1em 0 0;
+  margin-left: 25px;
+}
+/* For some reason (bug), it's not possible to turn of the title of the view inserted in the panel when that pane is a "Views pane" so I'm turning it off here */
+section.pane-ficrep-panel-pane-1 h2.pane-title {
+  display:none;
+}
+body.page-reference-ficrep-panel h1#page-title {
+  display:none;
+}
+.pane-custom img {
+  border: 1px solid;
+}
+/* Katie ficrep */
+.page-reference-ficrep-list .region-sidebar-second .region-inner {
+  margin-top: 20px;
+}
+.view-display-id-list select {
+  box-shadow: 0px 0px 5px rgb(210,210,210) inset;
+}
+.view-display-id-list .view-content {
+  margin-top: 40px;
+}
+.view-display-id-list .views-row img {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+.view-display-id-list img.image-style-thumbnail {
+  padding: 0px;
+}
+.view-display-id-list .views-row .views-field-field-profile-picture {
+  margin-right: 0px;
+  width: inherit;
+}
+.view-display-id-list .views-field-field-logo {
+  float: right;
+}
+
+
+/* Ficrep sidebar */
+.page-reference-ficrep-list div.region-sidebar-second ul, .page-reference-ficrep-thumbs div.region-sidebar-second ul {
+  list-style-type: none;
+  font-size: 1.3em;
+  letter-spacing: 1px;
+  font-weight: 400;
+  width: 100%;
+  margin: -15px 20px 5px;
+}
+/* For media node pages */
+.page-reference-ficrep-thumbs div.region-sidebar-second span.views-field span.field-content a {
+  padding: 0px;
+}
+#block-views-ficrep-block-1 .view-content {
+  padding: 5px;
+}
+.page-reference-ficrep-thumbs #block-views-ficrep-block-1 span.views-field.views-field-field-director span a {
+  top: 0px;
+  font-weight: 400;
+}
+.page-reference-ficrep-list section.block-region-sidebar-second {
+  background: rgba(255, 255, 255, .7);
+  margin-bottom: 20px;
+  padding: 10px 0px;
+  position: relative;
+  top: 0px;
+  border-radius: 0px;
+  border: none;
+  width: 115%;
+}
+/*  Ficrep Thumbnail Page */
+
+.page-reference-ficrep-thumbs #edit-taxonomy-vocabulary-3-tid-wrapper, .page-reference-ficrep-list #edit-taxonomy-vocabulary-3-tid-wrapper {
+  width: 82%;
+  position: relative;
+  left: 15px;
+}
+.page-reference-ficrep-thumbs #edit-taxonomy-vocabulary-3-tid, .page-reference-ficrep-list #edit-taxonomy-vocabulary-3-tid {
+  line-height: 2.2em;
+  max-width: 100%;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 0;
+}
+
+/* Submit/Reset buttons */
+.page-reference-ficrep-thumbs .views-exposed-form .views-exposed-widget .form-submit, .page-reference-ficrep-list .views-exposed-form .views-exposed-widget .form-submit {
+  margin: 0px -13px 0px 20px;
+  height: 40px;
+  width: 100%;
+}
+.page-reference-ficrep-thumbs #edit-submit-ficrep:hover, .page-reference-ficrep-list #edit-submit-ficrep:hover, .page-reference-ficrep-thumbs #edit-reset:hover, .page-reference-ficrep-list #edit-reset:hover {
+  transition: .3s;
+  background: rgb(250, 250, 250);
+}
+.page-reference-ficrep-thumbs #edit-taxonomy-vocabulary-3-tid-wrapper label, .page-reference-ficrep-list #edit-taxonomy-vocabulary-3-tid-wrapper label {
+  display: none;
+}
+.page-reference-ficrep-thumbs #edit-taxonomy-vocabulary-3-tid-wrapper div.description, .page-reference-ficrep-list #edit-taxonomy-vocabulary-3-tid-wrapper div.description {
+  text-align: center;
+  color: rgb 207, 207, 207;
+  padding: 5px;
+  top: -65px;
+}
+.page-reference-ficrep-thumbs #edit-field-genre-tid-wrapper div.description, .page-reference-ficrep-list #edit-field-genre-tid-wrapper div.description {
+  text-align: center;
+  color: black;
+  position: relative;
+  top: -55px;
+}
+.page-reference-ficrep-thumbs div.views-exposed-form div#edit-annotation-tags-tid-wrapper, .page-reference-ficrep-list div.views-exposed-form div#edit-annotation-tags-tid-wrapper {
+  width: 99%;
+  max-width: 99%;
+}
+.page-reference-ficrep-thumbs #edit-field-genre-tid-wrapper label, .page-reference-ficrep-list #edit-field-genre-tid-wrapper label {
+  position: relative;
+  top: -25px;
+  font-size: 1.3em;
+  margin-left: 10px;
+}
+.page-reference-ficrep-thumbs #edit-field-genre-tid, .page-reference-ficrep-list #edit-field-genre-tid {
+  border: none;
+  background: none;
+  word-wrap: normal;
+  width: 99%;
+  height: 20px;
+}
+.page-reference-ficrep-thumbs #edit-sort-by, .page-reference-ficrep-thumbs #edit-sort-order, .page-reference-ficrep-list #edit-sort-by, .page-reference-ficrep-list #edit-sort-order {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 300;
+  position: relative;
+  left: 750px;
+  top: -15px;
+}
+
+.page-reference-ficrep-thumbs #views-exposed-form-ficrep-thumbs div div div div.views-exposed-widget.views-widget-sort-by div label, .page-reference-ficrep-thumbs #views-exposed-form-ficrep-thumbs div div div div.views-exposed-widget.views-widget-sort-order div label, .page-reference-ficrep-list #views-exposed-form-ficrep-list div div div div.views-exposed-widget.views-widget-sort-by div label, .page-reference-ficrep-list #views-exposed-form-ficrep-list div div div div.views-exposed-widget.views-widget-sort-order div label {
+  display: inline;
+  font-size: 15px;
+  font-weight: 800;
+  font-variant: small-caps;
+  position: relative;
+  left: 750px;
+  top: -15px;
+}
+.page-reference-ficrep-thumbs #edit-submit-ficrep, .page-reference-ficrep-thumbs #edit-reset, .page-reference-ficrep-list #edit-submit-ficrep, .page-reference-ficrep-list #edit-reset {
+  border: none;
+  border-radius: 10px;
+  background: rgb(168, 158, 146);
+}
+.page-reference-ficrep-thumbs .view-content .views-row {
+  width: 20%;
+  height: 387px;
+  padding: 5px 0px;
+  display: inline-block;
+  background: none;
+  border: none;
+  /*margin: 10px 24px 0px;*/
+  vertical-align:top;
+}
+
+.page-reference-ficrep-thumbs .view-ficrep .views-field-field-profile-picture {
+  float: none;
+  margin-right: 0;
+  display:block;
+}
+.page-reference-ficrep-thumbs span.views-field.views-field-field-recording-artist span a, .page-reference-ficrep-thumbs span.views-field.views-field-field-director span a, .page-reference-ficrep-thumbs span.views-field.views-field-field-author span a {
+  position: relative;
+  font-size: 14px;
+  font-weight: 700;
+  display: block;
+  margin-right: 0px;
+}
+.page-reference-ficrep-thumbs span.views-field.views-field-field-original-publication-date {
+  border: none;
+  position: relative;
+  padding: 0;
+  color: black;
+  font-size: 14px;
+  line-height:14px;
+  margin: 0;
+  height: 0px;
+  display:block;
+}
+.page-reference-ficrep-thumbs .view-ficrep .views-field-field-director, .page-reference-ficrep-thumbs .view-ficrep .views-field-field-author, .page-reference-ficrep-thumbs .view-ficrep .views-field-field-recording-artist {
+  margin: 0px;
+}
+.page-reference-ficrep-thumbs .views-row {
+  text-align: center;
+}
+.page-reference-ficrep-thumbs .view-ficrep .views-field-field-director, .page-reference-ficrep-thumbs .view-ficrep .views-field-field-author, .page-reference-ficrep-thumbs .view-ficrep .views-field-field-recording-artist {
+  text-align: center;
+  margin: 0;
+}
+.page-reference-ficrep-thumbs .teaserItem .views-field-field-author {
+  display: inline-block;
+}
+.page-reference-ficrep-thumbs #edit-field-genre-tid option {
+  float: left;
+  padding: 0% 2.6%;
+}
+
+/*
+  .page-reference-ficrep-thumbs span.views-field-title, .page-reference-ficrep-thumbs span.views-field-field-recording-artist, .page-reference-ficrep-thumbs span.views-field-field-original-publication-date {
+  position: relative;
+  top: -40px;
+  }
+ */
+.page-reference-ficrep-thumbs div.views-row.views-row-8.views-row-even div div a:nth-child(1) {
+  position: absolute;
+}
+.page-reference-ficrep-thumbs div.views-row.views-row-8.views-row-even div div a:nth-child(2) {
+  position: relative;
+  top: 40px;
+}
+.page-reference-ficrep-thumbs #edit-field-genre-tid-wrapper div.bef-select-as-links div.form-item div, .page-reference-ficrep-list #edit-field-genre-tid-wrapper div.bef-select-as-links div.form-item div {
+  display: inline-block;
+  margin: auto;
+  padding: 0px;
+  width: 11%;
+  text-align: center;
+  font-size:110%;
+}
+.page-reference-ficrep-thumbs div#edit-field-genre-tid-wrapper div.views-widget div.form-item.form-type-select.form-item-field-genre-tid div.bef-select-as-links div.form-item div#edit-field-genre-tid-28323, .page-reference-ficrep-list div#edit-field-genre-tid-wrapper div.views-widget div.form-item.form-type-select.form-item-field-genre-tid div.bef-select-as-links div.form-item div#edit-field-genre-tid-28323 {
+  width: 14%;
+  padding: 3px 18px;
+}
+.page-reference-ficrep-thumbs #edit-field-genre-tid-wrapper div.bef-select-as-links div.form-item a:hover, .page-reference-ficrep-list #edit-field-genre-tid-wrapper div.bef-select-as-links div.form-item a:active {
+  color: #e16c51;
+}
+.page-reference-ficrep-thumbs div.views-widget div.form-item.form-type-select.form-item-field-genre-tid div.bef-select-as-links div.form-item div#edit-field-genre-tid-all, .page-reference-ficrep-list div.views-widget div.form-item.form-type-select.form-item-field-genre-tid div.bef-select-as-links div.form-item div#edit-field-genre-tid-all {
+  display: none;
+}
+.page-reference-ficrep-thumbs div#edit-annotation-tags-tid-wrapper.views-exposed-widget.views-widget-filter-annotation_tags_tid div.views-widget, .page-reference-ficrep-list div#edit-annotation-tags-tid-wrapper.views-exposed-widget.views-widget-filter-annotation_tags_tid div.views-widget {
+  padding: 10px;
+  text-align: center;
+  max-width: 99%;
+  width: 99%;
+}
+
+.page-reference-ficrep-thumbs input#edit-annotation-tags-tid {
+  width: 100%;
+  max-width: 100%;
+  font-size: 1.3em;
+  text-align: center;
+}
+div#edit-field-genre-tid-wrapper div.views-widget div.form-item.form-type-select.form-item-field-genre-tid div.bef-select-as-links div.form-item div#edit-field-genre-tid-28662 {
+  padding-bottom: 30px;
+}
+.page-reference-ficrep-thumbs div#edit-field-genre-tid-wrapper, .page-reference-ficrep-list div#edit-field-genre-tid-wrapper {
+  width: 98%;
+}
+
+/* keywords and quicklist */
+/* Background color and position */
+.page-reference-ficrep-thumbs #block-views-ficrep-block-1 div h2.block-title, .page-reference-ficrep-thumbs #block-block-107 div h2.block-title, .page-reference-ficrep-list #block-views-ficrep-block-1 div h2.block-title, .page-reference-ficrep-list #block-block-107 div h2.block-title {
+  font-family: 'PT Sans';
+  text-align: center;
+  color: black;
+  padding: 10px 0px;
+}
+.page-reference-ficrep-thumbs #block-block-107 .block-content, .page-reference-ficrep-list #block-block-107 .block-content {
+  margin-top: 20px;
+  background: rgba(168, 158, 146, 0.3);
+}
+.page-reference-ficrep-list #block-views-ficrep-block-1 .block-content.content, .page-reference-ficrep-thumbs #block-views-ficrep-block-1 .block-content.content {
+  background: rgba(168, 158, 146, 0.3);
+}
+.page-reference-ficrep-thumbs .preview-view-1, .page-reference-ficrep-list .preview-view-1 {
+  background: none;
+  border: none;
+  padding: 1px;
+  margin: 5px 0px;
+}
+.page-reference-ficrep-thumbs .preview-view-1:hover, .page-reference-ficrep-list .preview-view-1:hover {
+  box-shadow: 0 1px 2px rgb(140,136,136);
+}
+.page-reference-ficrep-thumbs .preview-view-1 a, .page-reference-ficrep-list .preview-view-1 a {
+  color: black;
+  font-size: 14px;
+}
+.page-reference-ficrep-thumbs #block-views-ficrep-block-1, .page-reference-ficrep-list section#block-views-ficrep-block-1 {
+  padding: 10px 0px;
+  width: 250px;
+  background: rgba(255, 255, 255, .8);
+  margin: 20px 0px 0px 0px;
+  border-radius: 0px;
+}
+.page-reference-ficrep-thumbs section#block-views-ficrep-block-1 h2.block-title, .page-reference-ficrep-thumbs #block-block-107 h2.block-title, .page-reference-ficrep-list section#block-views-ficrep-block-1 h2.block-title, .page-reference-ficrep-list section#block-block-107 h2.block-title {
+  margin-bottom: 5px;
+  background: #A89E92;
+  font-size: 1.5em;
+}
+.page-reference-ficrep-thumbs #block-views-ficrep-block-1 div div.block-content.content div.views-field.views-field-title span.field-content a, .page-reference-ficrep-list #block-views-ficrep-block-1 div div.block-content.content div.views-field.views-field-title span.field-content a {
+  font-weight: 500;
+}
+.page-reference-ficrep-thumbs #block-views-ficrep-block-1 div.view-content div.views-field.views-field-field-author div.field-content, .page-reference-ficrep-list #block-views-ficrep-block-1 div.view-content div.views-field.views-field-field-author div.field-content {
+  display: inline-block;
+}
+.page-reference-ficrep-thumbs #block-views-ficrep-block-1 div.view-content div.views-field.views-field-field-genre div.field-content a::before {
+  content: "(";
+}
+.page-reference-ficrep-thumbs #block-views-ficrep-block-1 div.view-content div.views-field.views-field-field-genre div.field-content a::after {
+  content: ")";
+}
+/* Katie Romantic Receptions */
+.section-rev-entries-panel #page-title {
+  font-size: 2.6em;
+  padding-bottom: 15px;
+  text-align: center;
+}
+#rev-panel div.top-left section.panel-pane, div.top-center section.panel-pane, div.center-left section.panel-pane, div.center-right section.panel-pane, div.bottom-left section.panel-pane, div.bottom-center section.panel-pane, div.bottom-right section.panel-pane {
+  border: solid lightgray 2px;
+  border-radius: 25px;
+  padding: 15px;
+  padding-left: 25px;
+  margin: 5px;
+  height: 250px;
+  background: repeating-linear-gradient(135deg, white, white 10px, #F1F1F1 10px, #F7F7F7 20px );
+  box-shadow: 5px 5px 20px #A9ACAC;
+  font-size: 1.2em;
+}
+#rev-panel div.top-left h2.block-title, div.top-center h2.block-title, div.center-left h2.block-title, div.center-right h2.block-title, div.bottom-left h2.block-title, div.bottom-center h2.block-title, div.bottom-right h2.block-title {
+  font-size: 1.4em;
+  letter-spacing: -1px;
+  text-align: right;
+  padding-bottom: 5px;
+}
+#rev-panel div.top-left div.views-field-title, div.top-center div.views-field-title, div.center-left div.views-field-title, div.center-right div.views-field-title, div.bottom-left div.views-field-title, div.bottom-center div.views-field-title, div.bottom-right div.views-field-title {
+  font-size: 1.2em;
+}
+#rev-panel div.top-left .field-content p, div.top-center .field-content p, div.center-left .field-content p, div.center-right .field-content p, div.bottom-left .field-content p, div.bottom-center .field-content p, div.bottom-right .field-content p {
+  margin: 0px;
+}
+#rev-panel div.top-left div.block-content, div.top-center div.block-content, div.center-left div.block-content, div.center-right div.block-content, div.bottom-left div.block-content, div.bottom-center div.block-content, div.bottom-right div.block-content {
+  height: 215px;
+  overflow: scroll;
+}
+#rev-panel div.top-left div.views-field-created, div.top-center div.views-field-created, div.center-left div.views-field-created, div.center-right div.views-field-created, div.bottom-left div.views-field-created, div.bottom-center div.views-field-created, div.footer-center div.views-field-created, div.bottom-right div.views-field-created {
+  text-indent: 25px;
+}
+#rev-panel div.views-row {
+  clear: both;
+  margin-bottom: 3px;
+}
+#rev-panel div.column-right div.block-content {
+  height: 810px;
+  overflow: scroll;
+}
+#rev-panel div.column-right div.views-row {
+  background-color: whitesmoke;
+}
+#rev-panel div.column-right .view-ficrep .views-field-field-profile-picture {
+  width: inherit;
+  padding: 0;
+}
+#rev-panel div.top-left img.image-style-thumbnail, div.top-center img.image-style-thumbnail, div.center-left img.image-style-thumbnail, div.center-right img.image-style-thumbnail, div.bottom-left img.image-style-thumbnail, div.bottom-center img.image-style-thumbnail, div.bottom-right img.image-style-thumbnail {
+  float: left;
+  margin-right: 5px;
+  border: solid gray 2px;
+}
+#rev-panel div.footer {
+  margin-top: 20px;
+  border-top: solid lightgray 10px;
+  background-color: #F5F7FC;
+  text-align: left;
+}
+#rev-panel div.footer-left section.panel-pane, div.footer-center section.panel-pane {
+  height: 235px;
+  padding: 20px;
+}
+#rev-panel div.footer-left section.panel-pane {
+  border-right: dashed lightgray 1px;
+}
+#rev-panel div.footer-left input#edit-submit-review-entries {
+  margin-top: 1px;
+}
+/* START ROMANTIC RECEPTION */
+/* hide home button */
+.section-reviews-and-receptions #crumbs li.crumb.crumb-first span a {
+  display: none;
+}
+
+
+.section-reviews-and-receptions #reception-page-title {
+  margin: 0;
+}
+/* Manipulating forthcoming items so that links are disabled and text is fuzzy */
+.Forthcoming a {
+  pointer-events: none;
+  cursor: default;
+}
+.Forthcoming {
+  opacity: 0.4;
+}
+body.page-review-entries-types #page-title {
+  font-size: 2.5em;
+/*
+  position: relative;
+  top: 30px;
+ */
+  margin: 10px 30px;
+  width: 100%;
+}
+/*
+  body.page-review-entries-types-28786 form#views-exposed-form-review-entries-types-page div.views-exposed-form, .page-review-entries-types-28787 form#views-exposed-form-review-entries-types-page div.views-exposed-form, .page-review-entries-types-28788 form#views-exposed-form-review-entries-types-page div.views-exposed-form, .page-review-entries-types-28789 form#views-exposed-form-review-entries-types-page div.views-exposed-form, .page-review-entries-types-28790 form#views-exposed-form-review-entries-types-page div.views-exposed-form, .page-review-entries-types-28791 form#views-exposed-form-review-entries-types-page div.views-exposed-form, .page-review-entries-types-28792 form#views-exposed-form-review-entries-types-page div.views-exposed-form, .page-review-entries-types-28793 form#views-exposed-form-review-entries-types-page div.views-exposed-form{
+  width: 40%;
+  position: relative;
+  }
+  body.page-review-entries-types-28786 div.view div.view-filters, .page-review-entries-types-28787 div.view div.view-filters, .page-review-entries-types-28788 div.view div.view-filters, .page-review-entries-types-28789 div.view div.view-filters, .page-review-entries-types-28790 div.view div.view-filters, .page-review-entries-types-28791 div.view div.view-filters, .page-review-entries-types-28792 div.view div.view-filters, .page-review-entries-types-28793 div.view div.view-filters{
+  position: relative;
+  top: -60px;
+  left: 736px;
+  }
+  body.page-review-entries-types-28786 #block-system-main, .page-review-entries-types-28787 #block-system-main, .page-review-entries-types-28788 #block-system-main, .page-review-entries-types-28789 #block-system-main, .page-review-entries-types-28790 #block-system-main, .page-review-entries-types-28791 #block-system-main, .page-review-entries-types-28792 #block-system-main, .page-review-entries-types-28793 #block-system-main{
+  border-top: 3px solid black;
+  width: 95%;
+  position: relative;
+  left: 30px;
+  top: 5px;
+  }
+ */
+.page-review-entries-types-28786 #main-content #page-title, .page-review-entries-types-28787 #main-content #page-title, .page-review-entries-types-28788 #main-content #page-title, .page-review-entries-types-28789 #main-content #page-title, .page-review-entries-types-28790 #main-content #page-title, .page-review-entries-types-28791 #main-content #page-title, .page-review-entries-types-28792 #main-content #page-title, .page-review-entries-types-28793 #main-content #page-title {
+  width: 100%;
+}
+.view-southey-people .views-field.views-field-field-source-print, .view-southey-people-addressed .views-field.views-field-field-source-print, .view-southey-people-basic- .views-field.views-field-field-source-print {
+  display: inline-block;
+  padding-left: 5px;
+  border-left: 1px solid rgb(161, 161, 161);
+  font-weight: 600;
+  line-height:1.5;
+  margin-top:7px;
+}
+.view-southey-people p.views-field.views-field-field-bio, .view-southey-people-addressed p.views-field.views-field-field-bio, .view-southey-people-basic- p.views-field.views-field-field-bio {
+  clear: both;
+}
+.field.field-name-field-source-print.field-type-text.field-label-hidden.view-mode-_custom_display {
+  font-style: italic;
+}
+
+#superfish-11.sf-menu.sf-style-rc li, #superfish-9.sf-menu.sf-style-rc li {
+    background: #e7e7e7;
+}
+#superfish-11.sf-menu.sf-style-rc .sf-depth-1 a, #superfish-9.sf-menu.sf-style-rc .sf-depth-1 a {
+  color: #3D3D3D;
+}
+
+/*Centering the Gallery superfish menu */
+#block-superfish-9 { text-align: center; }
+ul#superfish-9 { display: inline-block; float: none; }
+/* modifying header text */
+h1#media-node-title {
+  font-size: 2em;
+}
+/* position paragraph text */
+.node-content .field.field-name-body.field-type-text-with-summary.field-label-hidden.view-mode-full {
+  padding: 1% 2%;
+  margin: 0px 10px 0px 10px;
+  border: none;
+}
+/* float thumbnail left */
+.panel-pane.pane-entity-field.pane-node-field-profile-picture.receptions-node-thumbnail {
+  float: left;
+}
+/* Position fields and background */
+.node-type-media .panel-pane.pane-entity-field.pane-node-field-director, .node-type-media .panel-pane.pane-entity-field.pane-node-field-original-publication-date, .panel-pane.pane-entity-field.pane-node-field-publication-information, .panel-pane.pane-entity-field.pane-node-field-author, .panel-pane.pane-entity-field.pane-node-field-recording-artist, .panel-pane.pane-entity-field.pane-node-field-album, .panel-pane.pane-entity-field.pane-node-field-artist, .panel-pane.pane-entity-field.pane-node-field-genre, .panel-pane.pane-media-taxonomy-links-panel-pane-1, .rc-metadata {
+  display: inline-block;
+  background: rgba(191,183,173,0.18);
+  width: 74%;
+  margin: 5px;
+}
+/* A slight change in the width of the metadata bars since they are not floated around the images in reviews */
+.node-type-review .rc-metadata {
+  margin: 0;
+  width: 95%;
+}
+span.tags-label {
+}
+.pane-views-panes.rc-metadata {
+  margin-bottom:10px;
+}
+.rc-metadata h2.pane-title {
+  float: left;
+  font-size: 1.4em;
+  line-height: 1.4em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+/* display: inline-block; */
+/* float: left; */
+  vertical-align: middle;
+  margin-right: 7px;
+  padding: 10px 0px 10px 10px;
+}
+.rc-metadata .view {
+  padding: 10px 0px;
+}
+.panel-pane.pane-entity-field.pane-node-field-genre, .rc-metadata.bottom {
+  width: 97%;
+  margin: 5px 5px 5px 0px;
+}
+/*
+  margin fix
+  .page-node.node-type-media .block {
+  margin: 0px;
+  }
+ */
+.panels-flexible-region.panels-flexible-region-38-main_body.panels-flexible-region-first.panels-flexible-region-last {
+  margin: 5px 0px;
+}
+.node-type-review img.image-style-thumbnail {
+  float:left;
+}
+.node-type-review blockquote.image-field-caption {
+padding: 5px 10px;
+    background-color: rgb(238, 237, 235);
+    font-size: 90%;
+    overflow-y: auto;
+}
+
+.node-type-review .field-name-field-profile-picture figure {
+    /* float: left; */
+    margin-right: 10px;
+    /* margin-bottom: 10px; */
+    width: 175px;
+}
+div.content-style {
+  padding: 25px 25px;
+}
+#content .panel-display, #content .panel-flexible {
+  margin-left: 0;
+  margin-right: 0;
+}
+.node-type-media .content-style header.clearfix, .node-type-review .content-style header.clearfix {
+  font-size: 110%;
+  border-bottom: solid lightgray 1px;
+  margin-bottom: 15px;
+}
+.page-node.node-type-media .views-row {
+    margin: 10px 0px;
+    clear: both;
+    list-style-type: none;
+}
+.node-type-media .field-name-field-profile-picture img {
+  float: left;
+  clear: none;
+/* margin-left: 10px; */
+  max-width: 160px;
+}
+.node-type-media section.field.field-name-field-recording-artist, .node-type-media section.field.field-name-field-author, .node-type-media section.field.field-name-field-director, .node-type-media section.field.field-name-field-artist {
+  padding-top: 15px;
+}
+.node-type-media section.field.field-label-inline {
+  font-size: 1.4em;
+  line-height: 1.4em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px;
+  font-family: 'PT Sans';
+}
+
+.node-type-media h2.field-label {
+    font-family: inherit;
+}
+.rc-metadata .views-field {
+  font-size: 1.4em;
+  line-height: 1.4em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.rc-metadata .views-field span.views-label {
+  color: #779125;
+}
+.view.view-media-taxonomy-links {
+  padding: 10px;
+}
+.node-type-media .field-name-body {
+  border-bottom: none;
+}
+.node-type-media .panel-pane.pane-entity-field.pane-node-body {
+/* clear: none; */
+  display: inline;
+  width: 100%;
+  padding-left: 10px;
+  border-bottom: none;
+}
+.node-type-media .pane-media-taxonomy-links-panel-pane-2 .pane-title {
+  float: left;
+  font-size:1em;
+}
+.node-type-media .field.field-label {
+  line-height: none;
+}
+.node-type-media section.field.field-name-taxonomy-vocabulary-3 .field-items {
+  padding-left: 5px;
+}
+.node-type-media a.section.field.field-name-field-album, .node-type-media a.section.field.field-name-field-publication-information, .node-type-media a.section.field.field-name-field-recording-artist, .node-type-media a.section.field.field-name-field-original-publication-date, .node-type-media a.section.field.field-name-field-author, .node-type-media a.section.field.field-name-field-director, node-type-media a.section.field.field-name-field-artist .node-type-media a.section.field.field-name-taxonomy-vocabulary-3, .node-type-media a.section.field.field-name-field-genre {
+  line-height: 1.5;
+}
+.node-type-media section.rec-recording, section.rec-author, section.rec-director {
+  display: inline;
+  width: 33%;
+}
+.node-type-media div.panel-separator {
+  display: inline;
+  width: 1%;
+}
+.node-type-media .view-media-recommender div.views-row {
+  clear: both;
+}
+.view-media-recommender .views-field-title {
+    /* font-size: 90%; */
+    padding-top: 5px;
+}
+.node-type-media .span.views-field.views-field-field-original-publication-date {
+  border: none;
+  font-size: 1.2em;
+  color: black;
+  display: inline-block;
+  background: none;
+  margin: 0;
+}
+.views-field-field-genre span.field-content {
+  display: none;
+}
+/* Listicles */
+/* header edit */
+.page-node.node-type-review #page-title {
+  font-family: 'PT Sans';
+  font-size: 2.7em;
+  letter-spacing: 0.5px;
+  margin: 0% 1%;
+}
+/* topic and entry type edit */
+.page-node.node-type-review .panel-pane.pane-entity-field.pane-node-field-topic.block-title.leftFloat.no-title.block, .page-node.node-type-review .panel-pane.pane-entity-field.pane-node-field-entry-type.block-title.leftFloat.no-title.block {
+  padding: 15px;
+  background: rgba(191,183,173,0.18);
+  width: 95%;
+  font-size: 1.3em;
+  position: relative;
+/* z-index: -1; */
+}
+.page-node.node-type-review .pane-node-created {
+  text-align: right;
+  color: gray;
+  padding: 10px 10px 0px 0px;
+}
+/* thumbnail positioning */
+.page-node.node-type-review img.leftFloat {
+  margin: 0px 20px 0px 0px;
+}
+.panels-flexible-column-inside-last .panels-flexible-row h2 {
+  font-size: 1.7em;
+  text-align: center;
+}
+
+/* Gives a backround and padding to some unformatted lists in sidebar */
+.sidebar-meta .views-summary-unformatted {
+    padding: 1em;
+    background-color: rgb(238, 237, 235);
+    margin-bottom: 0.25em;
+}
+.view .views-field blockquote.image-field-caption {
+  display: none;
+}
+
+.ed-collective {
+  text-align: center;
+  font-size: 2.2em;
+  font-family: 'PT Sans';
+}
+/* Some general CSS to gussy up webforms and contact forms */
+form.webform-client-form textarea, form.webform-client-form input.form-text, form.contact-form textarea, form.contact-form input.form-text {
+  border: 0;
+  border-radius: 0px;
+  background-color: #e6e6e6;
+}
+/* We need a different text area background color for those in the footer. */
+#footer-wrapper form.webform-client-form textarea, #footer-wrapper form.webform-client-form input.form-text, #footer-wrapper form.contact-form textarea, #footer-wrapper form.contact-form input.form-text {
+  background-color:#fafafa;
+}
+textarea, input {
+  font-family: 'PT Sans';
+}
+form.webform-client-form .form-item label, form.contact-form .form-item label {
+  font-size: 120%;
+}
+form.webform-client-form .form-item .description, form.contact-form .form-item .description, fieldset .description, .fieldset-layout-settings dd {
+  font-size: 120%;
+}
+form.webform-client-form .form-item .description, fieldset .description, .fieldset-layout-settings dd {
+  font-size: 120%;
+}
+.view-exhibit.view-id-exhibit.view-display-id-block_1 td.galleryGrid {
+  text-align: center;
+}
+/* Styles for chronologies */
+.chrono th.views-field.views-field-field-event-date-full {
+  width: 7%;
+  font-size: 10pt;
+  line-height: 16pt;
+}
+.chrono th.views-field.views-field-field-event2 {
+  width: 50%;
+  font-size: 10pt;
+  line-height: 16pt;
+}
+.chrono th.views-field.views-field-field-notes-comments {
+  width: 30%;
+  font-size: 10pt;
+  line-height: 16pt;
+}
+.chrono th.views-field.views-field-field-location {
+  width: 13%;
+  font-size: 10pt;
+  line-height: 16pt;
+}
+.chrono caption {
+  font-size: 150%;
+  line-height: 16pt;
+}
+.chrono td {
+  font-size: 120%;
+  line-height: 16pt;
+}
+.chrono th.views-field.views-field-field-latitude-longitude {
+  display: none;
+}
+.chrono td.views-field.views-field-field-latitude-longitude {
+  display: none;
+}
+.chrono .view-filters {
+  float: left;
+}
+.chrono .form-item.form-type-radios.form-item-sort-by {
+  display: none;
+}
+.chrono .views-exposed-widget.views-widget-sort-order {
+  font-size: 120%;
+}
+.chrono form#ctools-jump-menu {
+  padding-top: 1px;
+  margin-bottom: -10px;
+}
+.chrono .attachment.attachment-before {
+  font-size: 120%;
+}
+.page-the-mary-shelley-chronology h1#page-title {
+  font-size: 2.7em;
+  font-family: 'PT Sans';
+  letter-spacing: 0.5px;
+}
+.view-document-order .view-content .view-grouping .view-grouping-header {
+  font-size: 3em;
+}
+.view-document-order .view-grouping .view-grouping-content .view-grouping-header {
+  font-size: 2em;
+  margin-left: 20px;
+}
+.view-document-order .view-grouping-content .view-grouping-content {
+  font-size: 1.2em;
+  margin-left: 30px;
+}
+/* Removes duplicate tei button for Southey letters. TEMPORARY. REMOVE WHEN FIXED. */
+.node-type-forthcoming-page .field.field-name-field-xml-tei {
+  display: none;
+}
+.ui-accordion .view-grouping-header {
+  font-size: 2.5em;
+  margin-top: 15px;
+}
+h3.ui-accordion-header {
+  font-size: 2em;
+  border-radius: 0;
+  background: rgba(191,183,173,0.18);
+  border: 0;
+}
+/* The next two put the Coleridge and Wordsworth authored poems accordions side by side */
+.view-display-id-page_3 .view-grouping:first-of-type {
+  margin-right: 2%;
+}
+.view-display-id-page_3 .view-grouping {
+  display: inline-block;
+  width: 49%;
+  vertical-align: top;
+}
+.views-row .views-field-field-embed-code a.juxta-link {
+  display: none;
+}
+.views-row-last .views-field-field-embed-code a.juxta-link {
+/* color: red; */
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+/*
+  a.juxta-link:after {
+  content:"\2192";
+  }
+ */
+.node-type-blog blockquote {
+  border-left: 4px solid white;
+}
+/* For Frankenstein Covers */
+/*
+  .views-field.views-field-field-profile-picture {
+  float: left;
+  margin-right: 10px;
+  }
+  .views-field.views-field-body {
+  font-size: 120%;
+  margin-top: -1em;
+  }
+ */
+#views-exposed-form-frankenstein-covers-project-page fieldset {
+  background-color: rgba(255,255,255,.7);
+}
+#views-exposed-form-frankenstein-covers-project-page legend {
+  background-color: #084D82;
+}
+#views-exposed-form-frankenstein-covers-project-page .views-exposed-form .views-exposed-widget {
+  float: left;
+  padding: .5em 1em 0 0;
+  width: 100%;
+}
+.view-frankenstein-covers-project .views-field.views-field-body {
+  font-size: 120%;
+  border-bottom: 1px solid #E2E2E2;
+  margin-bottom: 10px;
+}
+select {
+  border: 2px solid #cccccc;
+  min-width: 160px;
+  max-width: 100%;
+  font-family: inherit;
+  min-height: 32px;
+}
+
+.page-gallery select {
+  min-width: 160px;
+    /* max-width: 200px; */
+    margin-top: 10px;
+}
+}
+select[disabled=disabled] {
+  opacity: 0.5;
+}
+legend {
+  background-color: #779125;
+}
+fieldset {
+  width: 100%;
+  font-family: 'PT Sans';
+  font-size: 120%;
+  width: 160px;
+  max-height:300px;
+  overflow:auto;
+}
+.views-exposed-widget label::first-child {
+  color: #779125;
+/* font-variant: small-caps; */
+  letter-spacing: 2px;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  font-family: 'Trebuchet MS','Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+.page .ajax-progress .message,
+.page .ajax-progress-throbber .message {
+  color: white;
+  font-size: 20px;
+  padding: 30px;
+}
+.page .ajax-progress .throbber,
+.page .ajax-progress-throbber .throbber {
+  float: none;
+  margin: 250px auto 0 auto;
+  width: 156px;
+  height: 156px;
+  background: url("/sites/default/files/spin.svg") no-repeat center center;
+}
+.page .ajax-progress,
+.page .ajax-progress-throbber {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  vertical-align: middle;
+  text-align: center;
+}
+
+div#block-block-106 {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  color: white;
+  margin: -5px 0px 0px 0px;
+  padding: 0px -5px 0px -5px;
+  clear: both !important;
+}
+a img.print-icon {
+  outline: none;
+  border: 0;
+}
+img.print-icon {
+  width: 24px;
+}
+/* A new way to handle page image thumbnails */
+.absPageImages {
+  float: none;
+  margin-left: 0;
+/* text-align: center; */
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 82px;
+  height: 105px;
+  z-index: 100;
+  clear: both;
+  margin-bottom: 5px;
+}
+div.wPageImages {
+  width: 85%;
+}
+.break-word {
+  display: inline-block;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+table.bordered, .table.bordered th, table.bordered td {
+  border-spacing: 0;
+  border: 1px solid #6d6d6d;
+  border-collapse: collapse;
+  padding: 6px;
+  font-size: 90%;
+  line-height: 130%;
+}
+/*
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: none;
+  border: 0;
+  }
+ */
+/* Export Interface CSS */
+#edit-type.form-select {
+  height: 400px;
+}
+#edit-type-wrapper {
+  float: left;
+  padding-left: 5px;
+}
+#data-export .view-content {
+  display:none;
+}
+#data-export .pager {
+  display:none;
+}
+#data-export .feed-icon {
+  display:none;
+}
+ul#gn-menu {
+  position: relative;
+}
+.gn-menu-main > li {
+    border: none;
+}
+/* Overrides to Off-canvas menu */
+nav.gn-menu.responsive-menus-google-nexus-processed {
+  padding-top: 15px;
+  padding-left: 7px;
+}
+.gn-submenu li {
+  overflow: visible;
+  line-height: normal;
+}
+#header-wrapper {
+  z-index: 0;
+}
+.gn-menu .contextual-links-wrapper {
+  display: none !important;
+}
+.gn-menu-wrapper.gn-open-all .gn-submenu li {
+  height: 100%;
+  padding: 4px 0px;
+  width: 330px;
+}
+.gn-menu-wrapper .gn-menu {
+  display:none;
+}
+
+.gn-open-part {
+width:30px;
+}
+.gn-open-all .gn-menu {
+  display:block;
+}
+.gn-menu-container {
+/* float: left; */
+/* margin-bottom: -60px; */
+  position: fixed;
+  top: 220px;
+  left: 30px;
+  z-index: 10;
+}
+.gn-menu a.active-trail.active {
+  font-weight: bold;
+}
+.gn-menu a.active-trail.active:hover {
+  color: inherit;
+}
+.gn-menu-main > li:last-child {
+  border-left: none;
+}
+ul.gn-submenu li .gn-submenu {
+  margin-left: 15px;
+}
+.gn-icon-menu::before {
+  box-shadow: 0 3px transparent, 0 -6px #5f6f81, 0 -9px transparent, 0 -12px #5f6f81;
+}
+.gn-menu li a:before {
+  width: inherit;
+  padding: 0;
+}
+.gn-menu-main, .gn-menu-main ul {
+  background: none;
+}
+.view-praxis-sidebar-icon img.image-style-thumbnail {
+  margin: auto;
+  display: block;
+}
+/* Some CSS for editions pages to look okay with new menu toggle */
+.pane-interior-banner {
+  display: inline;
+  width: 100%;
+}
+img.image-style-interior-banner {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.pane-node-field-resource-index {
+  font-size: 15pt;
+  font-weight: bold;
+  color: #004999;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.sidebar .views-exposed-form label:first-child {
+    font-family: 'PT Serif';
+    font-size: 1.2em;
+    border-bottom: 1px solid #084d82;
+    font-weight:bold;
+}
+
+.sidebar .views-exposed-widget {
+    width: 100%;
+    margin-bottom: 10px;
+    max-height: 250px;
+    overflow: auto;
+}
+.sidebar .block-gallery-creators-block-1 h2.block-title {
+    font-family: 'PT Serif';
+    font-size: 1.2em;
+    border-bottom: 1px solid #084d82;
+    font-weight: bold;
+    color: #2e2e2e;
+    letter-spacing: normal;
+    text-transform: none;
+    font-variant: none;
+}
+
+section#block-views-gallery-creators-block-1 {
+    margin-bottom: -20px;
+    padding-bottom: 0px;
+}
+
+/* Padding note anchors to account for fixed site header */
+
+p.letnote {
+    margin-left: 30px;
+}
+
+.notes a[name]::before {
+    visibility: visible;
+    content: attr(name) '.';
+    position: relative;
+    display: inline;
+    top: 80px;
+    left: -30px;
+    font-weight: bold;
+}
+
+.notes a[name] {
+    position: relative;
+    top: -60px;
+    visibility: hidden;
+    display: block;
+}
+
+/* padding "back" links also to account for fixed header */
+
+a[name*="back"] {
+    position: relative;
+    top: -60px;
+    visibility: hidden;
+}
+
+/*Adjusting look of Facets on search page*/
+.facetapi-facetapi-checkbox-links li.leaf {
+    list-style-type: none;
+    list-style-image: none;
+    margin: 0 0 0.25em 0;
+}
+
+.page-search .block-region-sidebar-second, .page-search .block-region-sidebar-first {
+    padding: 10px;
+    margin: 0;
+}

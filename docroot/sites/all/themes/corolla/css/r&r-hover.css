@@ -1,0 +1,304 @@
+/* New Receptions */
+/* individual pane formatting minus ficrep */
+section#block-long, section#block-short, section#block-digital, section#block-audio, section#block-questions, section#block-google, section#block-about, section#block-lists {
+  font-size: 1.2em;
+  height: 250px;
+  padding: 15px;
+  margin: 0px;
+/* overflow-y: hidden; */
+  transition: .8s;
+  -moz-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25);
+media all and (max-width: 959px) and (min-width: 600px) {
+  height: 70%;
+}
+}
+section#block-about {
+  font-size:100%;
+}
+section#block-about header.node-header {
+  display: none;
+}
+/* ficrep formatting */
+section#block-ficrep {
+  padding: 15px;
+  font-size: 1.2em;
+  margin: 0px;
+  max-height: 534px;
+/* overflow-y: hidden; */
+  transition: .8s;
+  -moz-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.25);
+}
+section#block-ficrep .teaserItem .views-row {
+  background: transparent;
+  padding: 0px;
+  margin: 0px;
+  font-size: 1.2em;
+  border: none;
+}
+/* block header/title formatting */
+section#block-long h2.pane-title.block-title, section#block-short h2.pane-title.block-title, section#block-audio h2.pane-title.block-title, section#block-digital h2.pane-title.block-title, section#block-questions h2.pane-title.block-title, section#block-google h2.pane-title.block-title, section#block-lists h2.pane-title.block-title {
+  font-size: 4em;
+  font-weight: 100;
+  text-align: center;
+}
+section#block-long h2.pane-title.block-title, section#block-short h2.pane-title.block-title, section#block-audio h2.pane-title.block-title, section#block-questions h2.pane-title.block-title, section#block-lists h2.pane-title.block-title {
+  position: relative;
+  top: 1.5em;
+}
+section #block-questions h2.pane-title.block-title {
+  font-size: 3em;
+  font-weight: 100;
+  text-align: center;
+  top: 1.8em;
+}
+section#block-google h2.pane-title.block-title {
+  position: relative;
+  top: 0.8em;
+}
+section#block-ficrep h2.pane-title.block-title {
+  font-size: 2.5em;
+  text-align: center;
+  line-height: 60px;
+  position: relative;
+  top: 3.5em;
+  letter-spacing: 1px;
+}
+section#block-ficrep .views-field-field-profile-picture {
+  float: left;
+  margin-right: 5px;
+  width: 100px;
+}
+section#block-digital h2.pane-title.block-title {
+  position: relative;
+  top: .3em;
+}
+section#block-audio h2.pane-title.block-title {
+  color: black;
+  font-size: 3.4em;
+  font-weight: 100;
+}
+section#block-about h2.pane-title.block-title {
+  color: black;
+  font-size: 2em;
+}
+/* link color changes on hover */
+.section-reviews-and-receptions a:hover {
+  color: rgb(240, 240, 240);
+  transition: .2s;
+}
+.inside.panels-flexible-row-inside.panels-flexible-row-56-12-inside.panels-flexible-row-inside-last.clearfix .view-content a:hover {
+  color: rgb(119, 145, 37);
+}
+/* remove padding between panes */
+.panels-flexible-56 .panels-flexible-region-inside {
+  padding: 2px;
+}
+.panels-flexible-56 .panels-flexible-row {
+  padding: 0px;
+}
+.panels-flexible-56 .panels-flexible-column-inside {
+  padding: 0px;
+}
+.panels-flexible-region-56-c1_r2_reg1, .panels-flexible-region-56-c1_r1_reg2 {
+  width: 50%;
+}
+.panels-flexible-region-56-c1_r1_reg1 {
+  width: 100%;
+}
+.panels-flexible-region.panels-flexible-region-56-c3_r1_reg1.panels-flexible-region-first.panels-flexible-region-last.c3-r1-reg1, .panels-flexible-region.panels-flexible-region-56-c3_r2_reg2.panels-flexible-region-first.panels-flexible-region-last.c3-r2-reg2 {
+  width: 100%;
+}
+.panels-flexible-region.panels-flexible-region-56-c2_r1_reg1.panels-flexible-region-first.panels-flexible-region-last.c2-r1-reg1 {
+  width: 100%;
+}
+/* hide content until hover */
+section#block-long .block-content, section#block-short .block-content, section#block-digital .block-content, section#block-audio .block-content, section#block-questions .block-content, section#block-google .block-content, section#block-lists .block-content, section#block-ficrep .block-content {
+  opacity: 0;
+}
+.section-reviews-and-receptions .more-link {
+  opacity: 0;
+}
+/* show content on hover */
+section#block-long:hover .block-content, section#block-short:hover .block-content, section#block-digital:hover .block-content, section#block-audio:hover .block-content, section#block-questions:hover .block-content, section#block-google:hover .block-content, section#block-ficrep:hover .block-content, section#block-lists:hover .block-content {
+  opacity: 1;
+  transition: .8s ease .8s;
+  transition-delay: 1s;
+}
+section#block-long:active .block-content, section#block-short:active .block-content, section#block-digital:active .block-content, section#block-audio:active .block-content, section#block-questions:active .block-content, section#block-google:active .block-content, section#block-ficrep:active .block-content, section#block-lists:active .block-content {
+  opacity: 1;
+  transition: .8s ease .8s;
+  transition-delay: 1s;
+}
+section#block-long:hover .more-link, section#block-short:hover .more-link, section#block-digital:hover .more-link, section#block-audio:hover .more-link, section#block-questions:hover .more-link, section#block-google:hover .more-link, section#block-ficrep:hover .more-link, section#block-lists:hover .more-link {
+  opacity: 1;
+  transition: .8s ease .8s;
+}
+/* scroll on hover */
+section#block-long:hover, section#block-short:hover, section#block-digital:hover, section#block-audio:hover, section#block-questions:hover, section#block-google:hover, section#block-ficrep:hover, section#block-lists:hover, section#block-about:hover {
+  overflow-y: auto;
+}
+/* Making sure the about teaser text fits in the pane without a scrollbar */
+.page-reviews-and-receptions article#node-29715 {
+  margin-bottom: 0px;
+}
+.page-reviews-and-receptions .view-mode-teaser {
+  line-height: 1.4em;
+  border-bottom: 0;
+  margin-bottom: 0;
+  font-size: 125%;
+  margin-right: 0;
+/* height: 170px; */
+  overflow-y: visible;
+/* text-align: justify; */
+}
+.page-reviews-and-receptions section.block {
+  position: relative;
+  z-index: 500;
+}
+.page-reviews-and-receptions section a {
+  color:black;
+}
+/* edit scrollbar */
+section#block-long:hover::-webkit-scrollbar, section#block-short:hover::-webkit-scrollbar, section#block-digital:hover::-webkit-scrollbar, section#block-audio:hover::-webkit-scrollbar, section#block-questions:hover::-webkit-scrollbar, section#block-google:hover::-webkit-scrollbar, section#block-ficrep:hover::-webkit-scrollbar, section#block-lists:hover::-webkit-scrollbar {
+  background: rgba(255,255,255,.1);
+  width: 15px;
+}
+section#block-long:hover::-webkit-scrollbar-thumb, section#block-short:hover::-webkit-scrollbar-thumb, section#block-digital:hover::-webkit-scrollbar-thumb, section#block-audio:hover::-webkit-scrollbar-thumb, section#block-questions:hover::-webkit-scrollbar-thumb, section#block-google:hover::-webkit-scrollbar-thumb, section#block-ficrep:hover::-webkit-scrollbar-thumb, section#block-lists:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .5);
+  border-radius: 20px;
+}
+/* Title change on hover */
+section#block-long:hover h2.pane-title.block-title, section#block-short:hover h2.pane-title.block-title, section#block-digital:hover h2.pane-title.block-title, section#block-audio:hover h2.pane-title.block-title, section#block-questions:hover h2.pane-title.block-title, section#block-google:hover h2.pane-title.block-title, section#block-lists:hover h2.pane-title.block-title, section#block-ficrep:hover h2.pane-title.block-title {
+  font-size: 2em;
+  text-align: left;
+  top: 0px;
+  transition: .8s;
+}
+section#block-ficrep:hover h2.pane-title.block-title {
+  letter-spacing: normal;
+  line-height: normal;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+/* Review Essays Block Background Colors */
+section#block-long {
+  background: #77868F;
+}
+section#block-long:hover {
+  background: #B3C0C8;
+}
+/* Reviews Block Background Colors */
+section#block-short {
+  background: #5A6993;
+}
+section#block-short:hover {
+  background: rgba(151, 162, 189, 0.8);
+}
+/* Ficrep Block Background Colors */
+section#block-ficrep {
+  background: #A89E92;
+}
+section#block-ficrep:hover {
+  background: #CBC3BA;
+}
+/* Digital Block Background Colors */
+section#block-digital {
+  background: #7E6890;
+}
+section#block-digital:hover {
+  background: #BCACC8;
+}
+/* Listicles Block Background Colors */
+section#block-lists {
+  background: #9493AD;
+}
+section#block-lists:hover {
+  background: #B9B8CF;
+}
+/* Google/Audio Block Background Colors */
+section#block-audio {
+  background: #A8A8A8;
+}
+section#block-audio:hover {
+  background: rgb(136, 136, 136);
+}
+/* Q &amp; A's Block Background Colors */
+section#block-questions {
+  background: #C09162;
+}
+section#block-questions:hover {
+  background: rgb(221, 183, 144);
+}
+/* Google Hangouts Block Background Colors */
+section#block-google {
+  background: #77868F;
+}
+section#block-google:hover {
+  background: #B3C0C8;
+}
+/* About Block Background Colors */
+section#block-about {
+  background: #E0CEB8;
+}
+/* Ficrep Content Formatting */
+section#block-ficrep img.image-style-thumbnail {
+  box-shadow: none;
+  border: none;
+  float: left;
+  width: 80px;
+}
+section#block-ficrep .views-field-title {
+  font-weight: 400;
+  font-size: .85em;
+}
+section#block-ficrep .views-field-field-original-publication-date {
+  background: transparent;
+  border: none;
+  display: inherit;
+}
+/* search and recent receptions content positioning */
+.inside.panels-flexible-row-inside.panels-flexible-row-56-12-inside.panels-flexible-row-inside-last.clearfix {
+  margin: 10px;
+  padding: 15px 0px;
+}
+.panels-flexible-region.panels-flexible-region-56-all_stuffs.panels-flexible-region-last.all-stuffs {
+  margin: 0px 0px 0px 10px;
+}
+/* Titles' size search bar and recent receptions */
+.inside.panels-flexible-row-inside.panels-flexible-row-56-12-inside.panels-flexible-row-inside-last.clearfix h2 {
+  font-size: 1.5em;
+}
+/* Font-size of 'most recent' section */
+.inside.panels-flexible-row-inside.panels-flexible-row-56-12-inside.panels-flexible-row-inside-last.clearfix .view-content {
+  font-size: 1.2em;
+}
+/* 1st Attempt at changing font size based on screen size */
+@media all and (min-width: 960px) {
+body.section-reviews-and-receptions {
+  font-size: 12px;
+}
+}
+@media all and (max-width: 959px) and (min-width: 600px) {
+body.section-reviews-and-receptions {
+  font-size: 7px;
+}
+}
+@media all and (max-width: 599px) and (min-width: 320px) {
+body.section-reviews-and-receptions {
+  font-size: 4px;
+}
+}
+/* ficrep node page */
+/* eliminate title label */
+section.pane-node-title h2.pane-title.block-title {
+  display: none;
+}
+/* modifying header box, not text */
+.page-node.node-type-media div.content-style header.clearfix {
+  font-size: 2em;
+  border-bottom: none;
+}
