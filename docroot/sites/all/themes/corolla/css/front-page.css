@@ -380,7 +380,7 @@ width: 100% !important;
     box-sizing: border-box;
 }
 
-#views_slideshow_cycle_main_gallery_slider2-block .views-row {
+.view-gallery-slider2 .views-row {
     float: left;
     width: 20%;
     display: inline;
@@ -608,4 +608,13 @@ legend {
 }
 .page-corpus h2 {
   text-align: center;
+}
+
+/* Having to set heights manually for the front page sliders behind tabs that are initially hidden */
+div#views_slideshow_cycle_teaser_section_romantic_circles_people_front-page_1 {
+    height: 280px !important;
+}
+
+div#views_slideshow_cycle_teaser_section_gallery_slider2-block_1 {
+    height: 350px !important;
 }
