@@ -20,7 +20,7 @@ function internal_pages_default_page_manager_handlers() {
   $handler->weight = -16;
   $handler->conf = array(
     'title' => 'Page Content Override',
-    'no_blocks' => 0,
+    'no_blocks' => 1,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => '',
