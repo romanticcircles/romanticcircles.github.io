@@ -21,7 +21,7 @@
     <div style="padding: 0px 20px 0px 20px;
     width: 100%;
     display: block;
-    color: white;"/>Romantic Circles has a new look! Find out more about our redesign and other plans for the future <a style="color:white; border-bottom:1px dashed white" href="/redesign">here</a>.
+    color: white;"/>Romantic Circles has moved! It also has a new look. Find out more about our move, redesign, and plans for the future <a style="color:white; border-bottom:1px dashed white" href="/redesign">here</a>.
     </div></div>
     </div>
 
