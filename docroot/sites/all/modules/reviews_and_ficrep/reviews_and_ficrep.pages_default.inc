@@ -3069,7 +3069,7 @@ function reviews_and_ficrep_default_page_manager_pages() {
   $pane->shown = TRUE;
   $pane->access = array();
   $pane->configuration = array(
-    'override_pager_settings' => 1,
+    'override_pager_settings' => 0,
     'use_pager' => 0,
     'nodes_per_page' => '5',
     'pager_id' => '0',
@@ -3326,7 +3326,7 @@ function reviews_and_ficrep_default_page_manager_pages() {
     'css_class' => '',
   );
   $pane->extras = array();
-  $pane->position = 0;
+  $pane->position = 1;
   $pane->locks = array();
   $pane->uuid = 'a80fa487-9ae0-4c19-b870-9ded7b63d1bf';
   $display->content['new-a80fa487-9ae0-4c19-b870-9ded7b63d1bf'] = $pane;
@@ -3361,7 +3361,7 @@ function reviews_and_ficrep_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = '729cb70e-0d95-40bb-94ce-1c024c3932f1';
   $display->content['new-729cb70e-0d95-40bb-94ce-1c024c3932f1'] = $pane;
@@ -3388,7 +3388,7 @@ function reviews_and_ficrep_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 3;
   $pane->locks = array();
   $pane->uuid = 'b47f772e-b570-44d7-ae2c-9f505cca86c8';
   $display->content['new-b47f772e-b570-44d7-ae2c-9f505cca86c8'] = $pane;

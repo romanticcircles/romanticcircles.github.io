@@ -352,8 +352,6 @@ function reviews_and_ficrep_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = '1';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['style_options']['row_class'] = 'galleryGrid';
@@ -527,7 +525,7 @@ function reviews_and_ficrep_views_default_views() {
   $handler->display->display_options['filters']['title']['operator'] = 'contains';
   $handler->display->display_options['filters']['title']['value'] = 'fkmuseum';
   $handler->display->display_options['filters']['title']['group'] = 1;
-  /* Filter criterion: Content: Has taxonomy terms (with depth; <em class="placeholder">Simple hierarchical select</em>) */
+  /* Filter criterion: Content: Has taxonomy terms (with depth; Simple hierarchical select) */
   $handler->display->display_options['filters']['shs_term_node_tid_depth']['id'] = 'shs_term_node_tid_depth';
   $handler->display->display_options['filters']['shs_term_node_tid_depth']['table'] = 'node';
   $handler->display->display_options['filters']['shs_term_node_tid_depth']['field'] = 'shs_term_node_tid_depth';
@@ -552,7 +550,7 @@ function reviews_and_ficrep_views_default_views() {
   );
   $handler->display->display_options['filters']['shs_term_node_tid_depth']['vocabulary'] = 'setting';
   $handler->display->display_options['filters']['shs_term_node_tid_depth']['depth'] = '1';
-  /* Filter criterion: Content: Has taxonomy terms (with depth; <em class="placeholder">Simple hierarchical select</em>) */
+  /* Filter criterion: Content: Has taxonomy terms (with depth; Simple hierarchical select) */
   $handler->display->display_options['filters']['shs_term_node_tid_depth_1']['id'] = 'shs_term_node_tid_depth_1';
   $handler->display->display_options['filters']['shs_term_node_tid_depth_1']['table'] = 'node';
   $handler->display->display_options['filters']['shs_term_node_tid_depth_1']['field'] = 'shs_term_node_tid_depth';
@@ -697,7 +695,6 @@ function reviews_and_ficrep_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Advanced options'),
-    t('Select any filter and click on Apply to see results'),
     t('<div class="descbig"><p>This project was designed and curated by Ruth Anne Carpenter at the University of Maryland, College Park. Her brief introduction to the project can be found <a href="/frankenstein-covers-project/intro">here</a>.</p>
 <p><em>Click on the linked terms below each image to see a description and rationale for each term.</em></p>
 </div>
@@ -872,8 +869,6 @@ function reviews_and_ficrep_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = '1';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '21';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -1181,7 +1176,6 @@ function reviews_and_ficrep_views_default_views() {
   $handler->display->display_options['style_options']['views_slideshow_cycle']['speed'] = '700';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['delay'] = '0';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['action_advanced'] = 1;
-  $handler->display->display_options['style_options']['views_slideshow_cycle']['start_paused'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['remember_slide'] = 1;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['remember_slide_days'] = '1';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['pause_when_hidden'] = 1;
@@ -1753,8 +1747,6 @@ function reviews_and_ficrep_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = '1';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -2128,8 +2120,6 @@ function reviews_and_ficrep_views_default_views() {
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = '1';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
@@ -2608,7 +2598,6 @@ function reviews_and_ficrep_views_default_views() {
     t('Desc'),
     t('Advanced options'),
     t('<none>'),
-    t('Select any filter and click on Apply to see results'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -4193,8 +4182,6 @@ Ring|↳Ring',
     'any_label' => NULL,
     'filter_rewrite_values' => NULL,
   );
-  $handler->display->display_options['exposed_form']['options']['input_required'] = 0;
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = '1';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'grid';
   $handler->display->display_options['style_options']['row_class'] = 'galleryGrid';
@@ -4589,7 +4576,6 @@ Walking Stick|↳Walking Stick
 Cape|↳Cape
 Scarf|↳Scarf
 Ring|↳Ring'),
-    t('Select any filter and click on Apply to see results'),
     t('<p><strong>@total images</strong></p>'),
     t('Body'),
     t('Characters'),
@@ -7339,6 +7325,7 @@ Ring|↳Ring'),
   $handler->display->display_options['arguments']['name']['default_action'] = 'default';
   $handler->display->display_options['arguments']['name']['title_enable'] = TRUE;
   $handler->display->display_options['arguments']['name']['title'] = 'Posts in category "%1"';
+  $handler->display->display_options['arguments']['name']['breadcrumb_enable'] = TRUE;
   $handler->display->display_options['arguments']['name']['breadcrumb'] = '%2';
   $handler->display->display_options['arguments']['name']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['name']['summary']['sort_order'] = 'desc';
@@ -7498,7 +7485,6 @@ Ring|↳Ring'),
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Qs & As';
   $handler->display->display_options['use_ajax'] = TRUE;
-  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'More in this category';
   $handler->display->display_options['link_display'] = 'custom_url';
@@ -7889,17 +7875,17 @@ Ring|↳Ring'),
   $handler = $view->new_display('block', 'Block-Short', 'block_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = '<a href="/review-entries/types/29266">Reviews</a>';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'slider-33';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['link_url'] = 'review-entries/types/29266';
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '6';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'slideshow';
   $handler->display->display_options['style_options']['slideshow_type'] = 'views_slideshow_cycle';
@@ -7998,11 +7984,11 @@ Ring|↳Ring'),
   $handler->display->display_options['fields']['status']['type_custom_false'] = 'Forthcoming';
   $handler->display->display_options['fields']['status']['not'] = 0;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
-  /* Sort criterion: Content: Published */
-  $handler->display->display_options['sorts']['status']['id'] = 'status';
-  $handler->display->display_options['sorts']['status']['table'] = 'node';
-  $handler->display->display_options['sorts']['status']['field'] = 'status';
-  $handler->display->display_options['sorts']['status']['order'] = 'DESC';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -8438,20 +8424,6 @@ Ring|↳Ring'),
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Field: Thumbnail */
-  $handler->display->display_options['fields']['field_profile_picture']['id'] = 'field_profile_picture';
-  $handler->display->display_options['fields']['field_profile_picture']['table'] = 'field_data_field_profile_picture';
-  $handler->display->display_options['fields']['field_profile_picture']['field'] = 'field_profile_picture';
-  $handler->display->display_options['fields']['field_profile_picture']['label'] = '';
-  $handler->display->display_options['fields']['field_profile_picture']['element_type'] = 'div';
-  $handler->display->display_options['fields']['field_profile_picture']['element_class'] = 'leftFloat';
-  $handler->display->display_options['fields']['field_profile_picture']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_profile_picture']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_profile_picture']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_profile_picture']['delta_offset'] = '0';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -8695,6 +8667,9 @@ Ring|↳Ring'),
   $handler = $view->new_display('panel_pane', 'Recent Horizontal', 'panel_pane_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Recent posts';
+  $handler->display->display_options['enabled'] = FALSE;
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'slider-33';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
@@ -8703,7 +8678,7 @@ Ring|↳Ring'),
   $handler->display->display_options['use_more_text'] = 'more in this category';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '6';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'slideshow';
@@ -8742,17 +8717,13 @@ Ring|↳Ring'),
   $handler->display->display_options['style_options']['views_slideshow_cycle']['action_advanced'] = 1;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['start_paused'] = 1;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['remember_slide_days'] = '1';
-  $handler->display->display_options['style_options']['views_slideshow_cycle']['items_per_slide'] = '3';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['items_per_slide'] = '5';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['wait_for_image_load_timeout'] = '3000';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartype'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['cleartypenobg'] = 0;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'field_profile_picture' => 'field_profile_picture',
-    'title' => 'title',
-  );
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -8764,7 +8735,7 @@ Ring|↳Ring'),
   $handler->display->display_options['fields']['field_profile_picture']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_picture']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_profile_picture']['settings'] = array(
-    'image_style' => '40px_icon',
+    'image_style' => 'medium',
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_profile_picture']['delta_offset'] = '0';
@@ -8859,7 +8830,6 @@ Ring|↳Ring'),
   $handler->display->display_options['style_options']['views_slideshow_cycle']['timeout'] = '5000';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['speed'] = '700';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['delay'] = '0';
-  $handler->display->display_options['style_options']['views_slideshow_cycle']['start_paused'] = 0;
   $handler->display->display_options['style_options']['views_slideshow_cycle']['remember_slide_days'] = '1';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['items_per_slide'] = '1';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['wait_for_image_load_timeout'] = '3000';
