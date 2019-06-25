@@ -1253,6 +1253,7 @@ span.center {
 .figure {
   text-align: center;
   font-size: 12pt;
+  margin: 10px 0 10px 0;
 }
 .sup, .sub {
   vertical-align: baseline;
