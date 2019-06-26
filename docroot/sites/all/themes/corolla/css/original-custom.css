@@ -2694,12 +2694,7 @@ ul#superfish-9 { display: inline-block; float: none; }
 h1#media-node-title {
   font-size: 2em;
 }
-/* position paragraph text */
-.node-content .field.field-name-body.field-type-text-with-summary.field-label-hidden.view-mode-full {
-  padding: 1% 2%;
-  margin: 0px 10px 0px 10px;
-  border: none;
-}
+
 /* float thumbnail left */
 .panel-pane.pane-entity-field.pane-node-field-profile-picture.receptions-node-thumbnail {
   float: left;
@@ -3367,4 +3362,9 @@ a[name*="back"] {
 .page-search .block-region-sidebar-second, .page-search .block-region-sidebar-first {
     padding: 10px;
     margin: 0;
+}
+
+/* The normal body field is relative positioned. That causes the audio player to be unuseable on audio nodes, hence this fix. */
+.node-general-audio .field-name-body {
+    position: static;
 }
