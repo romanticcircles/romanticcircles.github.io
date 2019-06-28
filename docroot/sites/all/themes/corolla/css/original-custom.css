@@ -143,9 +143,7 @@ p.RCabstract {
 ul.tabs.primary {
   margin: 10px 0px;
 }
-.gn-scroller {
-  z-index: 999;
-}
+
 .field-name-body.view-mode-teaser {
   font-size: 135%;
   line-height: 1.4;
@@ -3203,6 +3201,12 @@ table.bordered, .table.bordered th, table.bordered td {
 #data-export .feed-icon {
   display:none;
 }
+.gn-scroller {
+  z-index: 999;
+}
+.gn-menu-wrapper.gn-open-all {
+    width: 380px;
+}
 ul#gn-menu {
   position: relative;
 }
@@ -3217,6 +3221,9 @@ nav.gn-menu.responsive-menus-google-nexus-processed {
 .gn-submenu li {
   overflow: visible;
   line-height: normal;
+}
+.gn-menu li:not(:first-child), .gn-menu li li {
+    box-shadow: none;
 }
 #header-wrapper {
   z-index: 0;
