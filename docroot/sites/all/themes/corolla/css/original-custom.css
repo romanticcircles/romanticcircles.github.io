@@ -456,6 +456,12 @@ blockquote.blockquote p {
   margin: auto;
   width: 70%;
 }
+.head {
+    margin: auto;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
 .stanza td {
   font-size: 90%;
   line-height: 110%;
