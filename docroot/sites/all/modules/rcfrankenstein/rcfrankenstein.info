@@ -1,0 +1,14 @@
+name = RCFrankenstein
+description = Pages and Resources at Romantic Circles pertaining to Frankenstein
+core = 7.x
+package = Features
+version = 7.x-1.0-beta1
+dependencies[] = page_manager
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = page_manager:pages_default:1
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[page_manager_pages][] = frankenstein_content_at_rc
+features[views_view][] = FrankensteinatRC2
+features_exclude[dependencies][ctools] = ctools

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the RCFrankenstein feature.
+ */
+
+include_once 'rcfrankenstein.features.inc';
