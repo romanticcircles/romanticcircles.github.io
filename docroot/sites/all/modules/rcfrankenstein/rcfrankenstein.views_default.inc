@@ -471,7 +471,7 @@ function rcfrankenstein_views_default_views() {
   /* Display: from Reviews */
   $handler = $view->new_display('panel_pane', 'from Reviews', 'panel_pane_5');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'from Reviews';
+  $handler->display->display_options['title'] = 'from Reviews and Receptions';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
@@ -616,6 +616,7 @@ function rcfrankenstein_views_default_views() {
     t('from Pedagogies'),
     t('from Media'),
     t('from Reviews'),
+    t('from Reviews and Receptions'),
   );
   $export['FrankensteinatRC2'] = $view;
 

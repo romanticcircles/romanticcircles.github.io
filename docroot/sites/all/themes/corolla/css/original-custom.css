@@ -2149,6 +2149,7 @@ body.page-reference-ficrep-panel h1#page-title {
     display: inline;
     padding: 5px;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .views-slideshow-cycle-main-frame .leftFloat {
@@ -2189,6 +2190,7 @@ float: left;
     display: inline;
     padding: 5px;
     box-sizing: border-box;
+    text-align:center;
 }
 
 /*Remove this after the video slider on R&R homepage is converted to use an embed code field. */
@@ -2197,9 +2199,11 @@ float: left;
 }
 
 /* So that slide controls don't overlap text on certain Reviews and Receptions landing page sliders */
-#views_slideshow_cycle_main_review_entries-block_4_1 .views-field-body, #views_slideshow_cycle_main_review_entries-block_4_1 .views-field-title, #views_slideshow_cycle_main_review_entries-block_6_1 .views-field-body, #views_slideshow_cycle_main_review_entries-block_6_1 .views-field-title, #views_slideshow_cycle_div_review_entries-block_5_1_0 .views-field-body, #views_slideshow_cycle_div_review_entries-block_5_1_0 .views-field-title {
+#views_slideshow_cycle_main_review_entries-block_4_1 .views-field-body, #views_slideshow_cycle_main_review_entries-block_4_1 .views-field-title, #views_slideshow_cycle_main_review_entries-block_6_1 .views-field-body, #views_slideshow_cycle_main_review_entries-block_6_1 .views-field-title, #views_slideshow_cycle_main_review_entries-block_5_1 .views-field-body, #views_slideshow_cycle_main_review_entries-block_5_1 .views-field-title,
+#views_slideshow_cycle_main_review_entries-block_10_1 .views-field-body, #views_slideshow_cycle_main_review_entries-block_10_1 .views-field-title{
     width: 80%;
     margin: auto;
+    text-align:justify;
 }
 
 .view-ficrep h3 {
