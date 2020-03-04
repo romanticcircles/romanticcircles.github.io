@@ -394,6 +394,9 @@ p {
   padding: 0;
 }
 /* Working with doc sections, blockquotes and poetry lines */
+.byline {margin: 20px 0px;
+}
+
 div.section, div.citations {
   margin-top: 0.75em;
 }
@@ -544,7 +547,7 @@ div#container dd {
 }
 .epigraph {text-align:center;}
 
-/* A special rule for letters (esp. Southey), where certain texts have long texts coded as epigraphs and the gray color looks awkward 
+/* A special rule for letters (esp. Southey), where certain texts have long texts coded as epigraphs and the gray color looks awkward
 .letter .epigraph {
 color: #2e2e2e;
 }*/
@@ -920,11 +923,11 @@ li.sf-item-8 {
 #logo {
   display:table-cell !important;
 }
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
-#logo   { 
+#logo   {
 margin: auto;
     display: block;
     width: 100%;
@@ -1265,7 +1268,7 @@ span.center {
   top: -0.4em;
 }
 .sub {
-  top: 0.4em; 
+  top: 0.4em;
 }
 .lineno {
   float:right;
@@ -2065,13 +2068,7 @@ body.page-gallery-gallery-map .openlayers-popup.openlayers-tooltip-name {
   padding: 6px 3px;
   box-shadow: 0px 0px 3px 1px rgb(219, 219, 219) inset;
 }
-.view-ficrep .views-field-field-director, .view-ficrep .views-field-field-author, .view-ficrep .views-field-field-recording-artist {
-  text-align: left;
-  color: #2e2e2e;
-  font-weight: normal;
-  font-size: 120%;
-  margin: 0px 15px 0px 0px;
-}
+
 .view-ficrep .views-field-body p {
   clear: both;
   font-size: 110%;
@@ -2218,13 +2215,7 @@ float: left;
   padding: 6px 3px;
   box-shadow: 0px 0px 3px 1px rgb(219, 219, 219) inset;
 }
-.view-ficrep .views-field-field-director, .view-ficrep .views-field-field-author, .view-ficrep .views-field-field-recording-artist {
-  text-align: left;
-  color: #2e2e2e;
-  font-weight: normal;
-  font-size: 120%;
-  margin: 0px 10x 0px 0px;
-}
+
 .view-ficrep .views-field-body p {
   clear: both;
   font-size: 110%;
