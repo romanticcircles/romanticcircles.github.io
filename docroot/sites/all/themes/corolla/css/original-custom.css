@@ -3329,7 +3329,7 @@ section#block-views-gallery-creators-block-1 {
     padding-bottom: 0px;
 }
 
-/* Padding note anchors to account for fixed site header */
+/* Padding note anchors and other in-text anchors to account for fixed site header */
 
 p.letnote {
     margin-left: 30px;
@@ -3346,6 +3346,13 @@ p.letnote {
 }
 
 .notes a[name] {
+    position: relative;
+    top: -60px;
+    visibility: hidden;
+    display: block;
+}
+
+span.anchor {
     position: relative;
     top: -60px;
     visibility: hidden;
