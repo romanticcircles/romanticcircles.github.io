@@ -167,6 +167,11 @@ ul.tabs.primary {
 .field-name-body .stanza table, .field-name-body .poetry table, .field-name-body #IndexContent table {
   border: none;
 }
+
+td.border, table.border {
+    border: 1px solid #3c3c3c;
+}
+
 .field-name-body table {
   border: 1px solid gray;
 }
