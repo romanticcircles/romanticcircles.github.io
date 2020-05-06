@@ -3378,7 +3378,7 @@ a[name*="back"] {
     position: relative;
     top: -70px;
     visibility: hidden;
-    display: block;
+    display: inline-block;
 }
 
 /*Adjusting look of Facets on search page*/
