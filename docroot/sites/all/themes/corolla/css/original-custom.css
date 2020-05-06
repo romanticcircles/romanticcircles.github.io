@@ -3376,8 +3376,9 @@ span.anchor {
 
 a[name*="back"] {
     position: relative;
-    top: -60px;
+    top: -70px;
     visibility: hidden;
+    display: block;
 }
 
 /*Adjusting look of Facets on search page*/
