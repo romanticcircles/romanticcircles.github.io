@@ -3374,11 +3374,8 @@ span.anchor {
 
 /* padding "back" links also to account for fixed header */
 
-a[name*="back"] {
-    position: relative;
-    top: -70px;
-    visibility: hidden;
-    display: inline;
+a[name*="back"]:target {
+padding-top: 70px;
 }
 
 /*Adjusting look of Facets on search page*/
