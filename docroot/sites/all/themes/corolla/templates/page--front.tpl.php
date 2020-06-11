@@ -19,7 +19,7 @@
     <div style="padding: 0px 20px 0px 20px;
     width: 100%;
     display: block;
-    color: white;"/>Romantic Circles has a new look! Find out more about our redesign and other plans for the future <a style="color:white; border-bottom:1px dashed white" href="/redesign">here</a>.
+    color: white;"/>Romantic Circles stands in solidarity with the Black Lives Matter movement. <a style="color:white; border-bottom:1px dashed white" href="/black-lives-matter">Read our statement here</a>.
     </div></div>
     </div>
 
