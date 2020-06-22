@@ -544,6 +544,17 @@ div#container dd {
 }
 .epigraph {text-align:center;}
 
+/* Special code for epigraphs to render them the same regardless of whether they are poetry or prose */
+.epigraph blockquote.blockquote p, .epigraph blockquote.blockquote .stanza, .epigraph blockquote.blockquote .stanza .lineNumber {
+margin-top:20px;
+margin-bottom:20px;
+margin-left:0px;
+margin-right:0px;
+font-size: 10pt;
+color: gray;
+line-height: 14pt;
+}
+
 /* A special rule for letters (esp. Southey), where certain texts have long texts coded as epigraphs and the gray color looks awkward 
 .letter .epigraph {
 color: #2e2e2e;
