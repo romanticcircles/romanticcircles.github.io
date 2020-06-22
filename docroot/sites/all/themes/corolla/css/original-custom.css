@@ -167,6 +167,11 @@ ul.tabs.primary {
 .field-name-body .stanza table, .field-name-body .poetry table, .field-name-body #IndexContent table {
   border: none;
 }
+
+td.border, table.border {
+    border: 1px solid #3c3c3c !important;
+}
+
 .field-name-body table {
   border: 1px solid gray;
 }
@@ -394,6 +399,9 @@ p {
   padding: 0;
 }
 /* Working with doc sections, blockquotes and poetry lines */
+.byline {margin: 20px 0px;
+}
+
 div.section, div.citations {
   margin-top: 0.75em;
 }
@@ -544,6 +552,7 @@ div#container dd {
 }
 .epigraph {text-align:center;}
 
+<<<<<<< HEAD
 /* Special code for epigraphs to render them the same regardless of whether they are poetry or prose */
 .epigraph blockquote.blockquote p, .epigraph blockquote.blockquote .stanza, .epigraph blockquote.blockquote .stanza .lineNumber {
 margin-top:20px;
@@ -556,6 +565,9 @@ line-height: 14pt;
 }
 
 /* A special rule for letters (esp. Southey), where certain texts have long texts coded as epigraphs and the gray color looks awkward 
+=======
+/* A special rule for letters (esp. Southey), where certain texts have long texts coded as epigraphs and the gray color looks awkward
+>>>>>>> 1de20081e46e2910aa14ae2b262bd1161e022822
 .letter .epigraph {
 color: #2e2e2e;
 }*/
@@ -931,11 +943,11 @@ li.sf-item-8 {
 #logo {
   display:table-cell !important;
 }
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
-#logo   { 
+#logo   {
 margin: auto;
     display: block;
     width: 100%;
@@ -1276,11 +1288,19 @@ span.center {
   top: -0.4em;
 }
 .sub {
-  top: 0.4em; 
+  top: 0.4em;
 }
 .lineno {
   float:right;
   margin-right:20px;
+}
+
+.imageWidth {
+width:300px;
+}
+
+.imageHeight {
+height:450px;
 }
 /* important declaration from the Quarterly Review Archive */
 .smallprint {
@@ -1379,7 +1399,7 @@ span.subTitle {
   text-align:left;
 }
 .titlePart {
-  font-size:18px;
+  font-size:1.2em;
   font-weight:bold;
 }
 .stage {
@@ -1413,10 +1433,10 @@ span.subTitle {
   margin-bottom: 5px;
 }
 .inlineNote {
-  margin-left: 20px;
-  font-size: 85%;
-  padding-left: 10px;
-  border-left: 2px solid rgb(223, 223, 223);
+    font-size: 85%;
+    padding-left: 10px;
+    border-left: 2px solid rgb(223, 223, 223);
+    margin: 1em 0 1em 20px;
 }
 /* These margin-based rules are for the column widths on the Baillie Chronology. I had to write them like this because the Views is applying the class to the <th> element above it rather than the <span>, which it should be */
 .marginRight1 span {
@@ -2076,13 +2096,7 @@ body.page-gallery-gallery-map .openlayers-popup.openlayers-tooltip-name {
   padding: 6px 3px;
   box-shadow: 0px 0px 3px 1px rgb(219, 219, 219) inset;
 }
-.view-ficrep .views-field-field-director, .view-ficrep .views-field-field-author, .view-ficrep .views-field-field-recording-artist {
-  text-align: left;
-  color: #2e2e2e;
-  font-weight: normal;
-  font-size: 120%;
-  margin: 0px 15px 0px 0px;
-}
+
 .view-ficrep .views-field-body p {
   clear: both;
   font-size: 110%;
@@ -2229,13 +2243,7 @@ float: left;
   padding: 6px 3px;
   box-shadow: 0px 0px 3px 1px rgb(219, 219, 219) inset;
 }
-.view-ficrep .views-field-field-director, .view-ficrep .views-field-field-author, .view-ficrep .views-field-field-recording-artist {
-  text-align: left;
-  color: #2e2e2e;
-  font-weight: normal;
-  font-size: 120%;
-  margin: 0px 10x 0px 0px;
-}
+
 .view-ficrep .views-field-body p {
   clear: both;
   font-size: 110%;
@@ -3349,7 +3357,7 @@ section#block-views-gallery-creators-block-1 {
     padding-bottom: 0px;
 }
 
-/* Padding note anchors to account for fixed site header */
+/* Padding note anchors and other in-text anchors to account for fixed site header */
 
 p.letnote {
     margin-left: 30px;
@@ -3372,12 +3380,17 @@ p.letnote {
     display: block;
 }
 
-/* padding "back" links also to account for fixed header */
-
-a[name*="back"] {
+span.anchor {
     position: relative;
     top: -60px;
     visibility: hidden;
+    display: block;
+}
+
+/* padding "back" links also to account for fixed header */
+
+a[name*="back"]:target {
+padding-top: 70px;
 }
 
 /*Adjusting look of Facets on search page*/

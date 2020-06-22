@@ -8,20 +8,20 @@
         </div>
       </div>
     <?php endif; ?>
-    <div id="header-top">
-    <div style="background-color: #084d81;
-    z-index: 1;
-    font-size: 16px;
-    padding: 2px 0px;
-    text-align: center;
-    position:relative;
-    top:38px;">
-    <div style="padding: 0px 20px 0px 20px;
-    width: 100%;
-    display: block;
-    color: white;"/>Romantic Circles has a new look! Find out more about our redesign and other plans for the future <a style="color:white; border-bottom:1px dashed white" href="/redesign">here</a>.
-    </div></div>
-    </div>
+<div style="
+background-color: black;
+z-index: 1;
+font-size: 15px;
+padding: 5px 0px;
+text-align: center;
+position:relative;
+top:38px;
+">
+<div style="padding: 0px 30px 0px 30px;
+width: 100%;
+display: block;
+color: white; text-transform:uppercase; font-weight: bold; letter-spacing:0.0625em;">Romantic Circles stands in solidarity with the Black Lives Matter movement. <a style="color:white; border-bottom:1px dashed white" href="/black-lives-matter">Read our statement</a>.
+</div></div>
 
     <div id="header-wrapper">
       <div class="container clearfix">
