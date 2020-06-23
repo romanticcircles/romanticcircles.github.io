@@ -552,7 +552,6 @@ div#container dd {
 }
 .epigraph {text-align:center;}
 
-<<<<<<< HEAD
 /* Special code for epigraphs to render them the same regardless of whether they are poetry or prose */
 .epigraph blockquote.blockquote p, .epigraph blockquote.blockquote .stanza, .epigraph blockquote.blockquote .stanza .lineNumber {
 margin-top:20px;
