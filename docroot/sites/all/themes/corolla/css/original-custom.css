@@ -1489,6 +1489,8 @@ font-weight: 500;
     letter-spacing: 4px;
 }
 
+.page-rc-unbound #breadcrumb {display:none;}
+
 /*
   body.section-blog-rc article.article {
   margin-bottom: 30px;
