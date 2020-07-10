@@ -1481,6 +1481,14 @@ font-weight: 500;
  /* margin: 0px; */
 }
 
+/* We added this for RC Unbound */
+.volume-header {
+    font-family: 'PT Sans';
+    font-size: 1.8em;
+    text-transform: lowercase;
+    letter-spacing: 4px;
+}
+
 /*
   body.section-blog-rc article.article {
   margin-bottom: 30px;
