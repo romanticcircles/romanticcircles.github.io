@@ -1489,7 +1489,13 @@ font-weight: 500;
     letter-spacing: 4px;
 }
 
-.page-rc-unbound #breadcrumb {display:none;}
+.page-editions #breadcrumb, .page-rc-unbound #breadcrumb {
+    display:none;
+}
+
+.section-blog-rc div#breadcrumb {
+    display: none;
+}
 
 /*
   body.section-blog-rc article.article {
