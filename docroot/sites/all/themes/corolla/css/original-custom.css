@@ -1489,7 +1489,7 @@ font-weight: 500;
     letter-spacing: 4px;
 }
 
-.block-title {
+.pane-title .block-title {
     font-family: 'PT Sans';
     font-size: 1.8em;
     text-transform: lowercase;
@@ -1500,11 +1500,12 @@ font-weight: 500;
     display:none;
 }
 
+
 .section-blog-rc div#breadcrumb {
     display: none;
 }
 
-.page-taxonomy #breadcrumb {
+.section-rc-unbound div#breadcrumb {
     display: none;
 }
 
