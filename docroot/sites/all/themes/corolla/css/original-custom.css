@@ -1502,7 +1502,7 @@ font-weight: 500;
 }
 
 
-.page-taxonomy-term-35206 #breadcrumb {
+.page-taxonomy, .page-taxonomy-term, .page-taxonomy-term-, .page-taxonomy-term-35206 #breadcrumb {
     display: none;
 }
 
