@@ -1502,7 +1502,7 @@ font-weight: 500;
 }
 
 
-.section-blog-rc div#breadcrumb {
+.section-blog-rc #breadcrumb {
     display: none;
 }
 
