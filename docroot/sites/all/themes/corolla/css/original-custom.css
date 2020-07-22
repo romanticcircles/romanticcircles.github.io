@@ -1506,7 +1506,7 @@ font-weight: 500;
     display: none;
 }
 
-.section-rc-unbound div#breadcrumb {
+.section-rc-unbound #breadcrumb {
     display: none;
 }
 
