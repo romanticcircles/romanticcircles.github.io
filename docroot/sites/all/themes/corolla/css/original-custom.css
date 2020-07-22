@@ -1490,6 +1490,14 @@ font-weight: 500;
     letter-spacing: 4px !important;
 }
 
+.rc-unbound-issue.volume-header {
+    font-family: 'PT Sans';
+    font-size: 1.8em !important;
+    font-weight: 400 !important;
+    text-transform: lowercase !important;
+    letter-spacing: 4px !important;
+}
+
 .page-rc-unbound h2.block-title {
     font-family: 'PT Sans';
     font-size: 1.8em;
@@ -1501,14 +1509,6 @@ font-weight: 500;
     display:none;
 }
 
-
-.page-taxonomy, .page-taxonomy-term, .page-taxonomy-term-, .page-taxonomy-term-35206 #breadcrumb {
-    display: none;
-}
-
-.section-rc-unbound #breadcrumb {
-    display: none;
-}
 
 /*
   body.section-blog-rc article.article {
