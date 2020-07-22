@@ -1484,12 +1484,12 @@ font-weight: 500;
 /* We added this for RC Unbound */
 .volume-header {
     font-family: 'PT Sans';
-    font-size: 1.8em;
-    text-transform: lowercase;
-    letter-spacing: 4px;
+    font-size: 1.8em !important;
+    text-transform: lowercase !important;
+    letter-spacing: 4px !important;
 }
 
-.section-rc-unbound-issue h2.block-title {
+.page-rc-unbound-issue h2.block-title {
     font-family: 'PT Sans';
     font-size: 1.8em;
     text-transform: lowercase;
@@ -1505,7 +1505,7 @@ font-weight: 500;
     display: none;
 }
 
-.section-rc-unbound-issue div#breadcrumb {
+.section-rc-unbound div#breadcrumb {
     display: none;
 }
 
