@@ -1485,6 +1485,7 @@ font-weight: 500;
 .volume-header {
     font-family: 'PT Sans';
     font-size: 1.8em !important;
+    font-weight: 400 !important;
     text-transform: lowercase !important;
     letter-spacing: 4px !important;
 }
