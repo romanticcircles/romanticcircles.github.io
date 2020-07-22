@@ -563,7 +563,7 @@ color: gray;
 line-height: 14pt;
 }
 
-/* A special rule for letters (esp. Southey), where certain texts have long texts coded as epigraphs and the gray color looks awkward 
+/* A special rule for letters (esp. Southey), where certain texts have long texts coded as epigraphs and the gray color looks awkward
 =======
 /* A special rule for letters (esp. Southey), where certain texts have long texts coded as epigraphs and the gray color looks awkward
 >>>>>>> 1de20081e46e2910aa14ae2b262bd1161e022822
@@ -3408,9 +3408,9 @@ p.letnote {
 }
 
 span.anchor {
-    position: relative;
-    top: -60px;
-    visibility: hidden;
+    position:relative;
+    top:-60px;
+    visibility:hidden;
     display: block;
 }
 
