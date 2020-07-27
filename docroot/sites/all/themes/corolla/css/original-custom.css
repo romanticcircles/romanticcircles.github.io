@@ -1525,6 +1525,15 @@ font-weight: 500;
     position: relative;
 }
 
+.imgcredit {
+    font-family: 'PT Sans';
+    font-size: 81.3%;
+    text-align: right;
+    font-size: 8pt;
+    color: #2e2e2e;
+}
+
+
 /*
   body.section-blog-rc article.article {
   margin-bottom: 30px;
