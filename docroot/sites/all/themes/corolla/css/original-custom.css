@@ -1532,6 +1532,11 @@ font-weight: 500;
     color: #2e2e2e;
 }
 
+.panels-flexible-111 .panels-flexible-row {
+    padding: 10px 100px 50px 100px;
+    margin: 0;
+}
+
 
 /*
   body.section-blog-rc article.article {
