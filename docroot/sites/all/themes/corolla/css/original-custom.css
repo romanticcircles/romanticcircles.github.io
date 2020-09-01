@@ -1467,7 +1467,7 @@ a, a.active, li a.active {
   text-decoration:none;
 }
 /* This should cover the majority of section landing pages, but I'm hesitant to use this for all h1#page-title for fear of unintended consequences. */
-body.page-blog-rc section#main-content #page-title, .block-91, body.page-reviews-blog section#main-content #page-title, body.page-pop-blog section#main-content #page-title, body.page-pedagogies-pedagogies-blog section#main-content #page-title, .galleryBanner, .section-reviews-and-receptions h1#page-title, .page-gallery h1#page-title, .page-praxis h1#page-title, .page-editions h1#page-title, .page-pedagogies h1#page-title, .page-reference h1#page-title, .page-audio h1#page-title, .page-data h1#page-title, .page-redesign h1#page-title, .page-rc-unbound h1#page-title {
+body.page-blog-rc section#main-content #page-title, .block-91, body.page-reviews-blog section#main-content #page-title, body.page-pop-blog section#main-content #page-title, body.page-pedagogies-pedagogies-blog section#main-content #page-title, .galleryBanner, .section-reviews-and-receptions h1#page-title, .page-gallery h1#page-title, .page-praxis h1#page-title, .page-editions h1#page-title, .page-pedagogies h1#page-title, .page-reference h1#page-title, .page-audio h1#page-title, .page-data h1#page-title, .page-redesign h1#page-title, body.page-rc-unbound h1#page-title {
   font-family: 'PT Sans';
 font-weight: 500;
   font-size: 3.5em;
@@ -1484,30 +1484,59 @@ font-weight: 500;
 /* We added this for RC Unbound */
 .volume-header {
     font-family: 'PT Sans';
-    font-size: 1.8em;
-    text-transform: lowercase;
-    letter-spacing: 4px;
+    font-size: 1.8em !important;
+    font-weight: 400 !important;
+    text-transform: lowercase !important;
+    letter-spacing: 4px !important;
 }
 
-.section-rc-unbound-issue h2.block-title {
-    font-family: 'PT Sans';
-    font-size: 1.8em;
-    text-transform: lowercase;
-    letter-spacing: 4px;
-}
-
-.page-editions #breadcrumb, .page-rc-unbound #breadcrumb {
+.page-editions #breadcrumb, body.page-rc-unbound #breadcrumb {
     display:none;
 }
 
-
-.section-blog-rc div#breadcrumb {
-    display: none;
+.rc-unbound-essay-title {
+    font-family: 'Trebuchet MS';
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #044389;
+    text-transform: inherit;
+    letter-spacing: 2px;
+    border-bottom: none !important;
 }
 
-.section-rc-unbound-issue div#breadcrumb {
-    display: none;
+.rc-unbound-author {
+    font-family: 'PT Sans';
+    font-size: 1.1em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    border-bottom: none !important;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    position: relative;
+ }
+ 
+ .rc-unbound-field-name-body {
+    font-size: 125%;
+    border-bottom: none;
+    margin-bottom: 4px;
+    padding-bottom: 1px;
+    position: relative;
 }
+
+.imgcredit {
+    font-family: 'PT Sans';
+    font-size: 10pt;
+    text-align: right;
+    color: #2e2e2e;
+}
+
+.panels-flexible-111 .panels-flexible-row {
+    padding: 10px 100px 50px 100px;
+    margin: 0;
+}
+
 
 /*
   body.section-blog-rc article.article {
