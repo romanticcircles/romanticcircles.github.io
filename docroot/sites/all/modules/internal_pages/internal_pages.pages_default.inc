@@ -641,7 +641,7 @@ function internal_pages_default_page_manager_handlers() {
   $pane->panel = 'center';
   $pane->type = 'views';
   $pane->subtype = 'pedagogies_hangouts_videos';
-  $pane->shown = TRUE;
+  $pane->shown = FALSE;
   $pane->access = array();
   $pane->configuration = array(
     'override_pager_settings' => 0,
@@ -661,7 +661,9 @@ function internal_pages_default_page_manager_handlers() {
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
-  $pane->style = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
   $pane->css = array();
   $pane->extras = array();
   $pane->position = 6;
@@ -991,7 +993,7 @@ function internal_pages_default_page_manager_handlers() {
   $display->content['new-a161399e-c4fa-40c4-b701-f163c4569eda'] = $pane;
   $display->panels['center'][3] = 'new-a161399e-c4fa-40c4-b701-f163c4569eda';
   $pane = new stdClass();
-  $pane->pid = 'new-a20ce4ca-8911-40df-a1d0-8a7504c5defc';
+  $pane->pid = 'new-a8bfad3e-82b4-405d-a13f-8e655cf90ced';
   $pane->panel = 'center';
   $pane->type = 'views';
   $pane->subtype = 'pedagogies_hangouts_videos';
@@ -1034,9 +1036,9 @@ function internal_pages_default_page_manager_handlers() {
   $pane->extras = array();
   $pane->position = 4;
   $pane->locks = array();
-  $pane->uuid = 'a20ce4ca-8911-40df-a1d0-8a7504c5defc';
-  $display->content['new-a20ce4ca-8911-40df-a1d0-8a7504c5defc'] = $pane;
-  $display->panels['center'][4] = 'new-a20ce4ca-8911-40df-a1d0-8a7504c5defc';
+  $pane->uuid = 'a8bfad3e-82b4-405d-a13f-8e655cf90ced';
+  $display->content['new-a8bfad3e-82b4-405d-a13f-8e655cf90ced'] = $pane;
+  $display->panels['center'][4] = 'new-a8bfad3e-82b4-405d-a13f-8e655cf90ced';
   $pane = new stdClass();
   $pane->pid = 'new-688e8f1e-b812-44dd-9524-e23bcc5cf6a4';
   $pane->panel = 'center';

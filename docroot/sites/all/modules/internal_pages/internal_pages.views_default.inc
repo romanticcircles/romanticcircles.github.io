@@ -46,7 +46,7 @@ function internal_pages_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'instruction';
-  $handler->display->display_options['header']['area']['content'] = '<em>Click an author\'s name to view his or her complete profile</em>';
+  $handler->display->display_options['header']['area']['content'] = '<em>Click author\'s name to view complete profile</em>';
   $handler->display->display_options['header']['area']['format'] = '1';
   /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_authored_by_secondary__target_id']['id'] = 'field_authored_by_secondary__target_id';
@@ -209,7 +209,7 @@ function internal_pages_views_default_views() {
     t('next ›'),
     t('last »'),
     t('instruction'),
-    t('<em>Click an author\'s name to view his or her complete profile</em>'),
+    t('<em>Click author\'s name to view complete profile</em>'),
     t('Content entity referenced from field_authored_by_secondary_'),
     t('Content entity referenced from field_authored_by_primary_'),
     t('All'),
