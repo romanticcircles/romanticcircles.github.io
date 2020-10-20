@@ -1,0 +1,291 @@
+diff --git a/plugins/layouts/flexible/flexible.inc b/plugins/layouts/flexible/flexible.inc
+index 93bc4e7..b0d28fe 100644
+--- a/plugins/layouts/flexible/flexible.inc
++++ b/plugins/layouts/flexible/flexible.inc
+@@ -133,6 +133,7 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
+           'contains' => 'region',
+           'children' => array('center'),
+           'parent' => 'main',
++          'rung' => 1,
+         ),
+         'center' => array(
+           'type' => 'region',
+@@ -153,6 +154,7 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
+       'contains' => 'column',
+       'children' => array(),
+       'parent' => NULL,
++      'rung' => 1,
+     );
+     // Add the left sidebar column, row and region if it exists.
+     if (!empty($old['sidebars']['left'])) {
+@@ -169,6 +171,7 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
+         'contains' => 'region',
+         'children' => array('sidebar_left'),
+         'parent' => 'sidebar-left',
++        'rung' => 1,
+       );
+       $settings['items']['sidebar_left'] = array(
+         'type' => 'region',
+@@ -195,6 +198,7 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
+         'contains' => 'region',
+         'children' => array('sidebar_right'),
+         'parent' => 'sidebar-right',
++        'rung' => 1,
+       );
+       $settings['items']['sidebar_right'] = array(
+         'type' => 'region',
+@@ -222,6 +226,7 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
+         'contains' => 'region',
+         'children' => array(),
+         'parent' => 'main',
++        'rung' => 1,
+       );
+       // Add the row to the parent's children:
+       $settings['items']['main']['children'][] = "row_$row";
+@@ -254,6 +259,7 @@ function panels_flexible_convert_settings(&$settings, &$layout) {
+       'contains' => 'column',
+       'children' => $settings['canvas'],
+       'parent' => NULL,
++      'rung' => 1,
+     );
+     unset($settings['canvas']);
+   }
+@@ -311,6 +317,9 @@ function panels_flexible_create_renderer($admin, $css_id, $content, $settings, &
+   $renderer->item_class['region'] = 'panels-flexible-region';
+   $renderer->base['canvas']       = 'panels-flexible-' . $renderer->base_class;
+ 
++  // Set rung order for rows.
++  $renderer->settings['items'] = panels_flexible_set_rungs($settings['items']);
++
+   // Override these if selected from the UI and not in admin mode.
+   if (!$admin) {
+     if (!empty($settings['items']['canvas']['class'])) {
+@@ -349,6 +358,9 @@ function panels_flexible_create_renderer($admin, $css_id, $content, $settings, &
+       ctools_css_clear($renderer->css_cache_name);
+     }
+   }
++
++  drupal_alter('panels_flexible_create_renderer', $panels_display, $renderer);
++
+   return $renderer;
+ }
+ 
+@@ -443,6 +455,9 @@ function theme_panels_flexible_admin($vars) {
+       $output .= '<input type="submit" id="panels-flexible-reuse-layout" class="form-submit ctools-use-modal" value ="' .
+         t('Reuse layout') . '">';
+     }
++    $output .= '<div id="layout-designer-note" class="messages status" style="display: none;">' .
++      '<p>' . t('Note: You must click Save below for changes to layout to take effect.') . '</p>' .
++      '</div>';
+     $output .= "<div class=\"panel-flexible " . $renderer->base['canvas'] . " clearfix panel-flexible-admin panel-flexible-no-edit-layout\" $renderer->id_str>\n";
+   }
+   else {
+@@ -472,6 +487,7 @@ function panels_flexible_render_items($renderer, $list, $owner_id) {
+ 
+   foreach ($list as $position => $id) {
+     $item = $renderer->settings['items'][$id];
++    $items = &$renderer->settings['items'];
+     $location = isset($renderer->positions[$id]) ? $renderer->positions[$id] : 'middle';
+ 
+     if ($renderer->admin && $item['type'] != 'row' && $prev) {
+@@ -480,6 +496,7 @@ function panels_flexible_render_items($renderer, $list, $owner_id) {
+ 
+     switch ($item['type']) {
+       case 'column':
++        $items = panels_flexible_set_rungs($items);
+         $content = panels_flexible_render_items($renderer, $item['children'], $renderer->base['column'] . '-' . $id);
+         if (empty($renderer->settings['items'][$id]['hide_empty']) || trim($content)) {
+           $groups[$location] .= panels_flexible_render_item($renderer, $item, $content, $id, $position, $max);
+@@ -597,6 +614,11 @@ function panels_flexible_render_item($renderer, $item, $content, $id, $position,
+   $output .= '  </div>' . "\n";
+   $output .= '</div>' . "\n";
+ 
++  // Call all of the hooks hook_panels_flexible_render_item().
++  foreach (module_implements('panels_flexible_render_item') as $module) {
++    $output = module_invoke($module, 'panels_flexible_render_item', $renderer, $item, $output, $id, $position, $max, TRUE);
++  }
++
+   return $output;
+ }
+ /**
+@@ -698,16 +720,8 @@ function panels_flexible_render_item_links($renderer, $id, $item) {
+       $title = t('Row');
+       $settings = t('Row settings');
+     }
+-    if (empty($item['children'])) {
+-      if ($id != 'canvas') {
+-        $remove = t('Remove row');
+-      }
+-      $add = $item['contains'] == 'region' ? t('Add region') : t('Add column');
+-    }
+-    else {
+-      $add = $item['contains'] == 'region' ? t('Add region to left') : t('Add column to left');
+-      $add2 = $item['contains'] == 'region' ? t('Add region to right') : t('Add column to right');
+-    }
++    $remove = t('Remove column');
++    $add = t('Add row');
+   }
+   elseif ($item['type'] == 'region') {
+     $title = t('Region');
+@@ -1207,6 +1221,22 @@ function panels_flexible_config_item_form($form, &$form_state) {
+         $form['contains']['#description'] = t('You must remove contained items to change the row container type.');
+       }
+     }
++
++    if ($item['type'] == 'row') {
++      if (!isset($item['rung'])) {
++        $settings['items'] = panels_flexible_set_rungs($settings['items']);
++      }
++      $max_rung_value = count($settings['items'][$item['parent']]['children']);
++      $form['rung'] = array(
++        '#type' => 'select',
++        '#title' => t('Row position'),
++        '#default_value' => $item['rung'],
++        '#options' => array_combine(
++          range(1, $max_rung_value),
++          range(1, $max_rung_value)
++        ),
++      );
++    }
+   }
+ 
+   $form['hide_empty'] = array(
+@@ -1252,10 +1282,70 @@ function panels_flexible_config_item_form_submit(&$form, &$form_state) {
+   else {
+     $item['contains'] = $form_state['values']['contains'];
+   }
++
++  if ($item['type'] == 'row') {
++    // Ugly logic here. @todo remove after drag/drop implemented.
++    if ($form_state['values']['rung'] < $item['rung']) {
++      $item['rung'] = $form_state['values']['rung'] - 1;
++    }
++    else if ($form_state['values']['rung'] > $item['rung']) {
++      $item['rung'] = $form_state['values']['rung'] + 1;
++    }
++    // Set rungs for all rows
++    $form_state['settings']['items'] = panels_flexible_set_rungs($form_state['settings']['items']);
++  }
++
+   $item['hide_empty'] = $form_state['values']['hide_empty'];
+ 
+ }
+ 
++/**
++ * @param array $items
++ *
++ * @return array $items with appropriate rung values added/set.
++ */
++function panels_flexible_set_rungs($items) {
++  foreach ($items as $item_id => $item) {
++    $rungs = array();
++    $last_rung_value = 1;
++    $items[$item_id]['id'] = $item_id;
++
++    if (!isset($item['type']) || $item['type'] != 'column' || empty($item['children'])) {
++      // Do nothing with this item.
++      continue;
++    }
++
++    foreach ($item['children'] as $child_id) {
++      if ($items[$child_id]['type'] != 'row') {
++        continue;
++      }
++      if (isset($items[$child_id]['rung'])) {
++        $item_rung_value = (int)$items[$child_id]['rung'];
++        $next_rung_value = max($item_rung_value, $last_rung_value);
++        $last_rung_value = $next_rung_value + 1;
++      }
++      else {
++        // If this row does not have a rung set yet, set it to last largest value.
++        $items[$child_id]['rung'] = $last_rung_value;
++        $last_rung_value++;
++      }
++      $rungs[$child_id] = (int)$items[$child_id]['rung'];
++    }
++
++    asort($rungs, SORT_NUMERIC);
++
++    // Normalize rung values to range(1, count(children)).
++    $i = 1;
++    foreach ($rungs as $child_id => $rung_value) {
++      $items[$child_id]['rung'] = $rungs[$child_id] = $i++;
++    }
++
++    $items[$item_id]['children'] = array_keys($rungs);
++  }
++
++  return $items;
++}
++
+ /**
+  * AJAX responder to add a new row, column or region to a flexible layout.
+  */
+@@ -1278,6 +1368,7 @@ function panels_ajax_flexible_edit_add($handler, $id, $location = 'left') {
+       $item = array(
+         'type' => 'row',
+         'contains' => 'region',
++        'rung' => count($parent['children']) + 1,
+         'children' => array(),
+         'parent' => $id,
+       );
+@@ -1402,7 +1493,13 @@ function panels_ajax_flexible_edit_add($handler, $id, $location = 'left') {
+           if (!empty($form_state['sibling'])) {
+             $item_output .= panels_flexible_render_splitter($renderer, $form_state['key'], $form_state['sibling']);
+           }
+-          $output[] = ajax_command_prepend('#panels-dnd-main .' . $parent_class . '-middle', $item_output);
++          if ($item['type'] == 'row' && $item['rung'] != 0) {
++            $prev_row_class = $renderer->base[$item['type']] . '-' . $parent['children'][$item['rung'] - 1];
++            $output[] = ajax_command_after('#panels-dnd-main .' . $parent_class . '-middle .' . $prev_row_class, $item_output);
++          }
++          else {
++            $output[] = ajax_command_prepend('#panels-dnd-main .' . $parent_class . '-middle', $item_output);
++          }
+         }
+         else {
+           if (!empty($form_state['sibling'])) {
+@@ -1519,6 +1616,19 @@ function panels_flexible_add_item_form($form, &$form_state) {
+     );
+   }
+ 
++  if ($item['type'] == 'row') {
++    $max_rung_value = count($settings['items'][$item['parent']]['children']) + 1;
++    $form['rung'] = array(
++      '#type' => 'select',
++      '#title' => t('Row position'),
++      '#default_value' => $max_rung_value,
++      '#options' => array_combine(
++        range(1, $max_rung_value),
++        range(1, $max_rung_value)
++      ),
++    );
++  }
++
+   $form['hide_empty'] = array(
+     '#title' => t('Hide element if empty'),
+     '#type' => 'checkbox',
+@@ -1553,6 +1663,7 @@ function panels_flexible_add_item_form_submit(&$form, &$form_state) {
+   }
+   else {
+     $item['contains'] = $form_state['values']['contains'];
++    $item['rung'] = $form_state['values']['rung'];
+   }
+ 
+   $item['hide_empty'] = $form_state['values']['hide_empty'];
+@@ -1591,9 +1702,14 @@ function panels_flexible_add_item_form_submit(&$form, &$form_state) {
+     }
+   }
+ 
++  // Set rung values for all items.
++  $settings['items'] = panels_flexible_set_rungs($settings['items']);
++
+   // Place the item.
+-  $settings['items'][$key] = $item;
+-  if ($location == 'left') {
++  if ($item['type'] == 'row') {
++    array_splice($parent['children'], $item['rung'], 0, $key);
++  }
++  else if ($location == 'left') {
+     array_unshift($parent['children'], $key);
+   }
+   else {
