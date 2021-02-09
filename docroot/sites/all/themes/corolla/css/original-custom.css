@@ -3413,6 +3413,9 @@ section#block-views-gallery-creators-block-1 {
     padding-bottom: 0px;
 }
 
+.datelineRight {
+    text-align: right;
+}
 
 /* Padding note anchors and other in-text anchors to account for fixed site header */
 
