@@ -376,6 +376,21 @@ nav#block-nice-menus-6 {
 hr {
   clear:both;
 }
+
+.column {
+   float: left;
+    width: 40%;
+    padding: 10px;
+    height: 600px;
+    text-align: left;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /* Turn off display of abstract/about/search bar in newest generation of Praxis */
 div#menu {
   display:none;
