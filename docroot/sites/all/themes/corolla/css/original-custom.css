@@ -1294,6 +1294,10 @@ span.center {
   margin-right:20px;
 }
 
+.firstline {
+text-indent: 100px;
+}
+
 .imageWidth {
 width:300px;
 }
@@ -1396,6 +1400,7 @@ span.subTitle {
 }
 .dateline {
   text-align:left;
+  text-align:right;
 }
 .titlePart {
   font-size:1.2em;
