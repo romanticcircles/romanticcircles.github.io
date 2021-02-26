@@ -391,6 +391,11 @@ hr {
   clear: both;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Turn off display of abstract/about/search bar in newest generation of Praxis */
 div#menu {
   display:none;
