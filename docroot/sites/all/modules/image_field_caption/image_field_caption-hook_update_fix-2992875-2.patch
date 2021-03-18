@@ -1,0 +1,31 @@
+diff --git a/image_field_caption.install b/image_field_caption.install
+index a9ff172..3ad2f99 100644
+--- a/image_field_caption.install
++++ b/image_field_caption.install
+@@ -448,15 +448,17 @@ function image_field_caption_update_7205() {
+         foreach ($bundles as $bundle) {
+           // Load the instance.
+           $instance = field_info_instance($entity_type, $field_name, $bundle);
+-          if (!isset($instance['settings']['image_field_caption']['image_field_caption_wrapper'])) {
+-            $instance['settings']['image_field_caption']['image_field_caption_wrapper'] = array(
+-              'image_field_caption_default' => array(
+-                'value' => '',
+-                'format' => 'plain_text'
+-              )
+-            );
+-            field_update_instance($instance);
+-            print "Updated {$field_name}\n";
++          if (!empty($instance)) {
++            if (!isset($instance['settings']['image_field_caption']['image_field_caption_wrapper'])) {
++              $instance['settings']['image_field_caption']['image_field_caption_wrapper'] = array(
++                'image_field_caption_default' => array(
++                  'value' => '',
++                  'format' => 'plain_text'
++                )
++              );
++              field_update_instance($instance);
++              print "Updated {$field_name}\n";
++            }
+           }
+         }
+       }

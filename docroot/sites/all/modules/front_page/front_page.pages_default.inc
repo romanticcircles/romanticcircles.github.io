@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * front_page.pages_default.inc
@@ -54,6 +55,7 @@ function front_page_default_page_manager_pages() {
           0 => 'main',
         ),
         'parent' => NULL,
+        'id' => 'canvas',
       ),
       'main' => array(
         'type' => 'column',
@@ -61,11 +63,13 @@ function front_page_default_page_manager_pages() {
         'width_type' => '%',
         'children' => array(
           0 => 4,
-          1 => 'main-row',
-          2 => 2,
-          3 => 3,
+          1 => 3,
+          2 => 5,
+          3 => 'main-row',
+          4 => 2,
         ),
         'parent' => 'canvas',
+        'id' => 'main',
       ),
       'main-row' => array(
         'type' => 'row',
@@ -76,6 +80,8 @@ function front_page_default_page_manager_pages() {
         'parent' => 'main',
         'class' => 'explore-tabs',
         'hide_empty' => 0,
+        'rung' => 3,
+        'id' => 'main-row',
       ),
       'test' => array(
         'type' => 'region',
@@ -85,6 +91,7 @@ function front_page_default_page_manager_pages() {
         'parent' => 'main-row',
         'class' => '',
         'hide_empty' => 0,
+        'id' => 'test',
       ),
       2 => array(
         'type' => 'row',
@@ -95,6 +102,8 @@ function front_page_default_page_manager_pages() {
         'parent' => 'main',
         'class' => 'core-sections',
         'hide_empty' => 0,
+        'rung' => 4,
+        'id' => 2,
       ),
       'genre_slider_' => array(
         'type' => 'region',
@@ -104,6 +113,7 @@ function front_page_default_page_manager_pages() {
         'parent' => '2',
         'class' => '',
         'hide_empty' => 0,
+        'id' => 'genre_slider_',
       ),
       3 => array(
         'type' => 'row',
@@ -114,6 +124,8 @@ function front_page_default_page_manager_pages() {
         'parent' => 'main',
         'class' => 'tertiary',
         'hide_empty' => 0,
+        'rung' => 2,
+        'id' => 3,
       ),
       'tertiary' => array(
         'type' => 'region',
@@ -123,6 +135,7 @@ function front_page_default_page_manager_pages() {
         'parent' => '3',
         'class' => 'tertiary',
         'hide_empty' => 0,
+        'id' => 'tertiary',
       ),
       4 => array(
         'type' => 'row',
@@ -134,6 +147,8 @@ function front_page_default_page_manager_pages() {
         'parent' => 'main',
         'class' => 'front-top',
         'hide_empty' => 0,
+        'rung' => 1,
+        'id' => 4,
       ),
       'slider' => array(
         'type' => 'region',
@@ -143,6 +158,7 @@ function front_page_default_page_manager_pages() {
         'parent' => '4',
         'class' => '',
         'hide_empty' => 0,
+        'id' => 'slider',
       ),
       'about' => array(
         'type' => 'region',
@@ -152,6 +168,7 @@ function front_page_default_page_manager_pages() {
         'parent' => '4',
         'class' => '',
         'hide_empty' => 0,
+        'id' => 'about',
       ),
     ),
   );
