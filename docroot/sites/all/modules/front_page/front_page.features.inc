@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * front_page.features.inc
