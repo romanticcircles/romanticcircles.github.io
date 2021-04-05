@@ -1425,7 +1425,7 @@ span.subTitle {
   text-align:left;
 }
 
-.dateright {
+.dateline .dateright {
     text-align: right;
     padding: 50px
 }
