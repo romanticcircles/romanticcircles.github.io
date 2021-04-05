@@ -1317,6 +1317,10 @@ span.center {
 text-indent: 100px;
 }
 
+.nostyle {
+    list-style-type: none;
+}
+
 .imageWidth {
 width:300px;
 }
