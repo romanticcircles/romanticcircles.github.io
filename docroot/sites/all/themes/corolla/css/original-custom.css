@@ -1419,8 +1419,17 @@ span.subTitle {
 }
 .dateline {
   text-align:left;
-  text-align:right;
 }
+
+.dateright {
+    text-align: right;
+    padding: 50px
+}
+
+.dateleft {
+    text-align:left;
+}
+
 .titlePart {
   font-size:1.2em;
   font-weight:bold;
