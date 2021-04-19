@@ -1271,8 +1271,14 @@ span.center {
 .left {
   text-align: left;
 }
+span.left {
+    text-align: left;
+}
 .right {
   text-align: right;
+}
+span.right {
+    text-align: right;
 }
 .small {
   font-size: 12pt;
