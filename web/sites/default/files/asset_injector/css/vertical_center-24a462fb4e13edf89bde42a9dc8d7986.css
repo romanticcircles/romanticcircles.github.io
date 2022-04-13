@@ -1,0 +1,7 @@
+.center-vertical {
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+  height: 383px;
+  /*border: 3px solid green; */
+}

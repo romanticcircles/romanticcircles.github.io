@@ -1,0 +1,15 @@
+.book-details {
+  margin-right: 15px;
+  margin-bottom: 15px;
+  float: left;
+  max-width: 25%;
+}
+
+figure { display: table; }
+
+
+figcaption { 
+  display: table-caption; 
+  caption-side: bottom ; 
+  font-size: 12px;
+}

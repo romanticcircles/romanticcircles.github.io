@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the RC Search feature.
- */
-
-include_once 'rc_search.features.inc';
