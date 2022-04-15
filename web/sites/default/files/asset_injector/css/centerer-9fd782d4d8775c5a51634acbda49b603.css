@@ -1,0 +1,32 @@
+.centered{
+  text-align: center;
+}
+
+.centered_image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-description{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.inline-row{
+  display: inline-block;
+  padding-bottom: 30px;
+}
+
+.squish-row{
+ margin: 0px;
+ margin-left: -4px;
+}
+
+.round{
+  border-radius:10px;
+}
+
+.img-fullish{
+  width: 90%;
+}

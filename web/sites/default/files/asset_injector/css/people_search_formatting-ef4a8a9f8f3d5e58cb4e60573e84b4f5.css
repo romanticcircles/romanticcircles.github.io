@@ -1,0 +1,13 @@
+.img-responsive {
+  border-radius: 5px;
+}
+
+.inline_span{
+  display: inline-block;
+  width:fit-content;
+}
+
+.label_div{
+  display: flex;
+  align-items: center;
+}

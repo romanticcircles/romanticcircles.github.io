@@ -1,0 +1,98 @@
+.home-card-title {
+  text-align: center;
+}
+
+h3 {
+  font-size: 36pt;
+}
+
+.center-text {
+  text-align: center;
+  width: 100%;
+}
+
+.field--name-field-home- {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+}
+
+#views_slideshow_cycle_teaser_section_home_slideshow-block_1 {
+  text-align: center;
+  margin: auto;
+}
+#views_slideshow_controls_text_home_slideshow-block_1 {
+  margin: auto;
+  text-align: center;
+}
+
+
+.view-content {
+  padding: 10px;
+}
+
+.views_slideshow_cycle_main {
+  margin: auto;
+  position: relative;
+  width: 100%;
+}
+
+.views_slideshow_cycle_teaser_section {
+  margin: auto;
+}
+
+.views_slideshow_controls_text {
+  margin: auto;
+  text-align: center; 
+}
+
+
+.layout__region {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.layout--onecol {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.layout--threecol-section {
+  padding-bottom: 20px;
+}
+
+.layout--threecol-section .field-content img {
+  width: 100%;
+  object-fit: cover;
+  height: 100px;
+}
+
+.views-slideshow-controls-bottom .views-slideshow-pager-bullets {
+  padding-right: 40px;
+}
+
+.layout--onecol img {
+  border-radius: 20px;
+}
+
+.layout--threecol-section .layout__region--second img {
+  max-width: 72.53%;
+}
+
+.layout--threecol-section img {
+  border-radius: 10px;
+  max-width: 75%;
+  height: auto;
+}
+
+.layout--threecol-section {
+  background: #fffff0;
+}
+
+.slideshow-content-title {
+  font-size: 28pt;
+}
+
+#logo{
+  display: none;
+}

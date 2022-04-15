@@ -1,0 +1,30 @@
+/* page formating */
+.wrap-containers {
+  margin: auto;
+  max-width: 960px;
+}
+
+/* Heading size */
+.block-title, .view-global-display-parent-exhibit h3, .field--name-body .field--items h2 {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.view-content {
+  padding: 0;
+  width: 100%;
+}
+
+/* add class to indent text */
+.view-content a, .global-parent-ref, div .field--name-field-copywrite {
+  margin: auto;
+  width: 90%;
+}
+
+body .field--name-field-description p, body .field--name-field-accession-number p, body .field--name-field-copywrite p, .field--type-entity-reference .field--item {
+  margin-left: auto;
+  margin-right: auto;
+  width: -webkit-fill-available;
+  max-width: 90%;
+}
