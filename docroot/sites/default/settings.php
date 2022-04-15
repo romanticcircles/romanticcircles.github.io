@@ -88,7 +88,17 @@
  * ];
  * @endcode
  */
-$databases = [];
+ $databases['default']['default'] = [
+   'database' => 'romanticcdb389284',
+   'username' => 's283220',
+   'password' => 'Kv9rW5hn6Wy2iq2',
+   'host' => 'localhost',
+   'port' => '3306',
+   'driver' => 'mysql',
+   'prefix' => '',
+   'collation' => 'utf8mb4_general_ci',
+ ];
+
 
 /**
  * Customizing database settings.
