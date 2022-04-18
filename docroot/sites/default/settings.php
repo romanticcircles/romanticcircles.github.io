@@ -1,5 +1,4 @@
 <?php
-
 // @codingStandardsIgnoreFile
 
 /**
@@ -88,16 +87,6 @@
  * ];
  * @endcode
  */
- $databases['default']['default'] = [
-   'database' => 'romanticcdb389284',
-   'username' => 's283220',
-   'password' => 'Kv9rW5hn6Wy2iq2',
-   'host' => 'localhost',
-   'port' => '3306',
-   'driver' => 'mysql',
-   'prefix' => '',
-   'collation' => 'utf8mb4_general_ci',
- ];
 
 
 /**
@@ -790,5 +779,19 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 // settings.php for development on your local workstation, set $db_url
 // (Drupal 5 or 6) or $databases (Drupal 7 or 8) as described in comments above.
 if (file_exists('/var/www/site-php')) {
-  require('/var/www/site-php/romanticcircles/romanticcircles-settings.inc');
+  require '/var/www/site-php/romanticcircles/RC_new-settings.inc';
 }
+
+
+$databases['default']['default'] = [
+   'database' => 'romanticcdb389284',
+   'username' => 's283220',
+   'password' => 'Kv9rW5hn6Wy2iq2',
+   'host' => 'localhost',
+   'port' => '3306',
+   'driver' => 'mysql',
+   'prefix' => '',
+   'collation' => 'utf8mb4_general_ci',
+];
+
+#$db_set_active('[default]');
