@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Redesign Alert Page feature.
- */
-
-include_once 'redesign_alert_page.features.inc';

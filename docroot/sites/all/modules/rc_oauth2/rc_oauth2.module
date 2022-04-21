@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the RC OAuth2 feature.
- */
-
-include_once 'rc_oauth2.features.inc';
