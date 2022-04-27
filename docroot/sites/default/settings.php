@@ -771,7 +771,7 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # }
 
 if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/romanticcircles/RC_new-settings.inc';
+  require '/var/www/site-php/romanticcircles/romanticcircles-settings.inc';
 }
 
 $settings['config_sync_directory'] = 'sites/default/files/config_zsYP6UBV6_DOTsbCeUrlRqedlmjoc5gwFd3UPbp9PIS8__bfEJd1TI9PphSs-VK5_xfwdz9Egw/sync';
