@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '048a39233b8db5f10e4b38a8b016230508d713ed',
+        'reference' => '967286a5816e49762d66170edc121be869b802af',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -820,7 +820,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '048a39233b8db5f10e4b38a8b016230508d713ed',
+            'reference' => '967286a5816e49762d66170edc121be869b802af',
             'dev_requirement' => false,
         ),
         'drupal/responsive_image' => array(
@@ -1008,15 +1008,6 @@
             'replaced' => array(
                 0 => '9.3.12',
             ),
-        ),
-        'drupal/webform' => array(
-            'pretty_version' => '6.1.3',
-            'version' => '6.1.3.0',
-            'type' => 'drupal-module',
-            'install_path' => __DIR__ . '/../../web/modules/contrib/webform',
-            'aliases' => array(),
-            'reference' => '6.1.3',
-            'dev_requirement' => false,
         ),
         'drupal/workflows' => array(
             'dev_requirement' => false,
