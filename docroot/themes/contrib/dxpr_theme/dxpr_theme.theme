@@ -7,6 +7,7 @@
  * Place your custom PHP code in this file.
  */
 
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Render\Markup;
 use Drupal\block\Entity\Block;
 use Drupal\Component\Utility\Html;
@@ -19,31 +20,15 @@ use Drupal\node\NodeInterface;
  * Replaces style sheets declared in libraries with color-altered style sheets.
  */
 function dxpr_theme_library_info_alter(&$libraries, $extension) {
-  if ($extension == 'bootstrap') {
-    // Bootstrap < 3.11.
-    if (isset($libraries['theme']['css']['base'])) {
-      foreach ($libraries['theme']['css']['base'] as $key => $value) {
-        if (strpos($key, 'overrides.min.css')) {
-          unset($libraries['theme']['css']['base'][$key]);
-        }
-      }
-    }
-    elseif (isset($libraries['framework']['css']['base'])) {
-      // Bootstrap 3.11+.
-      foreach ($libraries['framework']['css']['base'] as $key => $value) {
-        if (strpos($key, 'overrides.min.css')) {
-          unset($libraries['framework']['css']['base'][$key]);
-        }
-      }
-    }
-  }
   if ($extension == 'dxpr_theme') {
-    // If bootstrap basetheme is not loading bootstrap from CDN load it locally
     // Manage dxpr_theme themesettings CSS.
     $current_theme = \Drupal::service('theme.manager')->getActiveTheme()->getName();
     $key = 'public://dxpr_theme/css/themesettings-' . $current_theme . '.css';
     if (\Drupal::service('file_system')->realpath($key)) {
-      $libraries['global-styling']['css']['theme'][$key] = ['minified' => FALSE, 'weight' => 5];
+      $libraries['global-styling']['css']['theme'][$key] = [
+        'minified' => FALSE,
+        'weight' => 5,
+      ];
     }
     // Subthemes dxpr_theme.css.
     if ($current_theme !== 'dxpr_theme') {
@@ -138,7 +123,7 @@ function dxpr_theme_preprocess_html(&$variables) {
     $variables['#attached']['drupalSettings']['dxpr_themeSettings']['headerMobileHeight'] = $header_mobile_height;
   }
 
-  if ($header_menu_direction = theme_get_setting('header_side_direction')) {
+  if ($header_menu_direction = ((theme_get_setting('header_side_direction') !== NULL)) ? theme_get_setting('header_side_direction') : 'left') {
     $variables['#attached']['drupalSettings']['dxpr_themeSettings']['headerSideDirection'] = $header_menu_direction;
   }
 
@@ -152,6 +137,13 @@ function dxpr_theme_preprocess_html(&$variables) {
  * Implements template_preprocess_page()
  */
 function dxpr_theme_preprocess_page(&$variables) {
+  $variables['navbar_attributes'] = [
+    'class' => ['navbar'],
+    'id' => ['navbar'],
+    'role' => ['banner'],
+  ];
+  $variables['navbar_attributes'] = new Attribute($variables['navbar_attributes']);
+
   $hide_regions = $local_hide = [];
   if (theme_get_setting('hidden_regions') && !empty(array_keys(array_filter(theme_get_setting('hidden_regions'))))) {
     $hide_regions = array_keys(array_filter(theme_get_setting('hidden_regions')));
@@ -197,18 +189,18 @@ function dxpr_theme_preprocess_page(&$variables) {
     // Bootstrap TAILORING.
     'dxpr_theme/bootstrap-3',
     'dxpr_theme/bootstrap-theme',
-  // TODO: include only if needed.
+  // @todo include only if needed.
     'dxpr_theme/jquery-ui',
     // DXPR THEME BASE.
     'dxpr_theme/forms',
     'dxpr_theme/layout',
     'dxpr_theme/page-title',
     'dxpr_theme/typography',
-    // DXPR THEME Components  //TODO: include only if needed.
+    // DXPR THEME Components  //@todo: include only if needed.
     'dxpr_theme/dxpr-theme-header--side',
     'dxpr_theme/pager-prevnext',
     'dxpr_theme/admin',
-    // Overrides   //TODO: include only if needed.
+    // Overrides   //@todo: include only if needed.
     'dxpr_theme/drupal-webform',
     'dxpr_theme/dxpr-theme-builder',
     // HELPERS.

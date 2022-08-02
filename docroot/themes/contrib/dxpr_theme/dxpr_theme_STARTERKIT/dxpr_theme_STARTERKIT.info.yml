@@ -57,7 +57,7 @@ libraries-override:
   dxpr_theme/dxpr-theme-builder: false
   dxpr_theme/helper-classes: false
 
-# Information added by Drupal.org packaging script on 2021-03-22
-version: '1.2.2'
+# Information added by Drupal.org packaging script on 2022-07-27
+version: '1.2.5'
 project: 'dxpr_theme'
-datestamp: 1616416990
+datestamp: 1658907089

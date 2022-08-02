@@ -178,6 +178,22 @@
       float: right;
       position:static;
     }
+    .dropdown {
+      span {
+        pointer-events: none;
+        padding: 0 15px 0 15px;
+      }
+    }
+    .dropdown-menu {
+      .dropdown {
+        > span {
+          font-weight: normal;
+          padding: 10px 20px;
+          display: block;
+          line-height: 1.42857143;
+        }
+      }
+    }
     .nav {
       float: right;
       > li {
@@ -190,8 +206,7 @@
         display: table-cell;
         vertical-align: middle;
         height: 100px;
-        padding-top: 0;
-        padding-bottom: 0;
+        padding: 0 15px 0 15px;
       }
       .dropdown-menu li {
         width: 100%;
