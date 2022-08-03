@@ -21,7 +21,7 @@
         "drupal/core-project-message": "^9.3",
         "drupal/core-recommended": "^9.3",
         "drupal/css_editor": "^2.0",
-        "drupal/ctools": "^3.7",
+        "drupal/ctools": "^4.0",
         "drupal/dxpr_theme": "^1.2.2",
         "drupal/feeds": "^3.0@beta",
         "drupal/feeds_ex": "^1.0@beta",
