@@ -52,9 +52,12 @@ class SmartDateDrushCommands extends DrushCommands {
     }
     $this->output()->writeln('Starting date migration.');
 
+    $definition = \Drupal::service('entity_type.manager')->getDefinition($options['entity']);
+    $bundle_key = $definition->getKey('bundle');
+
     // Get all events.
     $events = \Drupal::entityTypeManager()->getStorage($entity)
-      ->loadByProperties(['type' => $bundle]);
+      ->loadByProperties([$bundle_key => $bundle]);
 
     $utc = new \DateTimeZone('UTC');
 
@@ -77,7 +80,7 @@ class SmartDateDrushCommands extends DrushCommands {
       foreach ($dates as $delta => $date) {
         $start_date = $date['value'];
         // Only store the timezone for all day events.
-        $timezone = '';
+        $timezone = NULL;
         // If a field was provided to check for all day, check it.
         if ($all_day_set) {
           $all_day = $all_day_set[$delta]['value'];
@@ -164,7 +167,7 @@ class SmartDateDrushCommands extends DrushCommands {
             'bundle' => $bundle,
             'deleted' => 0,
             'entity_id' => $event->id(),
-            'revision_id' => $event->getRevisionId(),
+            'revision_id' => $event->getRevisionId() ?? $event->id(),
             'langcode' => $langcode,
             'delta' => $delta,
             $dest . '_value' => $start_date,
