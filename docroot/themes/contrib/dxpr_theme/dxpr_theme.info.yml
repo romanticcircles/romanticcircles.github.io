@@ -85,7 +85,7 @@ dxpr_builder_classes:
   dxpr-theme-util-vcenter: 'Vertical centering'
   dxpr-theme-form-inline: 'Inline Form'
 
-# Information added by Drupal.org packaging script on 2021-03-22
-version: '1.2.2'
+# Information added by Drupal.org packaging script on 2022-08-26
+version: '1.2.6'
 project: 'dxpr_theme'
-datestamp: 1616416990
+datestamp: 1661502238
