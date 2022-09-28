@@ -25,6 +25,7 @@
         "drupal/core-composer-scaffold": "^9.3",
         "drupal/core-project-message": "^9.3",
         "drupal/core-recommended": "^9.3",
+        "drupal/css_editor": "^2.0",
         "drupal/ctools": "^3.11",
         "drupal/dxpr_theme": "^1.2.2",
         "drupal/feeds": "^3.0@beta",
