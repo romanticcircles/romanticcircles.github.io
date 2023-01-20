@@ -21,16 +21,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [ '7.1', '7.2', '7.3', '7.4', '8.0' ]
-    continue-on-error: ${{ matrix.php == '8.0' }}
+        php: [ '8.0', '8.1' ]
     name: PHP ${{ matrix.php }} Test
 
     steps:
       - name: Git checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.4.0
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@2.16.0
         with:
           php-version: ${{ matrix.php }}
           extensions: json
@@ -46,12 +45,6 @@ jobs:
 
       - name: Run phpcs
         run: composer cs-check -- -v
-
-      - name: Setup PCOV
-        if: matrix.php == '7.1'
-        run: |
-          composer require pcov/clobber
-          vendor/bin/pcov clobber
 
       - name: Execute tests
         run: composer test -- -v --coverage-clover=coverage.xml

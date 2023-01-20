@@ -47,6 +47,8 @@ return array(
     'SelfUpdate\\' => array($vendorDir . '/consolidation/self-update/src'),
     'Robo\\' => array($vendorDir . '/consolidation/robo/src'),
     'Recurr\\' => array($vendorDir . '/simshaun/recurr/src/Recurr'),
+    'QueryPath\\' => array($vendorDir . '/arthurkushman/query-path/src'),
+    'QueryPathTests\\' => array($vendorDir . '/arthurkushman/query-path/tests/QueryPath'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),

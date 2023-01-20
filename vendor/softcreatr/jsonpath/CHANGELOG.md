@@ -1,5 +1,16 @@
 # Changelog
 
+### 0.8.1
+- Removed strict_types
+- Applied some PSR-12 related changes
+- Small code optimizations
+
+### 0.8.0
+🔻 Breaking changes ahead:
+
+ - Dropped support for PHP < 8.0
+ - Removed deprecated method `JSONPath->data()`
+
 ### 0.7.5
  - Added support for $.length
  - Added trim to explode to support both 1,2,3 and 1, 2, 3 inputs

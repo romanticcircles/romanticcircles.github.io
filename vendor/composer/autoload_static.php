@@ -41,9 +41,9 @@ class ComposerStaticInitfa2d4973c3cc15b150d95458d374bcb2
         '6db5533840cb1ae1bc049452845aa88e' => __DIR__ . '/../..' . '/docroot/core/includes/guzzle_php81_shim.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '73321c0e02b4d45ae9c8366042d80de4' => __DIR__ . '/..' . '/arthurkushman/query-path/src/qp_functions.php',
         'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
-        'e9b046393eb3376a21bcc1a30bd2fe64' => __DIR__ . '/..' . '/querypath/querypath/src/qp_functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -102,6 +102,11 @@ class ComposerStaticInitfa2d4973c3cc15b150d95458d374bcb2
         array (
             'Robo\\' => 5,
             'Recurr\\' => 7,
+        ),
+        'Q' => 
+        array (
+            'QueryPath\\' => 10,
+            'QueryPathTests\\' => 15,
         ),
         'P' => 
         array (
@@ -343,6 +348,14 @@ class ComposerStaticInitfa2d4973c3cc15b150d95458d374bcb2
         array (
             0 => __DIR__ . '/..' . '/simshaun/recurr/src/Recurr',
         ),
+        'QueryPath\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/arthurkushman/query-path/src',
+        ),
+        'QueryPathTests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/arthurkushman/query-path/tests/QueryPath',
+        ),
         'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src',
@@ -531,13 +544,6 @@ class ComposerStaticInitfa2d4973c3cc15b150d95458d374bcb2
             'Stack' => 
             array (
                 0 => __DIR__ . '/..' . '/stack/builder/src',
-            ),
-        ),
-        'Q' => 
-        array (
-            'QueryPath' => 
-            array (
-                0 => __DIR__ . '/..' . '/querypath/querypath/src',
             ),
         ),
         'C' => 
