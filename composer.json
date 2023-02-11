@@ -35,6 +35,7 @@
         "drupal/feeds_tamper": "^2.0@beta",
         "drupal/google_analytics": "^4.0",
         "drupal/layout_builder_styles": "^2.0",
+        "drupal/leaflet": "^10.0",
         "drupal/libraries": "^4.0",
         "drupal/metatag": "^1.22",
         "drupal/ng_lightbox": "^2.0",

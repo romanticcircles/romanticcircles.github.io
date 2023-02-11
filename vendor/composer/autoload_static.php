@@ -600,6 +600,7 @@ class ComposerStaticInitfa2d4973c3cc15b150d95458d374bcb2
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        'geoPHP' => __DIR__ . '/..' . '/itamair/geophp/geoPHP.inc',
     );
 
     public static function getInitializer(ClassLoader $loader)
