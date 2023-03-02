@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '3db55c6db57aa839b7c3dfc940ff8c25782f6d31',
+        'reference' => '7e450c852b96254736df43d865a6ea4fb789b630',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -529,6 +529,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/leaflet_layers' => array(
+            'pretty_version' => '1.1.4',
+            'version' => '1.1.4.0',
+            'reference' => '1.1.4',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../docroot/modules/contrib/leaflet_layers',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/libraries' => array(
             'pretty_version' => '4.0.0',
             'version' => '4.0.0.0',
@@ -568,7 +577,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '3db55c6db57aa839b7c3dfc940ff8c25782f6d31',
+            'reference' => '7e450c852b96254736df43d865a6ea4fb789b630',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
