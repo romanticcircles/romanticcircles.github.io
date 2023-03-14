@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'ee9de53dd61bda680b4c7626b0bdf04b40067a34',
+        'reference' => '340b777b0884dcd5ecd11570ecc1964d222e9653',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -430,15 +430,6 @@
                 0 => '9.5.4',
             ),
         ),
-        'drupal/css_editor' => array(
-            'pretty_version' => '2.0.1',
-            'version' => '2.0.1.0',
-            'reference' => '2.0.1',
-            'type' => 'drupal-module',
-            'install_path' => __DIR__ . '/../../docroot/modules/contrib/css_editor',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'drupal/ctools' => array(
             'pretty_version' => '3.13.0',
             'version' => '3.13.0.0',
@@ -577,7 +568,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '552d7bc1ebee27115ee761a7d98a1d957305d1c0',
+            'reference' => '340b777b0884dcd5ecd11570ecc1964d222e9653',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
