@@ -41,7 +41,7 @@
         "drupal/metatag": "^1.22",
         "drupal/ng_lightbox": "^2.0",
         "drupal/pathauto": "^1.11",
-        "drupal/smart_date": "^3.5",
+        "drupal/smart_date": "^3.7",
         "drupal/stage_file_proxy": "^2.0",
         "drupal/tamper": "^1.0@alpha",
         "drupal/token": "^1.11",
