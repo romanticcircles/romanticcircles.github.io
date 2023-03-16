@@ -1,0 +1,8 @@
+toc:
+  - title: The Last Man (ed. Steven E. Jones)
+    docs:
+      - page: chapter1
+
+  - title: Another Edition (ed. me)
+    docs:
+      - page: test
