@@ -8,7 +8,6 @@
 
 namespace Flow\JSONPath\Filters;
 
-use ArrayAccess;
 use Flow\JSONPath\AccessHelper;
 use Flow\JSONPath\JSONPathException;
 
@@ -29,9 +28,9 @@ class RecursiveFilter extends AbstractFilter
     /**
      * @throws JSONPathException
      */
-    private function recurse(array &$result, array|ArrayAccess $data): void
+    private function recurse(array &$result, array|object $data): void
     {
-        $result[] = $data;
+        $result[] = (array)$data;
 
         if (AccessHelper::isCollectionType($data)) {
             foreach (AccessHelper::arrayValues($data) as $value) {
