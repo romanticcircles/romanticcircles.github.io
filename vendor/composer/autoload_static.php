@@ -51,11 +51,6 @@ class ComposerStaticInitfa2d4973c3cc15b150d95458d374bcb2
         array (
             'cweagans\\Composer\\' => 18,
         ),
-        'W' => 
-        array (
-            'Webmozart\\PathUtil\\' => 19,
-            'Webmozart\\Assert\\' => 17,
-        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -187,14 +182,6 @@ class ComposerStaticInitfa2d4973c3cc15b150d95458d374bcb2
         'cweagans\\Composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/cweagans/composer-patches/src',
-        ),
-        'Webmozart\\PathUtil\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webmozart/path-util/src',
-        ),
-        'Webmozart\\Assert\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
         'Twig\\' => 
         array (
