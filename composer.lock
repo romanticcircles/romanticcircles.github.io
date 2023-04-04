@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d2f9dc87566fcb6c5ff2fd26f67c330",
+    "content-hash": "a89e87d6cd60d96dcf10a9ee4d5f24b7",
     "packages": [
         {
             "name": "arthurkushman/query-path",
@@ -1461,6 +1461,50 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/asset_injector",
                 "issues": "https://www.drupal.org/project/issues/asset_injector"
+            }
+        },
+        {
+            "name": "drupal/auto_alter",
+            "version": "2.0.1-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/auto_alter.git",
+                "reference": "2.0.1-alpha2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/auto_alter-2.0.1-alpha2.zip",
+                "reference": "2.0.1-alpha2",
+                "shasum": "cf4363aeb5728845f0405dabe75ff07dbb2ad96c"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.1-alpha2",
+                    "datestamp": "1666262006",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "slowflyer",
+                    "homepage": "https://www.drupal.org/user/850168"
+                }
+            ],
+            "description": "Automatically generate alt text for images with Microsoft's Cognitive Services Computer Vision API.",
+            "homepage": "https://www.drupal.org/project/auto_alter",
+            "support": {
+                "source": "https://git.drupalcode.org/project/auto_alter"
             }
         },
         {
@@ -8494,6 +8538,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "drupal/auto_alter": 15,
         "drupal/feeds": 10,
         "drupal/feeds_ex": 10,
         "drupal/feeds_tamper": 10,
