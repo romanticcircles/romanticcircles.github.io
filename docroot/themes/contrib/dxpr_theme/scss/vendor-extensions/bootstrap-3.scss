@@ -76,49 +76,13 @@ div.lead {
   margin-bottom: 0;
 }
 
-// 3d effect
-// Fake submit is media browser button
-.btn,
-.fake-submit {
-  border: none;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.12);
-  border-left: 3px solid rgba(0,0,0,0.08);
-  border-radius: 4px;
-  padding: 8px 18px;
-  white-space: normal;
-  word-wrap: break-word;
-  &:hover,
-  &:focus {
-    border-bottom-color: rgba(0,0,0,0.4);
-    border-left-color: rgba(0,0,0,0.3);
-  }
-}
-
-.btn-lg {
-  padding: 16px 22px;
-}
-
-.btn-sm {
-  padding: 2px 8px;
-  border-bottom-width: 2px;
-  border-left-width: 2px;
-}
-
-.btn-xs {
-  padding: 1px 5px;
-}
-
-$btn-primary-color: $silver;
-$btn-primary-hover-color: $accent1;
-$btn-primary-bg: $primary;
-$btn-primary-border: $primary;
-
 .btn-default,
 .btn-group > .btn-default,
 .btn-primary,
 .btn-group > .btn-primary,
 .html .fake-submit {
   background: $primary;
+  border-color: $primary;
   color: white;
   a {
     color: white;
@@ -138,6 +102,7 @@ $btn-primary-border: $primary;
 a.bg-primary:hover,
 a.bg-primary:focus {
   background-color: $accent1;
+  border-color: $accent1;
   color: white;
   a {
     color: white;
@@ -148,12 +113,21 @@ a.text-primary:focus {
   color: $accent1;
 }
 
-.btn-link {
-  background: transparent;
-  color: $primary;
-  border: none;
-  box-shadow: none;
-  text-decoration: underline;
+
+.text-white {
+  h1, h2, h3, h4, h5, h6, th {
+    color: #fff !important;
+  }
+}
+.text-primary {
+  h1, h2, h3, h4, h5, h6, th {
+    color: $accent1 !important;
+  }
+}
+.text-secondary {
+  h1, h2, h3, h4, h5, h6, th {
+    color: $accent2 !important;
+  }
 }
 
 .wrap-containers .nav {
@@ -184,17 +158,14 @@ a.text-primary:focus {
   padding-right: 4px;
 }
 
-.well, .jumbotron {
-  background-color: $well;
-  color: $well-text;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+.card, .jumbotron {
+  background-color: $card;
+  color: $card-text;
   a {
-    color: $well-text;
+    color: $card-text;
   }
   h1, h2, h3, h4, h5, h6 {
-    color: $well-text;
+    color: $card-text;
   }
   .nav > li > a {
     .glyphicon {
@@ -252,7 +223,7 @@ blockquote footer, blockquote small, blockquote .small {
 // Tabs
 // -------------------------
 
-// Style Tabs as well as override jQuery ui tabs styling
+// Style Tabs as card as override jQuery ui tabs styling
 .html .nav-tabs {
   border: none;
   border-radius: 0;
@@ -273,13 +244,7 @@ blockquote footer, blockquote small, blockquote .small {
       &:hover {
         color: $gray-lighter;
       }
-    }
-    &.active,
-    &.ui-tabs-active {
-      position: relative;
-      // added !important below because bootstrap? is adding inline JS bottom:0
-      bottom: -1px !important; // more reliable than margin-bottom. e.g. in sooperthemes checkout form
-      a {
+      &.active {
         color: $primary;
         cursor: pointer;
         border: 1px solid $gray-lighter;
@@ -295,10 +260,7 @@ blockquote footer, blockquote small, blockquote .small {
     }
   }
 }
-.dxpr-theme-boxed-container .nav-tabs >li.active a {
-  border-bottom-color: white;
-}
-.az-tabs .nav-tabs > li.active > a[role="tab"] {
+.az-tabs .nav-tabs > li > a.active[role="tab"] {
   background-color: #ffffff;
 }
 
@@ -329,6 +291,7 @@ blockquote footer, blockquote small, blockquote .small {
         margin: 0;
         border: none;
         pointer-events: auto;
+        line-height: 1.42857143;
         &:hover,
         &:focus {
           text-decoration: underline;
@@ -355,7 +318,7 @@ blockquote footer, blockquote small, blockquote .small {
   position: absolute;
   margin-top: 2px;
   left: 50%;
-  z-index: 4700;
+  z-index: 470;
   .tabs--primary {
     position: relative;
     left: -50%;
@@ -384,19 +347,6 @@ blockquote footer, blockquote small, blockquote .small {
   padding: 20px;
 }
 
-.html .tabs-left > .nav-tabs .active>a {
-  border-right-color: $body-background;
-}
-.dxpr-theme-boxed-container .tabs-left > .nav-tabs .active>a {
-  border-right-color: white;
-}
-.html .tabs-right > .nav-tabs .active>a {
-  border-left-color: $body-background;
-}
-.dxpr-theme-boxed-container .tabs-right > .nav-tabs .active>a {
-  border-left-color: white;
-}
-
 // Progress Bar
 // -------------------------
 
@@ -412,4 +362,11 @@ blockquote footer, blockquote small, blockquote .small {
   background-color: $primary;
   line-height: 4px;
   box-shadow: none;
+}
+
+// Utilities
+// -------------------------
+
+.bg-light {
+  background-color: $gray-light !important;
 }

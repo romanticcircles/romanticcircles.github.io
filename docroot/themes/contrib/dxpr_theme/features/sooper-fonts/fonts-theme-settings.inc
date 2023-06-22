@@ -131,6 +131,7 @@ function dxpr_theme_local_webfonts() {
     if (!is_dir($theme_path . '/fonts')) {
       continue;
     }
+
     foreach (\Drupal::service('file_system')->scanDirectory($theme_path . '/fonts', '/.css/i') as $file) {
       $font_path = str_replace($theme_path, '', $file->uri);
       $css = file_get_contents($file->uri);
@@ -198,6 +199,7 @@ function dxpr_theme_google_webfonts() {
       if ($font == 'regular') {
         $font = '';
       }
+
       $font_name = $fam_name . ' ' . $font;
       $font_name_safe = str_replace(' ', '+', $fam_name) . ':' . $font;
       $font_name_key = '0' . $font_name_safe;

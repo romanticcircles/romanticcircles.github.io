@@ -7,7 +7,11 @@
   &.btn-link:hover,
   &.btn-link:focus {
     text-decoration: none;
+    background-color: initial;
   }
+}
+#search-block-form {
+  display: table;
 }
 .full-screen-search-form {
   display: table;

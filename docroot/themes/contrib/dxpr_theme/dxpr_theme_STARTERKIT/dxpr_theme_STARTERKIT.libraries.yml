@@ -73,20 +73,10 @@ dxpr-theme-secondary-header:
     theme:
       css/components/dxpr-theme-secondary-header.css: { minified: true }
 
-pager-prevnext:
-  css:
-    theme:
-      css/components/pager-prevnext.css: { minified: true }
-
 dxpr-theme-admin:
   css:
     theme:
       css/dxpr-theme-admin.css: { minified: true }
-
-cubeportfolio:
-  css:
-    theme:
-      css/vendor-extensions/cubeportfolio.css: { minified: true }
 
 drupal-breadcrumbs:
   css:
@@ -108,36 +98,6 @@ drupal-webform:
     theme:
       css/vendor-extensions/drupal-webform.css: { minified: true }
 
-cms-bootstrap-core:
-  css:
-    theme:
-      css/vendor-extensions/cms-bootstrap-core.css: { minified: true }
-
-cms-bootstrap-blog:
-  css:
-    theme:
-      css/vendor-extensions/ms-bootstrap-blog.css: { minified: true }
-
-cms-bootstrap-events:
-  css:
-    theme:
-      css/vendor-extensions/cms-bootstrap-events.css: { minified: true }
-
-cms-bootstrap-news:
-  css:
-    theme:
-      css/vendor-extensions/cms-bootstrap-news.css: { minified: true }
-
-cms-bootstrap-portfolio:
-  css:
-    theme:
-      css/vendor-extensions/cms-bootstrap-portfolio.css: { minified: true }
-
-sooperthemes-premium-elements:
-  css:
-    theme:
-      css/vendor-extensions/sooperthemes-premium-elements.css: { minified: true }
-
 dxpr-theme-builder:
   css:
     theme:
@@ -147,3 +107,8 @@ helper-classes:
   css:
     theme:
       css/helpers/helper-classes.css: { minified: true }
+
+drupal-search:
+  css:
+    theme:
+      css/vendor-extensions/drupal-search.css: { minified: true }

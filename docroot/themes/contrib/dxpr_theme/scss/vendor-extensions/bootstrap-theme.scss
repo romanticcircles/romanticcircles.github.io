@@ -35,15 +35,17 @@ html.js {
   }
 
   .form-item .input-group-addon {
-    background-color: $well;
     .glyphicon {
-      color: $well-text;
+      color: $gray-light;
       opacity: .5;
       transition: 150ms color, 150ms opacity;
       &.glyphicon-spin {
         color: $primary;
         opacity: 1;
       }
+    }
+    .input-group-addon {
+      background-color: rgb(255, 255, 255);
     }
   }
 
@@ -88,33 +90,40 @@ html.js {
 }
 
 /**
+ * Accordion item styling.
+ */
+/**
  * Panel styling.
  */
-.panel {
+.accordion-item {
   background-color: $header-color;
   color: $header-text-color;
-  &.panel-default > .panel-heading {
-    background-color: $well;
-    color: $well-text;
+  .accordion-button {
+    background: $header-color;
+    color: $header-text-color;
+    &:not(.collapsed) {
+      background: $card;
+      color: $primary;
+    }
   }
-  .panel-body { 
+  .accordion-body { 
     background-color: transparent;
     color: $header-text-color;
     h1,h2,h3,h4,h5,h6,label,.field--label {
       color: $header-text-color;
     }
   }
-  .panel-title {
-    display: block;
-    margin: -10px -15px;
-    padding: 10px 15px;
-    &, &:hover, &:focus, &:hover:focus {
-      color: inherit;
-    }
-    &:focus, &:hover {
-      text-decoration: none;
-    }
-  }
+  // .panel-title {
+  //   display: block;
+  //   margin: -10px -15px;
+  //   padding: 10px 15px;
+  //   &, &:hover, &:focus, &:hover:focus {
+  //     color: inherit;
+  //   }
+  //   &:focus, &:hover {
+  //     text-decoration: none;
+  //   }
+  // }
 }
 
 /**
@@ -153,11 +162,12 @@ html.js {
   }
 }
 
-.table-striped>tbody>tr:nth-of-type(odd) {
-  background: $well;
-  color: $well-text;
+.table.table-striped>tbody>tr:nth-of-type(odd) > * {
+  background: $card;
+  --bs-table-accent-bg: #eeeeee; // variable does not work after this custom property
+  color: $card-text;
 }
-.table-hover {
+.table.table-hover {
   > tbody > tr:hover {
     background-color: $page-title-color;
   }

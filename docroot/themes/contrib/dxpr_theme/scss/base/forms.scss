@@ -44,13 +44,14 @@
     appearance: none;
     background-size: 18px;
   }
+  #edit-multi-select {
+    height: unset;
+  }
   // This hides native dropdown button arrow in IE
   select::-ms-expand {
     display: none;
   }
-  .form-control {
-    color: $text;
-  }
+
   .form-control.form-file {
     padding: 8px;
   }
@@ -84,4 +85,14 @@
 
 .cke_editable_themed {
   padding: 5px;
+}
+
+.js {
+  input {
+    &.ui-autocomplete-input {
+      &.ui-autocomplete-loading {
+        background-repeat: no-repeat;
+      }
+    }
+  }
 }

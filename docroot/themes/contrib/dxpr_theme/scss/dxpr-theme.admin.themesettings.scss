@@ -29,7 +29,7 @@ $color_celeste: #ccc;
 $font_0: 'Helvetica Neue';
 $font_1: 'Helvetica';
 $font_2: 'Arial';
-$font_3: 'sans-serif';
+$font_3: 'sans-serif'; 
 
 
 
@@ -57,15 +57,14 @@ $font_3: 'sans-serif';
   .tabs-left > .tab-content, .tabs-right > .tab-content {
 
   }
+  details.form-wrapper,
   div.form-wrapper {
-    .panel-body {
-      background: transparent;
-      color: #354051;
-    }
     background: transparent;
     clear: both;
     border-left: 4px solid #dce2e5;
     border-radius: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
     .panel-heading {
       background: transparent;
       border: none;
@@ -85,6 +84,37 @@ $font_3: 'sans-serif';
         }
       }
     }
+    .card, .card-body {
+      color: #354051;
+    }
+    .card-header {
+      border: none;
+      background: transparent;
+      font-size: inherit;
+    }
+    summary {
+      padding: 10px 15px;
+      --bs-bg-opacity: unset;
+      border: unset;
+      .details-title {
+        outline: none;
+        text-decoration: none;
+        background: none;
+        color: inherit;
+      }
+      &::before {
+        display: none;
+      }
+      &::marker {
+        content: '';
+      }
+    }
+    .description {
+      color: #737373;
+      font-size: 12px;
+      padding: 12px 0 18px 0;
+      margin: 0;
+    }
   }
   label,
   legend {
@@ -96,6 +126,7 @@ $font_3: 'sans-serif';
     border: none;
     outline: none;
     font-size: inherit;
+    background-color: unset;
   }
   // .form-wrapper > legend {
   //   width: auto;
@@ -104,7 +135,7 @@ $font_3: 'sans-serif';
   .form-item {
     clear: both;
     min-height: 3em;
-    .form-type-radio {
+    .js-form-type-radio {
       min-height: 20px;
     }
   }
@@ -124,6 +155,18 @@ $font_3: 'sans-serif';
     margin-left: 0;
     position: static;
   }
+  // Slider input wrapper
+  .slider-input-wrapper {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    .slider {
+      flex: 0 1 80%;
+    }
+    input {
+      flex: 0 1 20%;
+    }
+  }
   .form-text,
   .fieldset-wrapper,
   .slider,
@@ -131,6 +174,9 @@ $font_3: 'sans-serif';
     float: left;
     max-width: 100%;
     width: 400px;
+  }
+  .fieldset-wrapper {
+    padding: 0;
   }
   .form-text,
   .form-textarea {
@@ -154,6 +200,10 @@ $font_3: 'sans-serif';
     font-size: 24px;
     position: relative;
     bottom: 20px;
+    margin-left: 15px;
+    margin-top: 8px;
+    padding: 0;
+    height: 40px;
   }
   .slider-track {
     height: 6px;
@@ -185,6 +235,7 @@ $font_3: 'sans-serif';
     background: $color_curious_blue;
     color: white;
     padding: 20px;
+    font-size: 20px;
     img {
       width: 100px;
     }
@@ -194,8 +245,10 @@ $font_3: 'sans-serif';
     position: relative;
     background: #ecf2f6;
     color: #354051;
-    width: 100%;
-    .vertical-tabs-list {
+    width: 100%;    
+    margin: 0;
+
+    .vertical-tabs__menu {
       background: #354051;
       color: #a0acbe;
       float: none;
@@ -207,25 +260,49 @@ $font_3: 'sans-serif';
       top: 0;
       left: 0;
       height: 100%;
-      padding-top: 30px;
-      a {
-        color: #a0acbe;
+      padding-top: 30px;      
+      margin: 0;
+      border: none;
+      .vertical-tabs__menu-item {
         border: none;
         background: transparent;
-        &:hover,
-        &:active {
+        a {
           color: #a0acbe;
           border: none;
           background: transparent;
+          padding: 10px 15px;
+          margin-bottom: 3px;
+          &:hover,
+          &:active {
+            color: #a0acbe;
+            border: none;
+            background: transparent;
+            outline: none;
+            text-decoration: none;
+          }
+          &:focus {
+            text-decoration: none;
+          }
+          &:hover .vertical-tabs__menu-item-title,
+          &:focus .vertical-tabs__menu-item-title,
+          &:active .vertical-tabs__menu-item-title {
+            text-decoration: none;
+          }
+          .vertical-tabs__menu-item-title {
+              font-weight: normal;
+          }
         }
       }
-      .selected {
+      .is-selected {
         background: $color_curious_blue;
         color: white;
         a {
           color: white;
           background: transparent;
           border: none;
+          .vertical-tabs__menu-item-title {
+            color: #fff;
+          }
         }
         .summary {
           color: white;
@@ -239,16 +316,29 @@ $font_3: 'sans-serif';
     .vertical-tabs-panes {
       margin-left: 0;
     }
+    .vertical-tabs__panes {
+      padding: 10px 15px;
+      color: #354051;
+      .details-wrapper {
+        padding: 15px;
+      }
+    }
+
   }
+
   .form-select {
     color: $color_curious_blue;
+    font-size: 14px;
+    width: 250px;
     option {
       background: white;
       color: #354051;
     }
   }
+
   .form-composite {
-    padding: 0 0 20px 0;
+    display: flex;
+    flex-direction: inherit;
     .form-checkboxes input {
       display: block;
     }
@@ -258,35 +348,40 @@ $font_3: 'sans-serif';
     label {
       width: auto;
     }
-    // label.option,
-    input ~ label.option,
-    input ~ span {
-      font-weight: 300;
-      padding: 5px 0;
-      margin-top: -1px;
-      line-height: 24px;
-      width: auto;
-      &:before {
-        content: '__';
-        color: $color_curious_blue;
-        opacity: 0.3;
-        font-size: 18px;
-        display: inline-block;
-        width: 25px;
+    // .form-radios {
+      // label.option,
+      input ~ label.option,
+      input ~ span {
+        font-weight: 300;
+        margin: 0;
+        line-height: 24px;
+        width: auto;
+        cursor: pointer;
+
+        &:before {
+          content: '__';
+          color: $color_curious_blue;
+          opacity: 0.3;
+          font-size: 18px;
+          display: inline-block;
+          width: 25px;
+          font-weight: normal;
+        }
+      }
+
+      input:checked ~ label.option,
+      input:checked ~ span {
         font-weight: normal;
+        font-style: italic;
+
+        &:before {
+          content: '✓';
+          opacity: 1;
+          color: $color_curious_blue;
+          font-size: 24px;
+        }
       }
-    }
-    input:checked ~ label.option,
-    input:checked ~ span {
-      font-weight: normal;
-      font-style: italic;
-      &:before {
-        content: '✓';
-        opacity: 1;
-        color: $color_curious_blue;
-        font-size: 24px;
-      }
-    }
+    // }
   }
   .form-type-checkboxes {
     > label {
@@ -298,7 +393,6 @@ $font_3: 'sans-serif';
   }
   .color-form {
     max-width: 740px;
-    position: relative;
     .form-item {
       height: auto;
     }
@@ -315,6 +409,7 @@ $font_3: 'sans-serif';
     }
     .form-item-scheme {
       height: 3.2em;
+      margin-right: 160px;
     }
     h2 {
       visibility: hidden;
@@ -325,11 +420,14 @@ $font_3: 'sans-serif';
   }
   .form-item {
     padding-left: 0;
+    background-color: unset;
+  }
+  .form-item.form-type-vertical-tabs {
+    margin-top: 0;
   }
   .color-placeholder {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 3px;
   }
   .color-palette {
     margin-top: 2em;
@@ -414,12 +512,6 @@ $font_3: 'sans-serif';
     }
     .form-item-scale-factor {
       width: 66%;
-      .slider {
-        width: 497px;
-      }
-      .form-text {
-        width: 80px;
-      }
     }
     .form-item-divider-color,
     .form-item-divider-color-custom {
@@ -467,7 +559,7 @@ $font_3: 'sans-serif';
     // overflow: auto;
     white-space: pre;
   }
-  .checkbox {
+  .js-form-type-checkbox {
   position: relative;
   input[type=checkbox] {
       position: absolute;
@@ -478,6 +570,7 @@ $font_3: 'sans-serif';
       width: 54px;
       height: 27px;
       cursor: pointer;
+      appearance: auto;
       // Can't add the switcher div with #suffix and #prefix for some reason
       // So just using checkboxes again
       // opacity: 0;
@@ -489,6 +582,9 @@ $font_3: 'sans-serif';
           transform: translateX(-100%);
         }
       }
+    &:focus {
+      box-shadow: unset;
+    }
     }
     .switcher {
       cursor: pointer;

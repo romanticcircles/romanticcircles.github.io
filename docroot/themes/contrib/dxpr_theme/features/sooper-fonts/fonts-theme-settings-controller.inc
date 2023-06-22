@@ -93,6 +93,7 @@ function _dxpr_theme_add_google_fonts(array $google_fonts, array &$variables) {
       ];
     }
   }
+
 }
 
 /**

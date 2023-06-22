@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -euxo pipefail
-
+  
 host="$1"
 shift
 cmd="$@"

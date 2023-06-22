@@ -10,7 +10,7 @@
   // this should not be active in mobile mode due to owl carousel layout bugs
   .navbar-container > .row > .col-sm-12 {
     position: relative;
-    z-index: 4050;
+    z-index: 405;
   }
 }
 .navbar.container, .navbar.container-fluid {
@@ -19,7 +19,7 @@
   // DXPR Theme Header Defaults across all layouts
 .dxpr-theme-header {
   display: block;
-  z-index: 4050;
+  z-index: 405;
   border: none;
   border-radius: 0;
   min-height: 0;
@@ -106,6 +106,10 @@
     margin-top: 0;
     border: none;
     position: absolute;
+    left: 0;
+    top: 100%;
+    padding: 5px 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     ul { padding-left: 0; }
     li {
       list-style: none;

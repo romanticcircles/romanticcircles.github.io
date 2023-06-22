@@ -6,7 +6,7 @@
 version: "3.7"
 
 services:
-
+  
   ### Override PHP service for production
   qa-demo:
     volumes:

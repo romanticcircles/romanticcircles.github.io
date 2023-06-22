@@ -9,4 +9,5 @@
        url('league_gothic-webfont.svg#LeagueGothicRegular') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }

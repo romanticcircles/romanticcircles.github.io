@@ -23,19 +23,46 @@ function dxpr_theme_form_system_theme_settings_alter(&$form, &$form_state, $form
   if (!isset($form_id)) {
     return;
   };
+  if (theme_get_setting('boxed_layout') === 1) {
+    if (theme_get_setting('box_max_width') < '1200') {
+      \Drupal::messenger()->addStatus('You set a Boxed Container Max Width of less than 1200px. To preserve the layout of the settings form we are overriding this setting specifically for this page. Your setting is applied on other pages.');
+      ?>
+      <style>
+        .dxpr-theme-boxed-container {
+          max-width: 1300px !important;
+        }
+      </style>
+      <?php
+    }
+  }
+  elseif (theme_get_setting('layout_max_width') < '1200') {
+    \Drupal::messenger()->addStatus('You set a Content Max Width of less than 1200px. To preserve the layout of the settings form we are overriding this setting specifically for this page. Your setting is applied on other pages.');
+    ?>
+    <style>
+      .container {
+        max-width: 1300px !important;
+      }
+    </style>
+    <?php
+  }
   $build_info = $form_state->getBuildInfo();
   $subject_theme = $build_info['args'][0];
   $dxpr_theme_theme_path = \Drupal::service('extension.list.theme')->getPath('dxpr_theme') . '/';
   $themes = \Drupal::service('theme_handler')->listInfo();
 
-  $img = '<img style="width:35px;margin-right:5px;" src="' . $base_path . $dxpr_theme_theme_path . 'dxpr-logo-white.svg" />';
-  $version = $themes[$subject_theme]->info['version'] ?? '';
+  $img = '<img width="100" height="37" src="' . $base_path . $dxpr_theme_theme_path . 'dxpr-logo-white.svg" />';
+  if (!empty($themes[$subject_theme]->info['version'])) {
+    $version = $themes[$subject_theme]->info['version'];
+  }
+  else {
+    $version = 'dev';
+  }
   $form['dxpr_theme_settings'] = [
     // SETTING TYPE TO DETAILS OR VERTICAL_TABS
     // STOPS RENDERING OF ALL ELEMENTS INSIDE.
     '#type' => 'vertical_tabs',
     '#weight' => -20,
-    '#prefix' => '<h2><small>' . $img . ' ' . ucfirst($subject_theme) . ' ' . $version . ' <span class="lead">(Bootstrap ' . $themes['bootstrap']->info['version'] . ')</span>' . '</small></h2>',
+    '#prefix' => '<h2><small>' . $img . ' ' . ucfirst($subject_theme) . ' ' . $version . ' <span class="small">(' . $themes['bootstrap5']->info['name'] . ' base theme ' . $themes['bootstrap5']->info['version'] . ')</span>' . '</small></h2>',
   ];
   // $form['color']['#group'] = 'dxpr_theme_settings';
   if (!empty($form['update'])) {
@@ -45,6 +72,20 @@ function dxpr_theme_form_system_theme_settings_alter(&$form, &$form_state, $form
     $form['color']['#group'] = 'dxpr_theme_settings';
     $form['color']['#title'] = t('Colors');
   }
+  $form['core_theme_settings'] = [
+    '#type' => 'vertical_tabs',
+    '#weight' => -20,
+    '#prefix' => '<h2><small>' . t('Core theme settings') . '</small></h2>',
+  ];
+  $form['theme_settings']['#group'] = 'core_theme_settings';
+  $form['logo']['#group'] = 'core_theme_settings';
+  $form['favicon']['#group'] = 'core_theme_settings';
+  unset($form['body_details']);
+  unset($form['nav_details']);
+  unset($form['footer_details']);
+  unset($form['subtheme']);
+  unset($form['styleguide']);
+  unset($form['text_formats']);
 
   /**
    * DXPR Theme cache builder

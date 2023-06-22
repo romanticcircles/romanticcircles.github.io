@@ -13,6 +13,7 @@ use Drupal\block\Entity\Block;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\node\NodeInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_library_info_alter().
@@ -40,6 +41,16 @@ function dxpr_theme_library_info_alter(&$libraries, $extension) {
 }
 
 /**
+ * Prepares variables for the all templates. Theme settings.
+ */
+function dxpr_theme_preprocess(&$variables, $hook, $info) {
+  $theme = \Drupal::theme()
+    ->getActiveTheme()
+    ->getName();
+  $variables['theme']['settings'] = \Drupal::config($theme . '.settings')->get();
+}
+
+/**
  * Prepares variables for the html template. Adds node object.
  *
  * Default template: html.html.twig.
@@ -47,12 +58,6 @@ function dxpr_theme_library_info_alter(&$libraries, $extension) {
  * See the html.html.twig template for the list of variables.
  */
 function dxpr_theme_preprocess_html(&$variables) {
-  // If bootstrap basetheme is not loading bootstrap from CDN load it locally
-  // This is default behavior starting from DXPR Theme 8.x-1.1.3 and 7.x-2.7.3.
-  $bootstrap_cdn = theme_get_setting('cdn_provider');
-  if (!$bootstrap_cdn) {
-    $variables['#attached']['library'][] = 'dxpr_theme/bootstrap3';
-  }
 
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
     $variables['node'] = $node;
@@ -132,6 +137,11 @@ function dxpr_theme_preprocess_html(&$variables) {
   if ($second_header_sticky = theme_get_setting('second_header_sticky')) {
     $variables['#attached']['drupalSettings']['dxpr_themeSettings']['secondHeaderSticky'] = $second_header_sticky;
   }
+
+  // Menu hamburger animation.
+  if ($header_hamburger_animation = theme_get_setting('hamburger_animation')) {
+    $variables['#attached']['drupalSettings']['dxpr_themeSettings']['hamburgerAnimation'] = $header_hamburger_animation;
+  }
 }
 
 /**
@@ -199,7 +209,6 @@ function dxpr_theme_preprocess_page(&$variables) {
     'dxpr_theme/typography',
     // DXPR THEME Components  //@todo: include only if needed.
     'dxpr_theme/dxpr-theme-header--side',
-    'dxpr_theme/pager-prevnext',
     'dxpr_theme/admin',
     // Overrides   //@todo: include only if needed.
     'dxpr_theme/drupal-webform',
@@ -271,7 +280,21 @@ function dxpr_theme_preprocess_region(&$variables) {
  * Implements template_preprocess_breadcrumb()
  */
 function dxpr_theme_preprocess_breadcrumb(&$variables) {
-  if ($variables['breadcrumb']) {
+  // Remove 'Home' from breadcrumb trail.
+  if (count($variables['breadcrumb'])) {
+    array_shift($variables['breadcrumb']);
+  }
+  if (!empty($variables['breadcrumb'])) {
+    $request = \Drupal::request();
+    $route_match = \Drupal::routeMatch();
+    $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+
+    if (!empty($page_title)) {
+      $variables['breadcrumb'][] = [
+        'text' => $page_title,
+        'attributes' => new Attribute(['class' => ['active']]),
+      ];
+    }
     $variables['#attached']['library'][] = 'dxpr_theme/drupal-breadcrumbs';
     $variables['#attached']['library'][] = 'dxpr_theme/drupal-breadcrumbs-js';
   }
@@ -282,6 +305,7 @@ function dxpr_theme_preprocess_breadcrumb(&$variables) {
  */
 function dxpr_theme_preprocess_comment(&$variables) {
   if ($variables['elements']['#comment']) {
+    $variables['#attached']['library'][] = 'bootstrap5/indented';
     $variables['#attached']['library'][] = 'dxpr_theme/drupal-comments';
   }
 }
@@ -291,4 +315,81 @@ function dxpr_theme_preprocess_comment(&$variables) {
  */
 function dxpr_theme_preprocess_pager(&$variables) {
   $variables['#attached']['library'][] = 'dxpr_theme/drupal-pager';
+}
+
+/**
+ * Implements template_preprocess_views_mini_pager()
+ */
+function dxpr_theme_preprocess_views_mini_pager(&$variables) {
+  $variables['#attached']['library'][] = 'dxpr_theme/drupal-pager';
+}
+
+/**
+ * Implements template_theme_suggestions_form_element_alter()
+ */
+function dxpr_theme_theme_suggestions_form_element_alter(array &$suggestions, array $variables, $hook) {
+  if (isset($variables['element']['#type'])) {
+    $id = str_replace("-", "_", $variables['element']['#type']);
+    $suggestions[] = $hook . '__' . $id;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dxpr_theme_form_search_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['basic']['#attributes']['class'] = [
+    0 => 'form-group',
+    1 => 'input-group',
+  ];
+  $form['basic']['keys']['#placeholder'] = $form['basic']['keys']['#title'];
+  unset($form['basic']['keys']['#title']);
+  $form['basic']['submit']['#icon'] = TRUE;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function dxpr_theme_form_search_block_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['actions']['#type'] = 'submit';
+  $form['keys']['#placeholder'] = 'Search';
+  $form['actions']['#icon'] = TRUE;
+  unset($form['actions']['submit']);
+}
+
+/**
+ * Implements template_preprocess_input()
+ */
+function dxpr_theme_preprocess_input(&$variables) {
+  $element = $variables['element'];
+  if (isset($element['#icon'])) {
+    $variables['icon'] = $element['#icon'];
+  }
+  if (isset($element['#id'])) {
+    if ($element['#id'] === 'full_screen_search') {
+      $variables['icon'] = TRUE;
+    }
+  }
+  $variables['#attached']['library'][] = 'dxpr_theme/drupal-search';
+}
+
+/**
+ * Implements template_preprocess_status_messages().
+ */
+function dxpr_theme_preprocess_status_messages(&$variables) {
+  $variables['#attached']['library'][] = 'dxpr_theme/drupal-status-message';
+}
+
+/**
+ * Implements template_preprocess_details()
+ */
+function dxpr_theme_preprocess_details(&$variables) {
+  $variables['attributes']['class'][] = 'form-item';
+}
+
+/**
+ * Implements template_theme_suggestions_form_alter()
+ */
+function dxpr_theme_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'form__' . $variables['element']['#form_id'];
 }

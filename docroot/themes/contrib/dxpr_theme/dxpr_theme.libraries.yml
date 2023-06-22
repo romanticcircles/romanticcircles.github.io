@@ -86,20 +86,10 @@ dxpr-theme-secondary-header:
     theme:
       css/components/dxpr-theme-secondary-header.css: { minified: true }
 
-pager-prevnext:
-  css:
-    theme:
-      css/components/pager-prevnext.css: { minified: true }
-
 dxpr-theme-admin:
   css:
     theme:
       css/dxpr-theme-admin.css: { minified: true }
-
-cubeportfolio:
-  css:
-    theme:
-      css/vendor-extensions/cubeportfolio.css: { minified: true }
 
 drupal-breadcrumbs:
   css:
@@ -107,6 +97,7 @@ drupal-breadcrumbs:
       css/vendor-extensions/drupal-breadcrumbs.css: { minified: true }
   dependencies:
     - core/drupal
+    - core/once
 
 drupal-breadcrumbs-js:
   js:
@@ -127,35 +118,15 @@ drupal-webform:
     theme:
       css/vendor-extensions/drupal-webform.css: { minified: true }
 
-cms-bootstrap-core:
+drupal-search:
   css:
     theme:
-      css/vendor-extensions/cms-bootstrap-core.css: { minified: true }
+      css/vendor-extensions/drupal-search.css: { minified: true }
 
-cms-bootstrap-blog:
+drupal-status-message:
   css:
     theme:
-      css/vendor-extensions/ms-bootstrap-blog.css: { minified: true }
-
-cms-bootstrap-events:
-  css:
-    theme:
-      css/vendor-extensions/cms-bootstrap-events.css: { minified: true }
-
-cms-bootstrap-news:
-  css:
-    theme:
-      css/vendor-extensions/cms-bootstrap-news.css: { minified: true }
-
-cms-bootstrap-portfolio:
-  css:
-    theme:
-      css/vendor-extensions/cms-bootstrap-portfolio.css: { minified: true }
-
-sooperthemes-premium-elements:
-  css:
-    theme:
-      css/vendor-extensions/sooperthemes-premium-elements.css: { minified: true }
+      css/vendor-extensions/drupal-status-message.css: { minified: true }
 
 dxpr-theme-builder:
   css:
@@ -197,18 +168,6 @@ admin.themesettings:
     - core/drupal
     - core/jquery
     - core/once
-
-ilightbox:
-  js:
-    vendor/ilightbox/js/ilightbox.min.js: {}
-    js/minified/dxpr-theme-ilightbox.min.js: {}
-  css:
-    component:
-      vendor/ilightbox/css/ilightbox.css: {}
-  dependencies:
-    - core/jquery
-    - core/jquery.mousewheel
-    - core/jquery.requestAnimationFrame
 
 dxpr-theme-animatecss-custom:
   css:

@@ -30,7 +30,7 @@
         "drupal/core-project-message": "^9.3",
         "drupal/core-recommended": "^9.3",
         "drupal/ctools": "^4.0",
-        "drupal/dxpr_theme": "^1.2.2",
+        "drupal/dxpr_theme": "^5.1",
         "drupal/feeds": "^3.0@beta",
         "drupal/feeds_ex": "^1.0@beta",
         "drupal/feeds_tamper": "^2.0@beta",
