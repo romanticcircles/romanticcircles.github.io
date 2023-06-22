@@ -32,6 +32,7 @@ class SmartDateWidgetBase extends DateTimeWidgetBase {
     return [
       'show_extra' => FALSE,
       'hide_date' => TRUE,
+      'allday' => TRUE,
     ] + parent::defaultSettings();
   }
 
@@ -56,6 +57,12 @@ class SmartDateWidgetBase extends DateTimeWidgetBase {
       '#type' => 'checkbox',
       '#title' => $this->t("Hide the end date field unless it's different from the start date."),
       '#default_value' => $this->getSetting('hide_date'),
+    ];
+
+    $element['allday'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t("Provide a checkbox to make an event all day."),
+      '#default_value' => $this->getSetting('allday'),
     ];
 
     return $element;
@@ -150,6 +157,7 @@ class SmartDateWidgetBase extends DateTimeWidgetBase {
       }
     }
     $defaults['hide_date'] = $this->getSetting('hide_date');
+    $defaults['allday'] = $this->getSetting('allday');
 
     $values['storage'] = $field_type;
     $form['#attached']['library'][] = 'smart_date/smart_date';
@@ -173,6 +181,7 @@ class SmartDateWidgetBase extends DateTimeWidgetBase {
       $defaults = [
         'default_duration_increments' => "30\n60|1 hour\n90\n120|2 hours\ncustom",
         'default_duration' => 60,
+        'allday' => TRUE,
       ];
     }
     $limits_to_check = ['min', 'max'];
@@ -258,6 +267,9 @@ class SmartDateWidgetBase extends DateTimeWidgetBase {
       ],
     ];
 
+    // Make the allday setting available to the form.
+    $element['duration']['#attributes']['data-allday'] = (isset($defaults['allday']) && $defaults['allday']) ? 1 : 0;
+
     // No true input, so preserve an existing value otherwise use site default.
     $default_tz = (isset($values['timezone'])) ? $values['timezone'] : NULL;
     $element['timezone'] = [
@@ -279,10 +291,17 @@ class SmartDateWidgetBase extends DateTimeWidgetBase {
     // storage timestamp.
     foreach ($values as &$item) {
       if (!isset($item['storage']) || $item['storage'] != 'smartdate') {
-        // Use the processing from core's Datetime Range.
-        $core_range = new DateRangeWidgetBase($this->getPluginId(), $this->getPluginDefinition(), $this->fieldDefinition, $this->getSettings(), $this->thirdPartySettings);
-        $values = $core_range->massageFormValues($values, $form, $form_state);
-        return $values;
+        // Check that the DateRangeWidgetBase class exists.
+        if (class_exists('Drupal\datetime_range\Plugin\Field\FieldWidget\DateRangeWidgetBase')) {
+          // Use the processing from core's Datetime Range.
+          $core_range = new DateRangeWidgetBase($this->getPluginId(), $this->getPluginDefinition(), $this->fieldDefinition, $this->getSettings(), $this->thirdPartySettings);
+          $values = $core_range->massageFormValues($values, $form, $form_state);
+          return $values;
+        }
+        else {
+          // @todo Check for other widgets.
+          return $values;
+        }
       }
       $timezone = NULL;
       if (!empty($item['timezone'])) {
@@ -341,9 +360,9 @@ class SmartDateWidgetBase extends DateTimeWidgetBase {
       $allow_recurring = FALSE;
     }
 
-    if ($allow_recurring && function_exists('smart_date_recur_widget_extra_fields') && $form_state->getFormObject() instanceof EntityFormInterface) {
+    if ($allow_recurring && \Drupal::hasService('smart_date_recur.manager') && $form_state->getFormObject() instanceof EntityFormInterface) {
       // Provide extra parameters to be stored with the recurrence rule.
-      $month_limit = SmartDateRule::getMonthsLimit($field_def);
+      $month_limit = \Drupal::service('smart_date_recur.manager')->getMonthsLimit($field_def);
       $entity = $form_state->getformObject()->getEntity();
       $entity_type = $entity->getEntityTypeId();
       $bundle = $entity->bundle();

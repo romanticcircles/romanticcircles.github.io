@@ -2,7 +2,6 @@
 
 namespace Drupal\smart_date_recur\Plugin\views\filter;
 
-use Drupal\smart_date_recur\Entity\SmartDateRule;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\Plugin\views\filter\InOperator;
 use Drupal\views\ViewExecutable;
@@ -22,7 +21,7 @@ class Frequency extends InOperator {
     $this->valueTitle = $this->t('Frequency');
     // @todo Switch to getFrequencyLabelsOrNull to allow filtering on
     // non-recurring events. Currently returns no results if selected.
-    $this->valueOptions = SmartDateRule::getFrequencyLabels();
+    $this->valueOptions = \Drupal::service('smart_date_recur.manager')->getFrequencyLabels();
   }
 
   /**

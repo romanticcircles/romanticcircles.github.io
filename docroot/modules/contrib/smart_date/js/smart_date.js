@@ -18,6 +18,10 @@
       });
       once('smartDateHideSeconds', '.smartdate--widget input[type="time"]', context).forEach(function (element) {
         element.step = 60;
+        // For browsers that don't respect the step value, trim empty seconds.
+        if (element.defaultValue && element.defaultValue.substring(6, 8) == '00') {
+          element.defaultValue = element.defaultValue.substring(0, 5);
+        }
       });
       once('smartDateStartChange', '.smartdate--widget .time-start input', context).forEach(function (element) {
         element.addEventListener("change", function () {
@@ -132,12 +136,27 @@
         }
         // Store the numeric value in a property so it can be used programmatically.
         element.dataset.duration = duration;
+        // Handle cases where only one non-custom value is allowed.
+        if (element.options.length == 1 && duration != 'custom') {
+          if (duration == 0) {
+            // Hide the entire duration wrapper.
+            element.parentElement.style.display = 'none';
+          }
+          else {
+            // Append option label to field label and hide the select.
+            const duration_text = element.options[0].text;
+            const label = element.parentElement.querySelectorAll('label');
+            element.style.display = 'none';
+            label[0].append(' ' + duration_text);
+          }
+        }
       }
 
       // Add/change inputs based on initial config.
       function augmentInputs(element) {
         // Add "All day checkbox" if config permits.
-        if (element.querySelectorAll('select [value="custom"]').length > 0 || element.querySelectorAll('select [value="1439"]').length > 0) {
+        const allday = element.dataset.allday;
+        if (allday && allday != "0" && (element.querySelectorAll('select [value="custom"]').length > 0 || element.querySelectorAll('select [value="1439"]').length > 0)) {
           // Create the input element.
           let checkbox = document.createElement('input');
           checkbox.type = 'checkbox';
@@ -154,15 +173,16 @@
         }
         // If a forced duration, make end date and time read only.
         if (element.querySelectorAll('select [value="custom"]').length == 0) {
-          let wrapper = element.closest('fieldset');
-          let end_time_input = wrapper.querySelector('.time-end.form-time');
-          let end_date_input = wrapper.querySelector('.time-end.form-date');
+          const fieldset = element.closest('fieldset');
+          const end_time_input = fieldset.querySelector('.time-end.form-time');
+          const end_date_input = fieldset.querySelector('.time-end.form-date');
           end_time_input.readOnly = true;
           end_time_input.ariaReadOnly = true;
           end_date_input.readOnly = true;
           end_date_input.ariaReadOnly = true;
-          checkEndDate(wrapper);
         }
+        const wrapper = element.closest('.smartdate--widget');
+        checkEndDate(wrapper);
       }
 
       function setDuration(element) {
@@ -235,7 +255,6 @@
           duration.parentElement.style.visibility = 'hidden';
           duration.parentElement.style.display = '';
         }
-        checkEndDate(wrapper);
       }
 
       function checkAllDay(element) {
@@ -321,7 +340,7 @@
         let end_date = wrapper.querySelector('.time-end.form-date');
         let hide_me = end_date.dataset.hide;
         let allday = wrapper.querySelector('.allday');
-        if (hide_me == 1 && end_date.value == start_date.value && allday && allday.checked == false) {
+        if (hide_me == 1 && end_date.value == start_date.value && (!allday || allday.checked == false)) {
           end_date.style.visibility = 'hidden';
         }
         else {

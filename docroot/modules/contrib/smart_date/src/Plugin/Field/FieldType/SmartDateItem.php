@@ -6,7 +6,6 @@ use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Field\Plugin\Field\FieldType\TimestampItem;
 use Drupal\Core\TypedData\DataDefinition;
-use Drupal\datetime\DateTimeComputed;
 
 /**
  * Plugin implementation of the 'smartdate' field type.

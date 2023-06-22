@@ -14,7 +14,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\smart_date\Entity\SmartDateFormat;
-use Drupal\smart_date\SmartDateTrait;
+use Drupal\smart_date_recur\SmartDateRecurTrait;
 use Recurr\Rule;
 use Recurr\Transformer\ArrayTransformer;
 use Recurr\Transformer\Constraint\AfterConstraint;
@@ -54,7 +54,7 @@ use Recurr\Transformer\Constraint\BetweenConstraint;
 class SmartDateRule extends ContentEntityBase {
 
   use EntityChangedTrait;
-  use SmartDateTrait;
+  use SmartDateRecurTrait;
   use StringTranslationTrait;
 
   /**
@@ -378,7 +378,7 @@ class SmartDateRule extends ContentEntityBase {
       ]);
     }
     else {
-      $frequency_labels = static::getFrequencyLabels();
+      $frequency_labels = $this->getFrequencyLabels();
       $repeat = $frequency_labels[$repeat];
     }
     $start_ts = $this->start;
@@ -612,54 +612,6 @@ class SmartDateRule extends ContentEntityBase {
     // Add the final range.
     $ranges[] = $range;
     return $ranges;
-  }
-
-  /**
-   * Retrieve the months_limit value from the field definition.
-   */
-  public static function getThirdPartyFallback($field_def, $property, $default = NULL) {
-    $value = $default;
-    if (method_exists($field_def, 'getThirdPartySetting')) {
-      // Works for field definitions and rule objects.
-      $value = $field_def
-        ->getThirdPartySetting('smart_date_recur', $property, $default);
-    }
-    elseif (method_exists($field_def, 'getSetting')) {
-      // For custom entities, set value in your field definition.
-      $value = $field_def->getSetting($property);
-    }
-    return $value;
-  }
-
-  /**
-   * Retrieve the months_limit value from the field definition.
-   */
-  public static function getMonthsLimit($field_def) {
-    $month_limit = static::getThirdPartyFallback($field_def, 'month_limit', 12);
-    return $month_limit;
-  }
-
-  /**
-   * Return an array of frequency labels.
-   */
-  public static function getFrequencyLabels() {
-    return [
-      'MINUTELY' => t('By Minutes'),
-      'HOURLY' => t('Hourly'),
-      'DAILY' => t('Daily'),
-      'WEEKLY' => t('Weekly'),
-      'MONTHLY' => t('Monthly'),
-      'YEARLY' => t('Annually'),
-    ];
-  }
-
-  /**
-   * Return an array of frequency labels.
-   */
-  public static function getFrequencyLabelsOrNull() {
-    $values = ['none' => 'Not recurring'];
-    $labels = static::getFrequencyLabels();
-    return array_merge($values, $labels);
   }
 
   /**

@@ -101,8 +101,8 @@ information, see
       specify a string such as "All day" or if nothing is provided only the date
       will be shown.
     - You can choose to omit either the time or date format, as in the default
-      formats `"Time only"` or `"Date only"`. You must provide one or the other, or
-      else nothing would be displayed.
+      formats `"Time only"` or `"Date only"`. You must provide one or the other,
+      or else nothing would be displayed.
 
 
 ## Maintainers

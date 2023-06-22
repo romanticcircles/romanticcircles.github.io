@@ -9,7 +9,6 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\smart_date\Plugin\Field\FieldType\SmartDateFieldItemList;
 use Drupal\smart_date_recur\Entity\SmartDateRule;
-use Drupal\smart_date_recur\Plugin\Field\FieldFormatter\SmartDateRecurrenceFormatter as RecurFormatter;
 
 /**
  * Implements hook_token_info().
@@ -122,7 +121,7 @@ function smart_date_recur_tokens($type, $tokens, array $data, array $options, Bu
       $rule_text = [];
       $rrules_processed = [];
       foreach($list as $field) {
-        $rrid = $field->get('rrule')->getValue();
+        $rrid = $field?->get('rrule')->getValue();
         if (!$rrid || in_array($rrid, $rrules_processed)) {
           continue;
         }
@@ -161,8 +160,9 @@ function smart_date_recur_tokens($type, $tokens, array $data, array $options, Bu
       case 'next':
         $settings['format'] = $parts[0] ?? 'default';
     }
+    $recur_manager = \Drupal::service('smart_date_recur.manager');
     // Load the Smart Date Format and merged it into the settings.
-    $format = RecurFormatter::loadSmartDateFormat($settings['format'] ?? 'default');
+    $format = $recur_manager->loadSmartDateFormat($settings['format'] ?? 'default');
     if (is_array($format) && $format) {
       $settings += $format;
     }
@@ -193,9 +193,9 @@ function smart_date_recur_tokens($type, $tokens, array $data, array $options, Bu
     ksort($elements);
     $elements = array_values($elements);
     // Use the Recur Formatter's helper function to find the next instance.
-    $next_index = RecurFormatter::findNextInstance($elements, $settings);
+    $next_index = $recur_manager->findNextInstance($elements, $settings);
     // Use the Recur Formatter's helper function to splice out the instances.
-    $values = RecurFormatter::subsetInstances($elements, $next_index, $settings);
+    $values = $recur_manager->subsetInstances($elements, $next_index, $settings);
     // For 'prev' and 'next' tokens, extract the value out of the list.
     if (in_array($property_name, ['prev', 'next'])) {
       // Return just the date value.

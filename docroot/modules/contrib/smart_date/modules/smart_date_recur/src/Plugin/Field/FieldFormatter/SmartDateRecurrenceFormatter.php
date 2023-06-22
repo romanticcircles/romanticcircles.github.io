@@ -6,7 +6,6 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\smart_date\Entity\SmartDateFormat;
 use Drupal\smart_date\Plugin\Field\FieldFormatter\SmartDateDefaultFormatter;
-use Drupal\smart_date\SmartDateTrait;
 use Drupal\smart_date_recur\Entity\SmartDateRule;
 use Drupal\smart_date_recur\SmartDateRecurTrait;
 
@@ -26,7 +25,6 @@ use Drupal\smart_date_recur\SmartDateRecurTrait;
  */
 class SmartDateRecurrenceFormatter extends SmartDateDefaultFormatter {
 
-  use SmartDateTrait;
   use SmartDateRecurTrait;
 
   /**
@@ -278,146 +276,6 @@ class SmartDateRecurrenceFormatter extends SmartDateDefaultFormatter {
     }
 
     return $elements;
-  }
-
-  /**
-   * Format the configured number of upcoming and past instances.
-   *
-   * @param array $instances
-   *   The values to draw from.
-   * @param int $next_index
-   *   The value from which to calculate.
-   * @param array $settings
-   *   The settings used to render the instances.
-   * @param bool $within_day
-   *   Whether or not to format for recurring within a day.
-   *
-   * @return array
-   *   The formatted render array.
-   */
-  public static function subsetInstances(array $instances, $next_index, array $settings = [], $within_day = FALSE) {
-    $periods = ['past_display', 'upcoming_display'];
-    $period_instances = [];
-
-    // Get the specified number of past instances.
-    $past_display = $settings['past_display'] ?? 0;
-
-    // Display past instances if set and at least one instances in the past.
-    if ($past_display && $next_index) {
-      if ($next_index == -1) {
-        $begin = count($instances) - $past_display;
-      }
-      else {
-        $begin = $next_index - $past_display;
-      }
-      if ($begin < 0) {
-        $past_display += $begin;
-        $begin = 0;
-      }
-      $period_instances['past_display'] = array_slice($instances, $begin, $past_display, TRUE);
-    }
-
-    $upcoming_display = $settings['upcoming_display'] ?? 0;
-    // Display upcoming instances if set and at least one instance upcoming.
-    if ($upcoming_display && $next_index < count($instances) && $next_index != -1) {
-      $period_instances['upcoming_display'] = array_slice($instances, $next_index, $upcoming_display, TRUE);
-    }
-
-    $rrule_output = [
-      '#theme' => 'smart_date_recurring_formatter',
-    ];
-
-    foreach ($periods as $period) {
-      if (empty($period_instances[$period])) {
-        continue;
-      }
-      $rrule_output['#' . $period] = [
-        '#theme' => 'item_list',
-        '#list_type' => 'ul',
-      ];
-      if ($within_day) {
-        $items = $this->formatWithinDay($period_instances[$period], $settings);
-      }
-      else {
-        $items = [];
-        foreach ($period_instances[$period] as $key => $item) {
-          // Check for manual key and use, if set.
-          $delta = $item->delta ?? $key;
-          $items[$delta] = static::buildOutput($delta, $item, $settings);
-        }
-      }
-      foreach ($items as $delta => $item) {
-        $rrule_output['#' . $period]['#items'][$delta] = [
-          '#children' => $item,
-          '#theme' => 'container',
-        ];
-      }
-    }
-    if (!empty($settings['show_next']) && !empty($rrule_output['#upcoming_display']['#items'])) {
-      $rrule_output['#next_display'] = array_shift($rrule_output['#upcoming_display']['#items']);
-    }
-    return $rrule_output;
-  }
-
-  /**
-   * Helper function to create and augment formatted output.
-   *
-   * @param int $key
-   *   Numeric key of the output delta.
-   * @param object $item
-   *   Field values.
-   * @param array $settings
-   *   The settings used to render the instances.
-   *
-   * @return array
-   *   Render array of the formatted output.
-   */
-  protected static function buildOutput($key, $item, array $settings = []) {
-    if (!$item || empty($item->value)) {
-      return [];
-    }
-    $output = static::formatSmartDate($item->value, $item->end_value, $settings, $item->timezone);
-    if (!empty($settings['add_classes'])) {
-      static::addRangeClasses($output);
-    }
-    if (!empty($settings['time_wrapper'])) {
-      static::addTimeWrapper($output, $item->value, $item->end_value, $item->timezone);
-    }
-    if (!empty($settings['augmenters']['instances'])) {
-      static::augmentOutput($output, $settings['augmenters']['instances'], $item->value, $item->end_value, $item->timezone, $key, 'instances');
-    }
-    return $output;
-  }
-
-  /**
-   * Helper function to find the next instance from now in a provided range.
-   */
-  public static function findNextInstance(array $instances, array $settings = []) {
-    $next_index = -1;
-    $time = $settings['min_date'] ?? time();
-    $current_upcoming = $settings['current_upcoming'] ?? TRUE;
-    foreach ($instances as $index => $instance) {
-      $date_compare = ($current_upcoming) ? $instance->end_value : $instance->value;
-      if ($date_compare > $time) {
-        $next_index = $index;
-        break;
-      }
-    }
-    return $next_index;
-  }
-
-  /**
-   * Helper function to find the next instance from now in a provided range.
-   */
-  public static function findNextInstanceByDay(array $dates, $today) {
-    $next_index = -1;
-    foreach ($dates as $index => $date) {
-      if ($date >= $today) {
-        $next_index = $index;
-        break;
-      }
-    }
-    return $next_index;
   }
 
 }

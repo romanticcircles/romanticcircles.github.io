@@ -134,7 +134,7 @@ function smart_date_form_node_form_alter(&$form, FormStateInterface $form_state,
         break;
 
       case 'relative':
-        $relative_time = DrupalDateTime::createFromTimestamp(strtotime($defaults['default_date']));;
+        $relative_time = DrupalDateTime::createFromTimestamp(strtotime($defaults['default_date']));
         $start_time->setTime($relative_time->format('H'), $relative_time->format('i'));
         break;
 

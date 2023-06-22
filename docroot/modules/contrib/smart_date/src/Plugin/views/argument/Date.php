@@ -2,6 +2,7 @@
 
 namespace Drupal\smart_date\Plugin\views\argument;
 
+use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -59,6 +60,13 @@ class Date extends Formula implements ContainerFactoryPluginInterface {
   protected $dateFormatter;
 
   /**
+   * The datetime.time service.
+   *
+   * @var \Drupal\Component\Datetime\TimeInterface
+   */
+  protected $timeService;
+
+  /**
    * Constructs a new Date instance.
    *
    * @param array $configuration
@@ -71,12 +79,15 @@ class Date extends Formula implements ContainerFactoryPluginInterface {
    *   The route match.
    * @param \Drupal\Core\Datetime\DateFormatterInterface $date_formatter
    *   The date formatter service.
+   * @param \\Drupal\Component\Datetime\TimeInterface $time_service
+   *   The datetime.time service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, RouteMatchInterface $route_match, DateFormatterInterface $date_formatter) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, RouteMatchInterface $route_match, DateFormatterInterface $date_formatter, TimeInterface $time_service) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->routeMatch = $route_match;
     $this->dateFormatter = $date_formatter;
+    $this->timeService = $time_service;
   }
 
   /**
@@ -88,7 +99,8 @@ class Date extends Formula implements ContainerFactoryPluginInterface {
       $plugin_id,
       $plugin_definition,
       $container->get('current_route_match'),
-      $container->get('date.formatter')
+      $container->get('date.formatter'),
+      $container->get('datetime.time'),
     );
   }
 
@@ -188,12 +200,11 @@ class Date extends Formula implements ContainerFactoryPluginInterface {
   }
 
   /**
-   * Set the empty argument value to the current date,
-   * formatted appropriately for this argument.
+   * Set the empty argument value to the current date, formatted appropriately.
    */
   public function getDefaultArgument($raw = FALSE) {
     if (!$raw && $this->options['default_argument_type'] == 'date') {
-      return date($this->argFormat, REQUEST_TIME);
+      return date($this->argFormat, $this->timeService->getRequestTime());
     }
     elseif (!$raw && in_array($this->options['default_argument_type'], ['node_created', 'node_changed'])) {
       $node = $this->routeMatch->getParameter('node');

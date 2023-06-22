@@ -61,10 +61,37 @@ trait SmartDateTrait {
     $add_classes = $this->getSetting('add_classes');
     $time_wrapper = $this->getSetting('time_wrapper');
     $localize = $this->getSetting('localize');
+    $parts = $this->getSetting('parts') ?? [
+      'start' => 'start',
+      'end' => 'end',
+      'duration' => 0,
+    ];
+
+    // Field settings may not come back as key/value pairs for the parts.
+    // Normalize the array to match the expected structure.
+    foreach ($parts as $key => $part) {
+      if ((bool) $part && $key != $part) {
+        $parts[$part] = $part;
+        unset($parts[$key]);
+      }
+    }
+    foreach (['start', 'end', 'duration'] as $key) {
+      if (!isset($parts[$key])) {
+        $parts[$key] = 0;
+      }
+    }
+
+    $settings['duration'] = $this->getSetting('duration') ?? [
+      'separator' => ' | ',
+      'unit' => '',
+    ];
 
     $augmenters = $this->initializeAugmenters();
     if ($augmenters) {
       $this->entity = $items->getEntity();
+      if (!empty($this->entity->in_preview)) {
+        $augmenters = [];
+      }
     }
 
     foreach ($items as $delta => $item) {
@@ -109,7 +136,41 @@ trait SmartDateTrait {
         return $elements;
       }
       $timezone = $item->timezone ? $item->timezone : $timezone_override;
-      $elements[$delta] = static::formatSmartDate($start_ts, $end_ts, $settings, $timezone);
+      // Do an all day check before manipulating the range.
+      if (static::isAllDay($start_ts, $end_ts)) {
+        $all_day = TRUE;
+      }
+      else {
+        $all_day = FALSE;
+      }
+      // If necessary, format the duration before altering the times.
+      $duration_output = '';
+      if ($parts['duration']) {
+        $duration_output = $this->formatDuration($start_ts, $end_ts, $settings, $timezone);
+      }
+      // If only one of start and end are displayed, alter accordingly.
+      if ($parts['start'] XOR $parts['end']) {
+        if (in_array('start', $parts)) {
+          $end_ts = $start_ts;
+        }
+        else {
+          $start_ts = $end_ts;
+        }
+      }
+      if ($parts['start'] || $parts['end']) {
+        $elements[$delta] = static::formatSmartDate($start_ts, $end_ts, $settings, $timezone);
+      }
+      if ($duration_output) {
+        // Fix all day events when showing duration.
+        if ($all_day && $elements[$delta]['start']) {
+          unset($elements[$delta]['start']['join']);
+          unset($elements[$delta]['start']['time']);
+        }
+        if ($elements[$delta]) {
+          $elements[$delta]['spacer'] = ['#markup' => $settings['duration']['separator'] ?? ''];
+        }
+        $elements[$delta]['duration'] = ['#markup' => $duration_output];
+      }
       if ($add_classes) {
         $this->addRangeClasses($elements[$delta]);
       }
@@ -293,6 +354,26 @@ trait SmartDateTrait {
         ];
       }
     }
+    if (!empty($instance['duration'])) {
+      // For the sake of finding differences, "fix" all day events.
+      if (static::isAllDay($start_ts, $end_ts, $timezone)) {
+        $adjusted_end = $end_ts + 60;
+      }
+      else {
+        $adjusted_end = $end_ts;
+      }
+      $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      $diff = \Drupal::service('date.formatter')->formatDiff($start_ts, $adjusted_end, [
+        'strict' => FALSE,
+        'language' => $language,
+      ]);
+      $current_contents = $instance['duration'];
+      $instance['duration'] = [
+        '#theme' => 'time',
+        '#attributes' => ['datetime' => static::formatDurationTime($diff)],
+        '#text' => $current_contents,
+      ];
+    }
   }
 
   /**
@@ -302,7 +383,7 @@ trait SmartDateTrait {
    *   A timestamp.
    * @param object $end_ts
    *   A timestamp.
-   * @param array $settings
+   * @param mixed $settings
    *   The formatter settings.
    * @param string|null $timezone
    *   An optional timezone override.
@@ -312,7 +393,8 @@ trait SmartDateTrait {
    * @return string|array
    *   A formatted date range using the chosen format.
    */
-  public static function formatSmartDate($start_ts, $end_ts, array $settings = [], $timezone = NULL, $return_type = '') {
+  public static function formatSmartDate($start_ts, $end_ts, mixed $settings = [], $timezone = NULL, $return_type = '') {
+    $settings = static::normalizeSettings($settings);
     $range = [];
 
     // Don't need to reduce dates unless conditions are met.
@@ -494,7 +576,7 @@ trait SmartDateTrait {
    *
    * @param array $range
    *   The date/time range to format.
-   * @param array $settings
+   * @param mixed $settings
    *   The date/time range to format.
    * @param object $start_ts
    *   A timestamp.
@@ -506,7 +588,8 @@ trait SmartDateTrait {
    * @return string|array
    *   The range, with duplicate elements removed.
    */
-  protected static function rangeDateReduce(array $range, array $settings, $start_ts, $end_ts, $timezone = NULL) {
+  protected static function rangeDateReduce(array $range, mixed $settings, $start_ts, $end_ts, $timezone = NULL) {
+    $settings = static::normalizeSettings($settings);
     // First attempt has the following limitations, to reduce complexity:
     // * Day ranges only work either d or j, and no other day tokens.
     // * Not able to handle S token unless adjacent to day.
@@ -595,7 +678,7 @@ trait SmartDateTrait {
    *
    * @param array $range
    *   The date/time range to format.
-   * @param array $settings
+   * @param mixed $settings
    *   The date/time range to format.
    * @param string $return_type
    *   An option to specify that a string should be returned. If left empty,
@@ -604,7 +687,8 @@ trait SmartDateTrait {
    * @return string|array
    *   The formatted range.
    */
-  protected static function rangeFormat(array $range, array $settings, $return_type = '') {
+  protected static function rangeFormat(array $range, mixed $settings, $return_type = '') {
+    $settings = static::normalizeSettings($settings);
     // If a string is requested, return that.
     if ($return_type == 'string') {
       $pieces = [];
@@ -689,7 +773,7 @@ trait SmartDateTrait {
    *
    * @param int $time
    *   The timestamp to format.
-   * @param array $settings
+   * @param mixed $settings
    *   The settings that will be used for formatting.
    * @param string|null $timezone
    *   An optional timezone override.
@@ -699,7 +783,8 @@ trait SmartDateTrait {
    * @return array
    *   An array containing the formatted time, and the format applied.
    */
-  protected static function timeFormat($time, array $settings, $timezone = NULL, $is_start = FALSE) {
+  protected static function timeFormat($time, mixed $settings, $timezone = NULL, $is_start = FALSE) {
+    $settings = static::normalizeSettings($settings);
     $format = $settings['time_format'];
     if (!empty($settings['time_hour_format']) && date('i', $time) == '00') {
       $format = $settings['time_hour_format'];
@@ -836,6 +921,97 @@ trait SmartDateTrait {
         ]
       );
     }
+  }
+
+  /**
+   * Format the duration according to the configuration.
+   *
+   * @param int $start_ts
+   *   The start of the date range.
+   * @param int $end_ts
+   *   The end of the date range.
+   * @param mixed $settings
+   *   The settings that will be used for formatting.
+   * @param string $timezone
+   *   The timezone to use.
+   *
+   * @return string
+   *   The formatted duration string.
+   */
+  protected function formatDuration($start_ts, $end_ts, $settings, $timezone) {
+    $settings = $this->normalizeSettings($settings);
+    if (static::isAllDay($start_ts, $end_ts, $timezone)) {
+      return $settings['allday_label'];
+    }
+    if (empty($unit = $settings['duration']['unit'] ?? '')) {
+      return \Drupal::service('date.formatter')->formatDiff($start_ts, $end_ts);
+    }
+
+    // Nonstadard duration formatting configured, make our own diff obj.
+    $date_time_from = new \DateTime();
+    $date_time_from->setTimestamp($start_ts);
+    $date_time_to = new \DateTime();
+    $date_time_to->setTimestamp($end_ts);
+    $interval = $date_time_to->diff($date_time_from);
+    if ($unit == 'h') {
+      $decimals = $this->getSetting('decimals');
+      $duration_output = ($interval->h + round($interval->i / 60, $decimals));
+    }
+    else {
+      $duration_output = ($interval->h * 60) + $interval->i;
+    }
+    $duration_output .= $settings['duration']['suffix'] ?? '';
+    return $duration_output;
+  }
+
+  /**
+   * Format the string to be used as the datetime value.
+   *
+   * @param string $string
+   *   The string returned by DateFormatter::formatDiff.
+   *
+   * @return string
+   *   The formatted duration string.
+   */
+  protected static function formatDurationTime($string) {
+    if (empty($string)) {
+      return '';
+    }
+    $abbr_string = 'P';
+    $intervals = [
+      'Y' => 'year',
+      'D' => 'day',
+      'H' => 'hour',
+      'M' => 'minute',
+    ];
+    foreach ($intervals as $key => $match_string) {
+      $pattern = '/(\d+) ' . $match_string . '(s)?/i';
+      preg_match($pattern, $string, $matches);
+      if ($matches) {
+        $abbr_string .= $matches[1] . $key;
+      }
+    }
+    if (strlen($abbr_string) == 1) {
+      $abbr_string = '';
+    }
+
+    return $abbr_string;
+  }
+
+  /**
+   * If $settings has been provided as a string.
+   */
+  public static function normalizeSettings($settings) {
+    if (is_array($settings) && !empty($settings)) {
+      return $settings;
+    }
+    elseif (empty($settings)) {
+      $settings = 'default';
+    }
+    if (is_string($settings)) {
+      $settings = static::loadSmartDateFormat($settings);
+    }
+    return $settings;
   }
 
 }

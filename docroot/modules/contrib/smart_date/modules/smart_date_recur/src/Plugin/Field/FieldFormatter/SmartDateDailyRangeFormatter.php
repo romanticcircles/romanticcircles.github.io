@@ -98,12 +98,14 @@ class SmartDateDailyRangeFormatter extends SmartDateDefaultFormatter {
         else {
           // New rule to process, so load it.
           $rrule_obj = SmartDateRule::load($item->rrule);
-          $rule_props = $rrule_obj->toArray();
+          if ($rrule_obj !== NULL && is_object($rrule_obj)) {
+            $rule_props = $rrule_obj->toArray();
+          }
           $allowed_freq = ['HOURLY', 'MINUTELY'];
           // Check that no extra parameters have been set.
           // @todo Separate handling for daily ranges with no end?
           // @todo Check for overrides.
-          if ($rule_props['freq']) {
+          if (!empty($rule_props['freq'])) {
             if ($rule_props['freq'][0]['value'] == 'DAILY' && $rule_props['limit'] && !$rule_props['parameters']) {
               $is_daily = TRUE;
             }

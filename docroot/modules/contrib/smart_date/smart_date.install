@@ -63,7 +63,7 @@ function smart_date_update_8202() {
   $manager = \Drupal::entityDefinitionUpdateManager();
   $database = \Drupal::database();
   foreach ($rules as $rule) {
-    // TODO: Need to populate $before here?
+    // @todo: Need to populate $before here?
     $instances = $rule->getRuleInstances();
     if (!$instances) {
       continue;

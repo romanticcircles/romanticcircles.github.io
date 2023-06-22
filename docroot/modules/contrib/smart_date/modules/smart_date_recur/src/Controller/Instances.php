@@ -103,7 +103,7 @@ class Instances extends ControllerBase {
     }
 
     if ($this->rrule->limit->isEmpty()) {
-      $month_limit = SmartDateRule::getMonthsLimit($this->rrule);
+      $month_limit = \Drupal::service('smart_date_recur.manager')->getMonthsLimit($this->rrule);
       $before = strtotime('+' . (int) $month_limit . ' months');
     }
     else {
