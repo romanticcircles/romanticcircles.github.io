@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '8042868530429e6da4d9c4525486604e41ff87ff',
+        'reference' => '8d682aa14ffdfe1aea7970003a40d35d5f402ed2',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
-            'pretty_version' => 'v1.12.0',
-            'version' => '1.12.0.0',
-            'reference' => 'd20a64ed3c94748397ff5973488761b22f6d3f19',
+            'pretty_version' => 'v2.2.0',
+            'version' => '2.2.0.0',
+            'reference' => 'c29dc4b93137acb82734f672c37e029dfbd95b35',
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/./installers',
             'aliases' => array(),
@@ -577,7 +577,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '8042868530429e6da4d9c4525486604e41ff87ff',
+            'reference' => '8d682aa14ffdfe1aea7970003a40d35d5f402ed2',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -932,22 +932,10 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'roundcube/plugin-installer' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => '*',
-            ),
-        ),
         'rsky/pear-core-min' => array(
             'dev_requirement' => false,
             'replaced' => array(
                 0 => 'v1.10.13',
-            ),
-        ),
-        'shama/baton' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => '*',
             ),
         ),
         'simshaun/recurr' => array(
