@@ -60,7 +60,6 @@
         "drupal/stage_file_proxy": "^2.0",
         "drupal/tamper": "^1.0@alpha",
         "drupal/token": "^1.12",
-        "drupal/upgrade_status": "^4.0",
         "drupal/views_bootstrap": "^5.4",
         "drupal/views_contextual_filters_or": "^1.4",
         "drupal/views_slideshow": "^5.0",
@@ -140,8 +139,5 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
-    },
-    "require-dev": {
-        "drupal/core-dev": "^10"
     }
 }
