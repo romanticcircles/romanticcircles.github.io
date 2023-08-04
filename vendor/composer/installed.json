@@ -2652,6 +2652,58 @@
             "install-path": "../../docroot/modules/contrib/google_analytics"
         },
         {
+            "name": "drupal/iek",
+            "version": "1.3.0",
+            "version_normalized": "1.3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/iek.git",
+                "reference": "8.x-1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/iek-8.x-1.3.zip",
+                "reference": "8.x-1.3",
+                "shasum": "043a5c7348b83f4e30173fd4626193c52cbad34b"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10",
+                "ext-gd": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.3",
+                    "datestamp": "1674681659",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jay.Chen",
+                    "homepage": "https://www.drupal.org/user/180060"
+                },
+                {
+                    "name": "lonalore",
+                    "homepage": "https://www.drupal.org/user/1539304"
+                }
+            ],
+            "description": "Provides custom image effects.",
+            "homepage": "https://www.drupal.org/project/iek",
+            "support": {
+                "source": "https://git.drupalcode.org/project/iek"
+            },
+            "install-path": "../../docroot/modules/contrib/iek"
+        },
+        {
             "name": "drupal/layout_builder_styles",
             "version": "2.0.0",
             "version_normalized": "2.0.0.0",

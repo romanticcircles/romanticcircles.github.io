@@ -3,7 +3,7 @@
         'name' => 'romanticcircles/rc-website',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '7b939976217a8fa380d134137b7aa92e2c978ed1',
+        'reference' => '8c6de5395bbdadb9fb65a46efaeb9a1521b4defc',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -502,6 +502,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/iek' => array(
+            'pretty_version' => '1.3.0',
+            'version' => '1.3.0.0',
+            'reference' => '8.x-1.3',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../docroot/modules/contrib/iek',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/layout_builder_styles' => array(
             'pretty_version' => '2.0.0',
             'version' => '2.0.0.0',
@@ -978,7 +987,7 @@
         'romanticcircles/rc-website' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '7b939976217a8fa380d134137b7aa92e2c978ed1',
+            'reference' => '8c6de5395bbdadb9fb65a46efaeb9a1521b4defc',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
