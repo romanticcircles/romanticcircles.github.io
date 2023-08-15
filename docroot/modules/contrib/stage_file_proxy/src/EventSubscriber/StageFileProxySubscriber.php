@@ -8,12 +8,10 @@ use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\Core\Url;
 use Drupal\stage_file_proxy\DownloadManagerInterface;
 use Drupal\stage_file_proxy\EventDispatcher\AlterExcludedPathsEvent;
-use Drupal\stage_file_proxy\FetchManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
@@ -154,6 +152,13 @@ class StageFileProxySubscriber implements EventSubscriberInterface {
 
     foreach ($paths as $relative_path) {
       $fetch_path = $relative_path;
+
+      // Don't touch CSS and JS aggregation. 'css/' and 'js/' are hard coded to
+      // match route definitions.
+      // @see \Drupal\system\Routing\AssetRoutes
+      if (str_starts_with($relative_path, 'css/') || str_starts_with($relative_path, 'js/')) {
+        return;
+      }
 
       // Is this imagecache? Request the root file and let imagecache resize.
       // We check this first so locally added files have precedence.

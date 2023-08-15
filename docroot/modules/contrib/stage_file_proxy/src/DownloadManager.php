@@ -49,6 +49,8 @@ final class DownloadManager implements DownloadManagerInterface {
   private ConfigFactoryInterface $configFactory;
 
   /**
+   * The lock object.
+   *
    * @var \Drupal\Core\Lock\LockBackendInterface
    */
   private LockBackendInterface $lock;
@@ -70,7 +72,7 @@ final class DownloadManager implements DownloadManagerInterface {
   public function fetch(string $server, string $remote_file_dir, string $relative_path, array $options): bool {
     $url = $server . '/' . UrlHelper::encodePath($remote_file_dir . '/' . $relative_path);
     $lock_id = 'stage_file_proxy:' . md5($url);
-    while(!$this->lock->acquire($lock_id)) {
+    while (!$this->lock->acquire($lock_id)) {
       $this->lock->wait($lock_id, 1);
     }
 
