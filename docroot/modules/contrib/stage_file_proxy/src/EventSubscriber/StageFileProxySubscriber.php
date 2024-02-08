@@ -4,6 +4,7 @@ namespace Drupal\stage_file_proxy\EventSubscriber;
 
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\Core\Url;
 use Drupal\stage_file_proxy\DownloadManagerInterface;
@@ -11,6 +12,7 @@ use Drupal\stage_file_proxy\EventDispatcher\AlterExcludedPathsEvent;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -120,6 +122,15 @@ class StageFileProxySubscriber implements EventSubscriberInterface {
       return;
     }
 
+    // Quit if the extension is in the list of excluded extensions.
+    $excluded_extensions = $config->get('excluded_extensions') ?
+      array_map('trim', explode(',', $config->get('excluded_extensions'))) : [];
+
+    $extension = pathinfo($request_path)['extension'] ?? '';
+    if (in_array($extension, $excluded_extensions)) {
+      return;
+    }
+
     $alter_excluded_paths_event = new AlterExcludedPathsEvent([]);
     $this->eventDispatcher->dispatch($alter_excluded_paths_event, 'stage_file_proxy.alter_excluded_paths');
     $excluded_paths = $alter_excluded_paths_event->getExcludedPaths();
@@ -132,8 +143,9 @@ class StageFileProxySubscriber implements EventSubscriberInterface {
     // Note if the origin server files location is different. This
     // must be the exact path for the remote site's public file
     // system path, and defaults to the local public file system path.
-    $remote_file_dir = trim($config->get('origin_dir'));
-    if (!$remote_file_dir) {
+    $origin_dir = $config->get('origin_dir') ?? '';
+    $remote_file_dir = trim($origin_dir);
+    if ($remote_file_dir === '') {
       $remote_file_dir = $file_dir;
     }
 
@@ -182,12 +194,13 @@ class StageFileProxySubscriber implements EventSubscriberInterface {
       ];
 
       if ($config->get('hotlink')) {
-
         $location = Url::fromUri("$server/$remote_file_dir/$relative_path", [
           'query' => $query_parameters,
           'absolute' => TRUE,
         ])->toString();
-
+        $response = new TrustedRedirectResponse($location);
+        $response->addCacheableDependency($config);
+        $event->setResponse($response);
       }
       elseif ($this->manager->fetch($server, $remote_file_dir, $fetch_path, $options)) {
         // Refresh this request & let the web server work out mime type, etc.
@@ -195,15 +208,42 @@ class StageFileProxySubscriber implements EventSubscriberInterface {
           'query' => $query_parameters,
           'absolute' => TRUE,
         ])->toString();
-        // Avoid redirection caching in upstream proxies.
-        header("Cache-Control: must-revalidate, no-cache, post-check=0, pre-check=0, private");
-      }
-
-      if (isset($location)) {
-        header("Location: $location");
-        exit;
+        // Use default cache control: must-revalidate, no-cache, private.
+        $event->setResponse(new RedirectResponse($location));
       }
     }
+  }
+
+  /**
+   * Get the file URI without the extension from any conversion image style.
+   *
+   * If the image style converted the image, then an extension has been added
+   * to the original file, resulting in filenames like image.png.jpeg.
+   *
+   * @param string $path
+   *   The file path.
+   *
+   * @return string
+   *   The file path without the extension from any conversion image style.
+   *   Defaults to the $path when the $path does not have a double extension.
+   *
+   * @todo Use ImageStyleDownloadController method for a URI once https://www.drupal.org/project/drupal/issues/2786735 has been committed.
+   * @todo this is used by #3402972 but caused regressions.
+   */
+  public static function getFilePathWithoutConvertedExtension(string $path): string {
+    $original_path = $path;
+    $original_path = '/' . ltrim($original_path, '/');
+    $path_info = pathinfo($original_path);
+    // Only convert the URI when the filename still has an extension.
+    if (!empty($path_info['filename']) && pathinfo($path_info['filename'], PATHINFO_EXTENSION)) {
+      $original_path = '';
+      if (!empty($path_info['dirname']) && $path_info['dirname'] !== '.') {
+        $original_path .= $path_info['dirname'] . DIRECTORY_SEPARATOR;
+      }
+      $original_path .= $path_info['filename'];
+    }
+
+    return str_starts_with($path, '/') ? $original_path : ltrim($original_path, '/');
   }
 
   /**
