@@ -12,6 +12,7 @@
 namespace Symfony\Component\DependencyInjection\Dumper;
 
 use Composer\Autoload\ClassLoader;
+use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\Argument\AbstractArgument;
 use Symfony\Component\DependencyInjection\Argument\ArgumentInterface;
 use Symfony\Component\DependencyInjection\Argument\IteratorArgument;
@@ -258,6 +259,7 @@ class PhpDumper extends Dumper
 <?php
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 
 /*{$this->docStar}
@@ -581,8 +583,23 @@ EOF;
                 continue;
             }
             $alreadyGenerated[$asGhostObject][$class] = true;
-            // register class' reflector for resource tracking
-            $this->container->getReflectionClass($class);
+
+            foreach (array_column($definition->getTag('proxy'), 'interface') ?: [$class] as $r) {
+                if (!$r = $this->container->getReflectionClass($r)) {
+                    continue;
+                }
+                do {
+                    $file = $r->getFileName();
+                    if (str_ends_with($file, ') : eval()\'d code')) {
+                        $file = substr($file, 0, strrpos($file, '(', -17));
+                    }
+                    if (is_file($file)) {
+                        $this->container->addResource(new FileResource($file));
+                    }
+                    $r = $r->getParentClass() ?: null;
+                } while ($r?->isUserDefined());
+            }
+
             if ("\n" === $proxyCode = "\n".$proxyDumper->getProxyCode($definition, $id)) {
                 continue;
             }
@@ -912,10 +929,10 @@ EOF;
                 if (!$definition->isShared()) {
                     $code .= sprintf('        %s ??= ', $factory);
 
-                    if ($asFile) {
-                        $code .= "self::do(...);\n\n";
+                    if ($definition->isPublic()) {
+                        $code .= sprintf("fn () => self::%s(\$container);\n\n", $asFile ? 'do' : $methodName);
                     } else {
-                        $code .= sprintf("self::%s(...);\n\n", $methodName);
+                        $code .= sprintf("self::%s(...);\n\n", $asFile ? 'do' : $methodName);
                     }
                 }
                 $lazyLoad = $asGhostObject ? '$proxy' : 'false';
@@ -1031,7 +1048,7 @@ EOTXT
         return $code;
     }
 
-    private function addInlineService(string $id, Definition $definition, Definition $inlineDef = null, bool $forConstructor = true): string
+    private function addInlineService(string $id, Definition $definition, ?Definition $inlineDef = null, bool $forConstructor = true): string
     {
         $code = '';
 
@@ -1091,7 +1108,7 @@ EOTXT
         return $code."\n        return \$instance;\n";
     }
 
-    private function addServices(array &$services = null): string
+    private function addServices(?array &$services = null): string
     {
         $publicServices = $privateServices = '';
         $definitions = $this->container->getDefinitions();
@@ -1133,7 +1150,7 @@ EOTXT
         }
     }
 
-    private function addNewInstance(Definition $definition, string $return = '', string $id = null, bool $asGhostObject = false): string
+    private function addNewInstance(Definition $definition, string $return = '', ?string $id = null, bool $asGhostObject = false): string
     {
         $tail = $return ? str_repeat(')', substr_count($return, '(') - substr_count($return, ')')).";\n" : '';
 
@@ -1762,7 +1779,7 @@ EOF;
         return implode(' && ', $conditions);
     }
 
-    private function getDefinitionsFromArguments(array $arguments, \SplObjectStorage $definitions = null, array &$calls = [], bool $byConstructor = null): \SplObjectStorage
+    private function getDefinitionsFromArguments(array $arguments, ?\SplObjectStorage $definitions = null, array &$calls = [], ?bool $byConstructor = null): \SplObjectStorage
     {
         $definitions ??= new \SplObjectStorage();
 
@@ -1993,7 +2010,7 @@ EOF;
         return sprintf('$container->parameters[%s]', $this->doExport($name));
     }
 
-    private function getServiceCall(string $id, Reference $reference = null): string
+    private function getServiceCall(string $id, ?Reference $reference = null): string
     {
         while ($this->container->hasAlias($id)) {
             $id = (string) $this->container->getAlias($id);
