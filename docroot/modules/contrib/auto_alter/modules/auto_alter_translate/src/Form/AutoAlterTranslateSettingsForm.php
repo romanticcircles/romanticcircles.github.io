@@ -67,7 +67,7 @@ class AutoAlterTranslateSettingsForm extends ConfigFormBase {
       '#title' => $this->t('Automatic Alternative Text Translation settings'),
       '#open' => TRUE,
       '#description' => $this->t('The Azure Cognitive Service returns Image description in english only. Use this submodule to translate description with <a href="@url" target="_blank">Microsoft Azure translation API</a> to your current language.', [
-        '@url' => 'https://azure.microsoft.com/de-de/services/cognitive-services/translator-text-api/',
+        '@url' => 'https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/',
       ]),
     ];
 
@@ -139,9 +139,16 @@ class AutoAlterTranslateSettingsForm extends ConfigFormBase {
       '#type' => 'textfield',
       '#required' => TRUE,
       '#title' => $this->t('URL of Endpoint'),
-      '#default_value' => $config->get('endpoint'),
-      '#description' => $this->t('Enter the URL of your Endpoint here. fe. https://api.cognitive.microsofttranslator.com/translate?api-version=3.0'),
+        '#default_value' => $config->get('endpoint'),
+        '#description' => $this->t('Enter the URL of your Endpoint here. fe. https://api.cognitive.microsofttranslator.com/translate?api-version=3.0'),
     ];
+
+      $form['settings']['region'] = [
+          '#type' => 'textfield',
+          '#title' => $this->t('Region'),
+          '#default_value' => $config->get('region'),
+          '#description' => $this->t('The value is the region of the multi-service or regional translator resource. This value is optional when using a global translator resource.'),
+      ];
 
     return parent::buildForm($form, $form_state);
   }
@@ -153,6 +160,7 @@ class AutoAlterTranslateSettingsForm extends ConfigFormBase {
     $values = $form_state->getValues();
     $active = $values['active'];
     $endpoint = $values['endpoint'];
+    $region = $values['region'];
     $credentials = new AutoAlterTranslateCredentials();
     $credential_provider = $form_state->getValue(['credentials', 'credential_provider']);
     $credentials_values = $form_state->getValue(['credentials', 'providers']);
@@ -160,7 +168,7 @@ class AutoAlterTranslateSettingsForm extends ConfigFormBase {
     $api_key = $credentials->getApikey();
 
     if ($active) {
-      $request = $this->azuretranslate->gettranslation('Please translate this text', $endpoint, $api_key, "en", "de");
+      $request = $this->azuretranslate->gettranslation('Please translate this text', $region, $endpoint, $api_key, "en", "de");
       if (isset($request) && $request !== FALSE && $request->getStatusCode() == 200) {
         \Drupal::messenger()->addStatus($this->t('Your settings have been successfully validated'));
       }
@@ -189,6 +197,7 @@ class AutoAlterTranslateSettingsForm extends ConfigFormBase {
 
     $this->config('auto_alter_translate.settings')
       ->set('endpoint', $values['endpoint'])
+      ->set('region', $values['region'])
       ->set('credential_provider', $credential_provider)
       ->set('credentials', [])
       ->set("credentials.$credential_provider", $credentials)

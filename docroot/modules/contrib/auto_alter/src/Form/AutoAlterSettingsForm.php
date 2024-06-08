@@ -3,9 +3,9 @@
 namespace Drupal\auto_alter\Form;
 
 use Drupal\auto_alter\AutoAlterCredentials;
+use Drupal\auto_alter\Plugin\AutoAlterDescribeImagePluginManager;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\auto_alter\AzureVision;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -33,13 +33,6 @@ class AutoAlterSettingsForm extends ConfigFormBase {
   }
 
   /**
-   * The file AzureVision service.
-   *
-   * @var Drupal\auto_alter\AzureVision
-   */
-  protected $azurevision;
-
-  /**
    * The Module Handler.
    *
    * @var Drupal\Core\Extension\ModuleHandlerInterface
@@ -47,11 +40,18 @@ class AutoAlterSettingsForm extends ConfigFormBase {
   protected $modulehandler;
 
   /**
+   * The Module Handler.
+   *
+   * @var AutoAlterDescribeImagePluginManager
+   */
+  protected $describeImage;
+
+  /**
    * Class constructor.
    */
-  public function __construct(AzureVision $azure_vision, ModuleHandlerInterface $module_handler) {
-    $this->azurevision = $azure_vision;
+  public function __construct(ModuleHandlerInterface $module_handler, AutoAlterDescribeImagePluginManager $describe_image) {
     $this->modulehandler = $module_handler;
+    $this->describeImage = $describe_image;
   }
 
   /**
@@ -60,9 +60,8 @@ class AutoAlterSettingsForm extends ConfigFormBase {
   public static function create(ContainerInterface $container) {
     // Instantiates this form class.
     return new static(
-      // Load the service required to construct this class.
-      $container->get('auto_alter.get_description'),
-      $container->get('module_handler')
+      $container->get('module_handler'),
+      $container->get('plugin.manager.auto_alter_describe_image')
     );
   }
 
@@ -72,80 +71,38 @@ class AutoAlterSettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('auto_alter.settings');
 
-    $form['settings'] = [
-      '#type' => 'details',
-      '#title' => $this->t('Automatic Alternative Text settings'),
-      '#open' => TRUE,
-      '#description' => $this->t('Thanks for installing Automatic Alternative Text! To start receiving alt text, enter your API key. Don\'t have one yet? Sign up <a href="@url" target="_blank">@url</a>.', [
-        '@url' => 'https://www.microsoft.com/cognitive-services',
-      ]),
-    ];
+    $options = [];
+    $plugins = $this->describeImage->getDefinitions();
+    foreach ($plugins as $plugin) {
+      $options[$plugin['id']] = $plugin['title'];
+    }
 
-    $section =& $form['settings'];
-
-    $section['credentials'] = [
-      '#id' => 'credentials',
-      '#type' => 'details',
-      '#title' => $this->t('Credentials'),
-      '#open' => TRUE,
-      '#tree' => TRUE,
-    ];
-
-    $section['credentials']['credential_provider'] = [
+    $form['engine'] = [
       '#type' => 'select',
-      '#title' => $this->t('Credential provider'),
-      '#options' => [
-        'config' => $this->t('Local configuration'),
-      ],
-      '#default_value' => $config->get('credential_provider'),
-    ];
-
-    $section['credentials']['providers'] = [
-      '#type' => 'item',
-      '#id' => 'credentials_configuration',
-    ];
-
-    $provider_config_state = [':input[name="credentials[credential_provider]"]' => ['value' => 'config']];
-    $section['credentials']['providers']['config']['api_key'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('API Key (config)'),
-      '#default_value' => $config->get('credentials.config.api_key'),
-      '#states' => [
-        'visible' => $provider_config_state,
-        'required' => $provider_config_state,
-      ],
-    ];
-
-    if (\Drupal::moduleHandler()->moduleExists('key')) {
-      $section['credentials']['credential_provider']['#options']['key'] = $this->t('Key Module');
-      $provider_key_state = [':input[name="credentials[credential_provider]"]' => ['value' => 'key']];
-      $section['credentials']['providers']['key']['api_key_key'] = [
-        '#type' => 'key_select',
-        '#title' => $this->t('API Key (Key)'),
-        '#default_value' => $config->get('credentials.key.api_key_key'),
-        '#empty_option' => $this->t('- Please select -'),
-        '#key_filters' => ['type' => 'authentication'],
-        '#description' => $this->t('Your API key stored as a secure key.'),
-        '#states' => [
-          'visible' => $provider_key_state,
-          'required' => $provider_key_state,
-        ],
-      ];
-    }
-    else {
-      $section['credentials']['credential_provider']['#value'] = 'config';
-      $section['credentials']['credential_provider']['#disabled'] = TRUE;
-    }
-
-    $form['settings']['endpoint'] = [
-      '#type' => 'textfield',
+      '#title' => $this->t('Image description engine'),
+      '#options' => $options,
       '#required' => TRUE,
-      '#title' => $this->t('URL of Endpoint'),
-      '#default_value' => $config->get('endpoint'),
-      '#description' => $this->t('Enter the URL of your Endpoint here. fe. https://westeurope.api.cognitive.microsoft.com/vision/v1.0/describe?maxCandidates=1 for West Europe'),
+      '#default_value' => $config->get('engine'),
+      '#ajax' => [
+        'callback' => '::updateEngineConfiguration',
+        'wrapper' => 'engine-configuration-wrapper',
+      ],
     ];
 
-    $form['settings']['status'] = [
+    $form['engine_configuration'] = [
+      '#type' => 'container',
+      '#attributes' => ['id' => 'engine-configuration-wrapper'],
+    ];
+
+    // Load the configuration form for the selected engine.
+    $engine_id = $form_state->getValue('engine', $config->get('engine'));
+    if (isset($plugins[$engine_id])) {
+      $plugin = $this->describeImage->createInstance($engine_id);
+      $form['engine_configuration'] += $plugin->buildConfigurationForm([], $form_state);
+    }
+
+
+    $form['status'] = [
       '#type' => 'checkbox',
       '#required' => FALSE,
       '#title' => $this->t('Show status message to user'),
@@ -153,7 +110,7 @@ class AutoAlterSettingsForm extends ConfigFormBase {
       '#description' => $this->t('If checked, a status message is generated after saving: "Alternate text has been changed to: "%text" by a confidence of %confidence"'),
     ];
 
-    $form['settings']['suggestion'] = [
+    $form['suggestion'] = [
       '#type' => 'checkbox',
       '#required' => FALSE,
       '#title' => $this->t('Make suggestion for alternative text'),
@@ -163,51 +120,35 @@ class AutoAlterSettingsForm extends ConfigFormBase {
     return parent::buildForm($form, $form_state);
   }
 
+  public function updateEngineConfiguration(array $form, FormStateInterface $form_state) {
+    return $form['engine_configuration'];
+  }
+
   /**
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    $values = $form_state->getValues();
-    $endpoint = $values['endpoint'];
-    $credentials = new AutoAlterCredentials();
-    $credential_provider = $form_state->getValue(['credentials', 'credential_provider']);
-    $credentials_values = $form_state->getValue(['credentials', 'providers']);
-    $credentials->setCredentials($credential_provider, $credentials_values ?? []);
-    $api_key = $credentials->getApikey();
-    $path = $this->modulehandler->getModule('auto_alter')->getPath();
-
-    $request = $this->azurevision->getdescription($path . '/image/test.jpg', $endpoint, $api_key);
-
-    if ($request !== FALSE && $request->getStatusCode() == 200) {
-      \Drupal::messenger()->addStatus($this->t('Your settings have been successfully validated'));
+    if ($form_state->getTriggeringElement()['#id'] !== 'edit-submit') {
+      return;
     }
-    else {
-      if ($request !== FALSE && $request->getStatusCode() == 401) {
-        $form_state->setErrorByName('credentials', $this->t('The API Key seems to be wrong. Please check in your Azure Console.'));
-      }
-      else {
-        $form_state->setErrorByName('endpoint', $this->t('The URL for the endpoint seems to be wrong. Please check in your Azure Console.'));
-      }
-    }
+
+    $engine = $form_state->getValue('engine');
+    $plugin = $this->describeImage->createInstance($engine);
+    $plugin->validateConfigurationForm($form_state);
   }
 
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $values = $form_state->getValues();
-    $credential_provider = $form_state->getValue(['credentials', 'credential_provider']);
-    $credentials = $form_state->getValue([
-      'credentials',
-      'providers',
-      $credential_provider,
-    ]);
-    $this->config('auto_alter.settings')
-      ->set('endpoint', $values['endpoint'])
-      ->set('credential_provider', $credential_provider)
-      ->set('credentials', [])
-      ->set("credentials.$credential_provider", $credentials)
+    $values = &$form_state->getValues();
+    $engine = $form_state->getValue('engine');
+    $plugin = $this->describeImage->createInstance($engine);
+    $config = $this->config('auto_alter.settings');
+    $plugin->submitConfigurationForm($form_state, $config);
+    $config
       ->set('status', $values['status'])
+      ->set('engine', $values['engine'])
       ->set('suggestion', $values['suggestion'])
       ->save();
 

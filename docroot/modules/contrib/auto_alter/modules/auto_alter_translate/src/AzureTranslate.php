@@ -38,6 +38,13 @@ class AzureTranslate {
   private $configFactory;
 
   /**
+   * The ConfigFactory.
+   *
+   * @var \Drupal\Core\Config\Config
+   */
+  protected $config;
+
+  /**
    * Logger Factory.
    *
    * @var \Drupal\Core\Logger\LoggerChannelFactory
@@ -89,25 +96,31 @@ class AzureTranslate {
   /**
    * Get the translation of description.
    */
-  public function gettranslation(string $inputStr, $endpoint = FALSE, $api_key = FALSE, $fromLanguage = "en", $toLanguage = FALSE) {
+  public function gettranslation(string $inputStr, $region = FALSE, $endpoint = FALSE, $api_key = FALSE, $fromLanguage = "en", $toLanguage = FALSE) {
     $client = $this->httpClient;
     if (empty($toLanguage)) {
       $toLanguage = $this->languageManager->getCurrentLanguage()->getId();
     }
     if ($fromLanguage != $toLanguage) {
       try {
-        $endpoint = $endpoint ? $endpoint : $this->config->get('endpoint');
-        $api_key = $api_key ? $api_key : $this->credentials->getApikey();
+        $endpoint = !empty($endpoint) ? $endpoint : $this->config->get('endpoint');
+        $api_key = !empty($api_key) ? $api_key : $this->credentials->getApikey();
 
         $params = "to=" . $toLanguage . "&from=" . $fromLanguage;
-        $translateUrl = Xss::filter($endpoint) . "&" . $params;
-        $request = $client->post($translateUrl, [
-          'headers' => [
-            'Ocp-Apim-Subscription-Key' =>  Xss::filter($api_key),
-            'Content-Type' => 'application/json',
-          ],
-          'json' => [['text' => Xss::filter($inputStr)]],
-        ]);
+          $translateUrl = Xss::filter($endpoint) . "&" . $params;
+
+          $headers = [
+              'Ocp-Apim-Subscription-Key' =>  Xss::filter($api_key),
+              'Content-Type' => 'application/json',
+          ];
+
+          if ($region) {
+              $headers['Ocp-Apim-Subscription-Region'] = $region;
+          }
+
+          $request = $client->post($translateUrl, [
+              'headers' => $headers,         'json' => [['text' => Xss::filter($inputStr)]],
+          ]);
       }
       catch (RequestException $e) {
         $this->loggerFactory->error(

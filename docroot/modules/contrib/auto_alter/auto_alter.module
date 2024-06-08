@@ -11,13 +11,14 @@ use Drupal\Core\Url;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\file\Entity\File;
 
 /**
  * Implements hook_modules_installed().
  */
 function auto_alter_modules_installed($modules) {
   if (in_array('auto_alter', $modules)) {
-    \Drupal::messenger()->addStatus(t('Microsoft Azure API key and Endpoint URL is not set and it is required for the module to work. Please set it up at the <a href=":settings">Image Automatic Alternative Text settings page</a>.', [
+    \Drupal::messenger()->addStatus(t('API key and Endpoint URL is not set and it is required for the module to work. Please set it up at the <a href=":settings">Image Automatic Alternative Text settings page</a>.', [
       ':settings' => Url::fromRoute('auto_alter.settings')->toString(),
     ]));
   }
@@ -27,6 +28,11 @@ function auto_alter_modules_installed($modules) {
  * Implements hook_entity_presave().
  */
 function auto_alter_entity_presave(EntityInterface $entity) {
+  $suggestion = \Drupal::config('auto_alter.settings')->get('suggestion');
+  if (empty($suggestion)) {
+    return;
+  }
+
   if ($entity instanceof ContentEntityInterface) {
     $entity_manager = \Drupal::service('entity_field.manager');
     foreach ($entity_manager->getFieldDefinitions($entity->getEntityTypeId(), $entity->bundle()) as $field_name => $field_definition) {
@@ -40,6 +46,42 @@ function auto_alter_entity_presave(EntityInterface $entity) {
           }
         }
       }
+      if ($field_definition->getType() == 'text_with_summary') {
+        $texts = $entity->get($field_name);
+        $changed = false;
+        foreach ($texts as $key => $text) {
+          $raw = $text->getValue();
+          $dom = new DomDocument();
+          $dom->loadHTML($raw['value']);
+
+          foreach($dom->getElementsByTagName('img') as $imgs) {
+            $nodes = [];
+            foreach($imgs as $img) {
+              $nodes['alt'] = $imgs->getAttribute('alt');
+              $nodes['src'] = $imgs->getAttribute('src');
+              $nodes['data-entity-uuid'] = $imgs->getAttribute('data-entity-uuid');
+            }
+            if (empty($nodes['alt'])) {
+              $changed = true;
+              $file = \Drupal::service('entity.repository')->loadEntityByUuid('file', $nodes['data-entity-uuid']);
+              if ($file instanceof File) {
+                $fid = $file->id();
+                $mime = $file->getMimeType();
+                if (strpos($mime,'image/') !== false) {
+                  $description = auto_alter_get_description($file->id());
+                  $raw['value'] = str_replace('data-entity-uuid="' . $nodes['data-entity-uuid'] . '"',
+                    'data-entity-uuid="' .   $nodes['data-entity-uuid'] . '" alt="' . $description . '"', $raw['value']);
+                }
+              }
+            }
+          }
+          $text->value = $raw['value'];
+          $texts[$key] = $text;
+        }
+        if ($changed) {
+          $entity->{$field_name} = $texts;
+        }
+      }
     }
   }
 }
@@ -49,20 +91,47 @@ function auto_alter_entity_presave(EntityInterface $entity) {
  */
 function auto_alter_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $suggestion = \Drupal::config('auto_alter.settings')->get('suggestion');
-  if ($suggestion && isset($form['#entity_builders'])) {
-    $entity = $form_state->getFormObject()->getEntity();
-    $entity_manager = \Drupal::service('entity_field.manager');
-    if (!($entity instanceof FieldableEntityInterface)) {
-      return;
+  if ($suggestion) {
+    if (isset($form['#entity_builders'])) {
+      $entity = $form_state->getFormObject()->getEntity();
+      $entity_manager = \Drupal::service('entity_field.manager');
+      if (!($entity instanceof FieldableEntityInterface)) {
+        return;
+      }
+      foreach ($entity_manager->getFieldDefinitions($entity->getEntityTypeId(), $entity->bundle()) as $field_name => $field_definition) {
+        if (!empty($field_definition->getTargetBundle())) {
+          if ($field_definition->getType() == 'image') {
+            $images = $entity->get($field_name);
+            foreach ($images as $key => $image) {
+              $entity_manager = \Drupal::entityTypeManager();
+              if (isset($form[$field_name]['widget'][$key]) && $form[$field_name]['widget'][$key]['#alt_field'] && isset($form[$field_name]['widget'][$key]['#default_value']['alt']) && empty($form[$field_name]['widget'][$key]['#default_value']['alt'])) {
+                $form[$field_name]['widget'][$key]['#default_value']['alt'] = auto_alter_get_description($form[$field_name]['widget'][$key]['#default_value']['fids'][0]);
+              }
+            }
+          }
+        }
+      }
     }
-    foreach ($entity_manager->getFieldDefinitions($entity->getEntityTypeId(), $entity->bundle()) as $field_name => $field_definition) {
-      if (!empty($field_definition->getTargetBundle())) {
-        if ($field_definition->getType() == 'image') {
-          $images = $entity->get($field_name);
-          foreach ($images as $key => $image) {
-            $entity_manager = \Drupal::entityTypeManager();
-            if (isset($form[$field_name]['widget'][$key]) && $form[$field_name]['widget'][$key]['#alt_field'] && isset($form[$field_name]['widget'][$key]['#default_value']['alt']) && empty($form[$field_name]['widget'][$key]['#default_value']['alt'])) {
-              $form[$field_name]['widget'][$key]['#default_value']['alt'] = auto_alter_get_description($form[$field_name]['widget'][$key]['#default_value']['fids'][0]);
+    elseif ($form_id === 'media_library_add_form_upload') {
+      $triggering_element = $form_state->getTriggeringElement();
+      if (!empty($triggering_element) && $triggering_element['#name'] === 'upload_upload_button' && $form_state->getValue('upload')) {
+        $entity_type = 'media';
+        if (!empty($form_state->getStorage()[$entity_type])) {
+          $entity = $form_state->getStorage()[$entity_type][0];
+          $entity_manager = \Drupal::service('entity_field.manager');
+          if (!($entity instanceof FieldableEntityInterface)) {
+            return;
+          }
+          foreach ($entity_manager->getFieldDefinitions($entity->getEntityTypeId(), $entity->bundle()) as $field_name => $field_definition) {
+            if (!empty($field_definition->getTargetBundle())) {
+              if ($field_definition->getType() === 'image') {
+                $images = $entity->get($field_name);
+                foreach ($images as $key => $image) {
+                  if (isset($form['media'][0]['fields'][$field_name]['widget'][$key]) && $form['media'][0]['fields'][$field_name]['widget'][$key]['#alt_field'] && empty($form['media'][0]['fields'][$field_name]['widget'][$key]['#default_value']['alt'])) {
+                    $form['media'][0]['fields'][$field_name]['widget'][$key]['#default_value']['alt'] = auto_alter_get_description($form['media'][0]['fields'][$field_name]['widget'][$key]['#default_value']['fids'][0]);
+                  }
+                }
+              }
             }
           }
         }
@@ -93,19 +162,21 @@ function auto_alter_form_alter(&$form, FormStateInterface $form_state, $form_id)
     $form['suggestion']['#weight'] = -5;
     $form['attributes']['#weight'] = -10;
     $form['fid']['#weight'] = -15;
-    $form['attributes']['alt']['#ajax'] = [
-      'callback' => 'disableButton',
-      'event' => 'change',
-      'wrapper' => 'edit-alternative',
-    ];
+      /*
+      $form['attributes']['alt']['#ajax'] = [
+        'callback' => 'disableButton',
+        'event' => 'change',
+        'wrapper' => 'edit-alternative',
+      ];
+      */
+    }
   }
-}
 
-/**
- * @param array $form
- * @param FormStateInterface $form_state
- * @return AjaxResponse
- */
+  /**
+   * @param array $form
+   * @param FormStateInterface $form_state
+   * @return AjaxResponse
+   */
 function getAlternativeText(array &$form, FormStateInterface $form_state) {
   $fid = $form_state->getValue('fid');
   if ($fid != null && isset($fid[0])) {
@@ -136,34 +207,42 @@ function disableButton(array &$form, FormStateInterface $form_state) {
  *   File ID.
  */
 function auto_alter_get_description($fid) {
-  if (\Drupal::service('auto_alter.get_description')->checksetup() === FALSE) {
+  $engine = auto_alter_get_engine();
+  if ($engine->checkSetup() === FALSE) {
     \Drupal::messenger()->addStatus(
-      t('Microsoft Azure API key and Endpoint URL is not set and it is required for the module to work. Please set it up at the <a href=":settings">Image Automatic Alternative Text settings page</a>.', [
+      t('The selected AI engine is not set and it is required for the module to work. Please set it up at the <a href=":settings">Image Automatic Alternative Text settings page</a>.', [
         ':settings' => Url::fromRoute('auto_alter.settings')->toString(),
       ])
     );
     return '';
   }
   $entity_manager = \Drupal::entityTypeManager();
-  $status = \Drupal::config('auto_alter.settings')->get('status');
   $file = $entity_manager->getStorage('file')->load($fid);
-  $uri = \Drupal::service('auto_alter.get_description')->geturi($file);
+  $uri = $engine->getUri($file);
+  $alternate_text = auto_alter_get_description_by_uri($uri);
+
+  return $alternate_text;
+
+}
+
+function auto_alter_get_description_by_uri($uri) {
+  $engine = auto_alter_get_engine();
+
+  $status = \Drupal::config('auto_alter.settings')->get('status');
   $path = \Drupal::service('file_system')->realpath($uri);
   $path = $path ? $path : $uri;
-  $request = \Drupal::service('auto_alter.get_description')->getdescription($path);
-  if ($request !== FALSE && $request->getStatusCode() == 200) {
-    $response = json_decode($request->getBody());
-    if (isset($response->description->captions[0]->text)) {
-      $alternate_text = $response->description->captions[0]->text;
-    }
-    else if (isset($response->description->tags)) {
-      $alternate_text = rtrim(implode(',', $response->description->tags), ',');
-    }
+  $description = $engine->getDescription($path);
+  if (!empty($description)) {
+    $alternate_text = $description;
+
     $moduleHandler = \Drupal::service('module_handler');
     if ($moduleHandler->moduleExists('auto_alter_translate')) {
       $active = \Drupal::config('auto_alter_translate.settings')->get('active');
-      if ($active) {
-        $request = \Drupal::service('auto_alter_translate.get_translation')->gettranslation($alternate_text);
+      $engine = \Drupal::configFactory()->getEditable('auto_alter.settings')->get('engine');
+      $region = \Drupal::config('auto_alter_translate.settings')
+        ->get('region');
+      if ($active && $engine == 'azure_cognitive_services') {
+        $request = \Drupal::service('auto_alter_translate.get_translation')->gettranslation($alternate_text, $region);
         if (!empty($request) && $request->getStatusCode() == 200) {
           $trans = (array) json_decode($request->getBody());
           $alternate_text = $trans[0]->translations[0]->text;
@@ -171,16 +250,9 @@ function auto_alter_get_description($fid) {
       }
     }
     if ($status) {
-      if (isset($response->description->captions[0]->confidence)) {
-        $percent_friendly = number_format($response->description->captions[0]->confidence * 100, 2) . '%';
-        \Drupal::messenger()->addStatus(t('Alternate text has been changed to: %text" by a confidence of :confidence', ['%text' => $alternate_text, ':confidence' => $percent_friendly]));
-      }
-      else {
-        \Drupal::messenger()->addStatus(t('Alternate text has been changed to: %text", but with no confidence', ['%text' => $alternate_text]));
-      }
+      \Drupal::messenger()->addStatus(t('Alternate text has been changed to: %text"', ['%text' => $alternate_text]));
     }
     return $alternate_text;
-
   }
   else {
     if ($status) {
@@ -189,4 +261,20 @@ function auto_alter_get_description($fid) {
     return '';
   }
 
+}
+/**
+ * Returns the currently selected engine.
+ *
+ * @return \Drupal\auto_alter\DescribeImageServiceInterface
+ *   The currently selected engine.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\PluginException
+ */
+function auto_alter_get_engine() {
+  $engine = \Drupal::config('auto_alter.settings')->get('engine');
+  /** @var \Drupal\auto_alter\Plugin\AutoAlterDescribeImagePluginManager $plugin_manager */
+  $plugin_manager = \Drupal::service('plugin.manager.auto_alter_describe_image');
+  /** @var \Drupal\auto_alter\DescribeImageServiceInterface $plugin */
+  $plugin = $plugin_manager->createInstance($engine);
+  return $plugin;
 }

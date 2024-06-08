@@ -50,11 +50,15 @@ function auto_alter_requirements($phase) {
     $credentials = new AutoAlterCredentials($config);
     $key = $credentials->getApikey();
     $url = $config->get('endpoint');
+    $engine = $config->get('engine');
+    if ($engine == 'alttext_ai') {
+      $url= true;
+    }
     if (!$key || !$url) {
       $requirements['auto_alter'] = [
         'title' => t('Automatic Alternative Text'),
         'severity' => REQUIREMENT_ERROR,
-        'description' => t('Microsoft Azure API key and Endpoint URL is not set and it is required for the module to work. Please set it up at the <a href=":settings">Image Automatic Alternative Text settings page</a>.', [
+        'description' => t('API key and Endpoint URL is not set and it is required for the module to work. Please set it up at the <a href=":settings">Image Automatic Alternative Text settings page</a>.', [
           ':settings' => Url::fromRoute('auto_alter.settings')->toString(),
         ]),
       ];
@@ -122,3 +126,15 @@ function auto_alter_update_8401() {
          ->save(TRUE);
   }
 }
+
+function auto_alter_update_9001() {
+  $config = \Drupal::configFactory()->getEditable('auto_alter.settings');
+  $engine = $config->get('engine');
+  $key = $config->get('credentials.config.api_key');
+  if (is_null($engine) && $key) {
+    $config
+      ->set('engine', 'azure_cognitive_services')
+      ->save(TRUE);
+  }
+}
+

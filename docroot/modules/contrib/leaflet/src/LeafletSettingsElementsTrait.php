@@ -3,9 +3,9 @@
 namespace Drupal\leaflet;
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\views\Plugin\views\ViewsPluginInterface;
 use Drupal\Core\Url;
 use Drupal\Component\Serialization\Json;
+use Drupal\views\Plugin\views\ViewsPluginInterface;
 
 /**
  * Class LeafletSettingsElementsTrait.
@@ -342,6 +342,7 @@ trait LeafletSettingsElementsTrait {
       '#type' => 'number',
       '#min' => 0,
       '#max' => 22,
+      '#description' => $this->t('The initial Zoom level for the Leaflet Map (when empty or when Forced).<br>Admitted values usually range from 0 (the whole world) to 20 - 22, depending on the max zoom supported by the specific Map Tile in use.<br>As a reference consider Zoom 5 for a large country, 10 for a city, 15 for a road or a district, etc.'),
       '#default_value' => $map_position_options['zoom'] ?? $this->getDefaultSettings()['map_position']['zoom'],
       '#required' => TRUE,
       '#element_validate' => [[get_class($this), 'zoomLevelValidate']],
@@ -489,7 +490,7 @@ trait LeafletSettingsElementsTrait {
 
     $element['className'] = [
       '#title' => $this->t('Icon Class Name'),
-      '#description' => $this->t('A custom class name to assign to both icon and shadow images.<br>Supports <b>Replacement Patterns</b>'),
+      '#description' => $this->t('A custom class name to assign to both icon and shadow images.<br>Supports <b>Replacement Patterns</b>.'),
       '#type' => 'textfield',
       '#default_value' => $icon_options['className'] ?? $default_settings['icon']['className'],
       '#states' => [
@@ -533,7 +534,7 @@ trait LeafletSettingsElementsTrait {
       '#type' => 'textarea',
       '#rows' => 2,
       '#title' => $this->t('Circle Marker Options'),
-      '#description' => $this->t('An object literal of Circle Marker options, that comply with the @leaflet_circle_marker_object.<br>The syntax should respect the javascript object notation (json) format.<br>As suggested in the field placeholder, always use double quotes (") both for the indexes and the string values.<br><b>Note: </b> Use <strong>Replacement Patterns</strong> to input dynamic values.<br>Empty value will fallback to default Leaflet Circle Marker style.', [
+      '#description' => $this->t('An object literal of Circle Marker options, that comply with the @leaflet_circle_marker_object.<br>The syntax should respect the javascript object notation (json) format.<br>As suggested in the field placeholder, always use double quotes (") both for the indexes and the string values.<br><b>Note: </b> Use <strong>Replacement Patterns</strong> to input dynamic values.<br>Empty value will fall back to default Leaflet Circle Marker style.', [
         '@leaflet_circle_marker_object' => $this->link->generate('Leaflet Circle Marker object', Url::fromUri('https://leafletjs.com/reference.html#circlemarker', [
           'absolute' => TRUE,
           'attributes' => ['target' => 'blank'],
@@ -564,7 +565,7 @@ trait LeafletSettingsElementsTrait {
       $element['iconUrl']['#description'] = $icon_url_description;
       $element['shadowUrl']['#description'] = $icon_url_description;
 
-      // Setup the tokens for views fields.
+      // Set up the tokens for views fields.
       // Code is snatched from Drupal\views\Plugin\views\field\FieldPluginBase.
       $options = [];
       $optgroup_fields = (string) t('Fields');
@@ -879,7 +880,7 @@ trait LeafletSettingsElementsTrait {
       '#type' => 'textarea',
       '#rows' => 3,
       '#title' => $this->t('Tooltip Options'),
-      '#description' => $this->t('An object literal of options, that comply with the Leaflet Tooltip object definition.<br>The syntax should respect the javascript object notation (json) format.<br>As suggested in the field placeholder, always use double quotes (") both for the indexes and the string values.'),
+      '#description' => $this->t('An object literal of options, that comply with the Leaflet Tooltip object definition.<br>The syntax should respect the javascript object notation (json) format.<br>As suggested in the field placeholder, always use double quotes (") both for the indexes and the string values.<br>Supports <b>Replacement Patterns</b>.'),
       '#default_value' => $settings['leaflet_tooltip']['options'] ?? $default_settings['leaflet_tooltip']['options'],
       '#placeholder' => $default_settings['leaflet_tooltip']['options'],
       '#element_validate' => [[get_class($this), 'jsonValidate']],
@@ -942,7 +943,7 @@ trait LeafletSettingsElementsTrait {
         '#type' => 'textarea',
         '#title' => $this->t('Popup Options'),
         '#rows' => 3,
-        '#description' => $this->t('An object literal of options, that comply with the Leaflet Popup object definition.<br>The syntax should respect the javascript object notation (json) format.<br>As suggested in the field placeholder, always use double quotes (") both for the indexes and the string values.<br><u>Note: if omitted, the "offset" option will be set on top of the feature icon size.</u>'),
+        '#description' => $this->t('An object literal of options, that comply with the Leaflet Popup object definition.<br>The syntax should respect the javascript object notation (json) format.<br>As suggested in the field placeholder, always use double quotes (") both for the indexes and the string values.<br><u>Note: if omitted, the "offset" option will be set on top of the feature icon size.</u><br>Supports <b>Replacement Patterns</b>.'),
         '#default_value' => $settings['leaflet_popup']['options'] ?? $default_settings['leaflet_popup']['options'],
         '#placeholder' => $default_settings['leaflet_popup']['options'],
         '#element_validate' => [[get_class($this), 'jsonValidate']],
@@ -1002,7 +1003,7 @@ trait LeafletSettingsElementsTrait {
         '#type' => 'textarea',
         '#rows' => 3,
         '#title' => $this->t('Popup Options'),
-        '#description' => $this->t('An object literal of options, that comply with the Leaflet Popup object definition.<br>The syntax should respect the javascript object notation (json) format.<br>As suggested in the field placeholder, always use double quotes (") both for the indexes and the string values.<br><u>Note: if omitted, the "offset" option will be set on top of the feature icon size.</u>'),
+        '#description' => $this->t('An object literal of options, that comply with the Leaflet Popup object definition.<br>The syntax should respect the javascript object notation (json) format.<br>As suggested in the field placeholder, always use double quotes (") both for the indexes and the string values.<br><u>Note: if omitted, the "offset" option will be set on top of the feature icon size.</u><br>Supports <b>Replacement Patterns</b>.'),
         '#default_value' => $settings['leaflet_popup']['options'] ?? $default_settings['leaflet_popup']['options'],
         '#placeholder' => $default_settings['leaflet_popup']['options'],
         '#element_validate' => [[get_class($this), 'jsonValidate']],
@@ -1356,7 +1357,7 @@ trait LeafletSettingsElementsTrait {
       '#type' => 'textarea',
       '#rows' => 3,
       '#title' => $this->t('Values'),
-      '#description' => $this->t('Add additional key/value(s) that will be added in the "properties" index for each Leaflet Map "feature" (in the drupalSettings js object)<br>The syntax should respect the javascript object notation (json) format.<br>As suggested in the field placeholder, always use double quotes (") both for the indexes and the string values.<br>This is as advanced functionality, useful to dynamically alter Leaflet Map and each feature representation/behaviour on the basis of its properties.<br>Supports <b>Replacement Patterns</b>'),
+      '#description' => $this->t('Add additional key/value(s) that will be added in the "properties" index for each Leaflet Map "feature" (in the drupalSettings js object)<br>The syntax should respect the javascript object notation (json) format.<br>As suggested in the field placeholder, always use double quotes (") both for the indexes and the string values.<br>This is as advanced functionality, useful to dynamically alter Leaflet Map and each feature representation/behaviour on the basis of its properties.<br>Supports <b>Replacement Patterns</b>.'),
       '#default_value' => $settings['feature_properties']['values'] ?? $default_settings['feature_properties']['values'],
       '#placeholder' => '{"content_type":"{{ type }}"}',
       '#element_validate' => [[get_class($this), 'jsonValidate']],
@@ -1450,14 +1451,18 @@ trait LeafletSettingsElementsTrait {
       $geocoder_provider = \Drupal::service('plugin.manager.geocoder.provider');
       $element['geocoder']['settings']['providers'] = $geocoder_provider->providersPluginsTableList($enabled_providers);
 
-      // Set a validation for the providers selection.
-      $element['geocoder']['settings']['providers']['#element_validate'] = [[get_class($this), 'validateGeocoderProviders']];
+      // Set a validation for the providers' selection.
+      $element['geocoder']['settings']['providers']['#element_validate'] = [
+        [
+          get_class($this), 'validateGeocoderProviders',
+        ],
+      ];
 
       $element['geocoder']['settings']['min_terms'] = [
         '#type' => 'number',
         '#default_value' => $settings['geocoder']['settings']['min_terms'] ?? $default_settings['geocoder']['settings']['min_terms'],
         '#title' => $this->t('The (minimum) number of terms for the Geocoder to start processing.'),
-        '#description' => $this->t('Valid values ​​for the widget are between 2 and 10. A too low value (<= 3) will affect the application Geocode Quota usage.<br>Try to increase this value if you are experiencing Quota usage matters.'),
+        '#description' => $this->t('Valid values for the widget are between 2 and 10. A too low value (<= 3) will affect the application Geocode Quota usage.<br>Try to increase this value if you are experiencing Quota usage matters.'),
         '#min' => 2,
         '#max' => 10,
         '#size' => 3,
@@ -1467,7 +1472,7 @@ trait LeafletSettingsElementsTrait {
         '#type' => 'number',
         '#default_value' => $settings['geocoder']['settings']['delay'] ?? $default_settings['geocoder']['settings']['delay'],
         '#title' => $this->t('The delay (in milliseconds) between pressing a key in the Address Input field and starting the Geocoder search.'),
-        '#description' => $this->t('Valid values ​​for the widget are multiples of 100, between 300 and 3000. A too low value (<= 300) will affect / increase the application Geocode Quota usage.<br>Try to increase this value if you are experiencing Quota usage matters.'),
+        '#description' => $this->t('Valid value for the widget are multiples of 100, between 300 and 3000. A too low value (<= 300) will affect / increase the application Geocode Quota usage.<br>Try to increase this value if you are experiencing Quota usage matters.'),
         '#min' => 300,
         '#max' => 3000,
         '#step' => 100,

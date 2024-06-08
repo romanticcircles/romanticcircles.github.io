@@ -4,7 +4,7 @@ namespace Drupal\smart_date\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\TimestampFormatter;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\smart_date\SmartDateTrait;
+use Drupal\smart_date\SmartDatePluginTrait;
 
 /**
  * Plugin implementation of the 'Custom' formatter for 'smartdate' fields.
@@ -22,7 +22,7 @@ use Drupal\smart_date\SmartDateTrait;
  */
 class SmartDateCustomFormatter extends TimestampFormatter {
 
-  use SmartDateTrait;
+  use SmartDatePluginTrait;
 
   /**
    * {@inheritdoc}

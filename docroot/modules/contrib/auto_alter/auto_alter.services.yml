@@ -1,4 +1,4 @@
 services:
-  auto_alter.get_description:
-    class: Drupal\auto_alter\AzureVision
-    arguments: ["@file_system", "@http_client", "@config.factory", "@logger.factory"]
+  plugin.manager.auto_alter_describe_image:
+    class: \Drupal\auto_alter\Plugin\AutoAlterDescribeImagePluginManager
+    parent: default_plugin_manager

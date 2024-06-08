@@ -106,6 +106,9 @@ information, see
 
 
 ## Maintainers
+[//]: # cSpell:disable
+[//]: # Do not add maintainers to cspell-project-words file
+
 
 - Martin Anderson-Clutz - [mandclu](https://www.drupal.org/u/mandclu)
 - Stefan Korn - [stefan.korn](https://www.drupal.org/u/stefankorn)

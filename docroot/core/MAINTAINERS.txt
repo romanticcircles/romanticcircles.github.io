@@ -97,6 +97,7 @@ Block
 - Ben Dougherty 'benjy' https://www.drupal.org/u/benjy
 
 Block Content
+- Adam Bramley 'acbramley' https://www.drupal.org/u/acbramley
 - Lee Rowlands 'larowlan' https://www.drupal.org/u/larowlan
 - Stephen Mustgrave 'smustgrave' https://www.drupal.org/u/smustgrave
 
@@ -112,6 +113,7 @@ Breakpoint
 
 Cache
 - Nathaniel Catchpole 'catch' https://www.drupal.org/u/catch
+- Kristiaan Van den Eynde 'kristiaanvandeneynde' https://www.drupal.org/u/kristiaanvandeneynde
 
 CKEditor 5
 - Lauri Eskola 'lauriii' https://www.drupal.org/u/lauriii
@@ -261,6 +263,7 @@ Layout Builder
 - Ted Bowman 'tedbow' https://www.drupal.org/u/tedbow
 - Emilie Nouveau 'DyanneNova' https://www.drupal.org/u/dyannenova
 - Tim Plunkett 'tim.plunkett' https://www.drupal.org/u/tim.plunkett
+- Daniel Veza 'DanielVeza' https://www.drupal.org/u/DanielVeza
 
 Link Field
 - Weber Macedo 'Mac_Weber' https://www.drupal.org/u/mac_weber
@@ -419,6 +422,7 @@ Umami demo
 - Gareth Goodwin 'smaz' https://www.drupal.org/u/smaz
 - Keith Jay 'kjay' https://www.drupal.org/u/kjay
 - Ofer Shaal 'shaal' https://www.drupal.org/u/shaal
+- Ivan Berdinsky 'finnsky' https://www.drupal.org/u/finnsky
 
 Update Manager
 - Ted Bowman 'tedbow' https://www.drupal.org/u/tedbow

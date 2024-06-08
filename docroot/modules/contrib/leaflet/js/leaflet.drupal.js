@@ -728,6 +728,7 @@
       title: marker_title,
       className: marker.className || '',
       alt: marker_title,
+      group_label: marker.group_label ?? '',
     };
 
     lMarker = new L.Marker(latLng, options);
@@ -739,7 +740,7 @@
       }
       else if (marker.icon.iconType && marker.icon.iconType === 'circle_marker') {
         try {
-          options = marker.icon.options ? JSON.parse(marker.icon.options) : {};
+          options = marker.icon.circle_marker_options ? JSON.parse(marker.icon.circle_marker_options) : {};
           options.radius = options.radius ? parseInt(options['radius']) : 10;
         }
         catch (e) {

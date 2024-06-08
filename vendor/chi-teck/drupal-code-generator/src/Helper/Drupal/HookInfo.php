@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace DrupalCodeGenerator\Helper\Drupal;
 
@@ -33,7 +35,6 @@ final class HookInfo extends Helper {
       return $hooks;
     }
 
-    /** @psalm-suppress ArgumentTypeCoercion */
     $core_api_files = \glob(\DRUPAL_ROOT . '/core/lib/Drupal/Core/*/*.api.php');
     $core_api_files[] = \DRUPAL_ROOT . '/core/core.api.php';
 
@@ -148,18 +149,20 @@ final class HookInfo extends Helper {
 
     $file_description = self::getFileDescription(self::getFileType($hook_name));
     return <<< TWIG
-        <?php declare(strict_types = 1);
+      <?php
 
-        /**
-         * @file
-         * $file_description
-         */
+      declare(strict_types=1);
 
-        /**
-         * Implements hook_$hook_name().
-         */
-        $hook_template
-        TWIG;
+      /**
+       * @file
+       * $file_description
+       */
+
+      /**
+       * Implements hook_$hook_name().
+       */
+      $hook_template
+      TWIG;
   }
 
   /**
