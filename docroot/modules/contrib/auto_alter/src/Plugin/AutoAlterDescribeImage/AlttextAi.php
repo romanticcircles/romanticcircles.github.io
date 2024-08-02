@@ -151,7 +151,7 @@ class AlttextAi implements DescribeImageServiceInterface {
     $path = $this->fileSystem->realpath($uri_or_realpath);
 
     // We might want to force image upload from local environments.
-    if(empty($path) && !empty(getenv('ALTTEXT_AI_FORCE_IMAGE_UPLOAD'))) {
+    if(empty($path) || !empty(getenv('ALTTEXT_AI_FORCE_IMAGE_UPLOAD'))) {
       $json = [
         'url' => \Drupal::service('file_url_generator')->generateAbsoluteString($uri_or_realpath),
       ];
