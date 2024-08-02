@@ -3,7 +3,7 @@
         'name' => 'romanticcircles/rc-website',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '485c92172e84b3d08a38c4f521c98c4f8e87e918',
+        'reference' => '24dd819abef52413c16e7896487900efbec5e729',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -983,7 +983,7 @@
         'romanticcircles/rc-website' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '485c92172e84b3d08a38c4f521c98c4f8e87e918',
+            'reference' => '24dd819abef52413c16e7896487900efbec5e729',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
