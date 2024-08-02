@@ -5,11 +5,11 @@ dependencies:
 package: Custom
 type: module
 configure: auto_alter_translate.settings
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 # project: 'auto_alter_translate'
 
 
-# Information added by Drupal.org packaging script on 2024-03-01
-version: '2.0.2'
+# Information added by Drupal.org packaging script on 2024-07-09
+version: '2.0.3'
 project: 'auto_alter'
-datestamp: 1709290635
+datestamp: 1720512244

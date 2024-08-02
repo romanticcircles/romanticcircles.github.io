@@ -2,13 +2,13 @@ name: Automatic Alternative Text
 description: Automatically generate alt text for images using AI. Currently supports Microsoft's Cognitive Services Computer Vision API and Alttext.ai.
 package: Custom
 type: module
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 configure: auto_alter.settings
 # project: 'auto_alter'
 dependencies:
   - drupal:image
 
-# Information added by Drupal.org packaging script on 2024-03-01
-version: '2.0.2'
+# Information added by Drupal.org packaging script on 2024-07-09
+version: '2.0.3'
 project: 'auto_alter'
-datestamp: 1709290635
+datestamp: 1720512244
