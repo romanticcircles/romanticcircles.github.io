@@ -3,6 +3,8 @@ title: Using Git—An Overview
 permalink: /docs/git-guide/
 ---
 
+## Background
+
 As you begin working with git, it will be helpful to understand the basics of what git does behind the scenes as well as a list of basic git commands. Most basically, git is a bit of software that can live inside any of the folders on your computer to make sure they stay synchronized with your team members' folders anywhere in the world. This is, as you'd imagine, incredibly helpful when you're working on a complex site or application with a bunch of other people. After working through this guide, you should be able to perform a basic git workflow as well as troubleshoot common problems.
 
 > Always remember: if you run into anything that looks scary or throws back an error message, Google it! Someone on StackExchange, or even Reddit, has the solution to your problem (or, as has been the case for me far too many times, a way out of a stupid situation you've put yourself in).
@@ -101,4 +103,6 @@ More advanced commands & undo options (use with caution!):
 - `$ git reset`: this powerful command moves the HEAD and branch refs to a specific commit, essentially allowing you to "rewind" the history and start over from a specific commit. Usually used with the flag `--hard` to scrub all changes and history back to a previous commit. Without pointing to a commit hash or file, it resets to the most recent commit. This is a destructive command that can lead to changes that cannot be undone; read [this documentation](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset) in full before you use it.
   - Use `$ git reset --hard` as often as you need! It will erase everything you've done since the last commit and return your local repo to that state. This can be *quite* useful.
 
-If you'd like to learn more about git, [Atlassian has a fantastic in-depth tutorial](https://www.atlassian.com/git/tutorials/what-is-version-control) that expands on this guide & digs into some more advanced functions.
+### Further reading:
+* If you'd like to learn more about git, [Atlassian has a fantastic in-depth tutorial](https://www.atlassian.com/git/tutorials/what-is-version-control) that expands on this guide & digs into some more advanced functions.
+* [Git Essential Training (video)](https://www.linkedin.com/learning/git-essential-training-19417064/get-started-with-git?u=109339402) on LinkedIn Learning.
