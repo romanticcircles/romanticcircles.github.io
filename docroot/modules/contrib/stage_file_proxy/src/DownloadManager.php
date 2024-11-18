@@ -4,12 +4,13 @@ namespace Drupal\stage_file_proxy;
 
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Lock\LockBackendInterface;
 use Drupal\Core\StreamWrapper\PublicStream;
 use Drupal\Core\StreamWrapper\StreamWrapperManager;
 use Drupal\Core\Utility\Error;
-use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
@@ -26,7 +27,7 @@ final class DownloadManager implements DownloadManagerInterface {
    * Construct the DownloadManager.
    */
   public function __construct(
-    protected Client $client,
+    protected ClientInterface $client,
     protected FileSystemInterface $fileSystem,
     protected LoggerInterface $logger,
     protected ConfigFactoryInterface $configFactory,
@@ -211,7 +212,7 @@ final class DownloadManager implements DownloadManagerInterface {
     }
 
     // Save to temporary filename in the destination directory.
-    $filepath = $this->fileSystem->saveData($data, $temporary_file, FileSystemInterface::EXISTS_REPLACE);
+    $filepath = $this->fileSystem->saveData($data, $temporary_file, FileExists::Replace);
 
     // Perform the rename operation if the "write" operation succeeded.
     if ($filepath) {
