@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db406341635f77bc3e56b6133d8eeb79",
+    "content-hash": "299e2c522afcbf495043652571160e14",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2389,17 +2389,17 @@
         },
         {
             "name": "drupal/geofield",
-            "version": "1.60.0",
+            "version": "1.62.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/geofield.git",
-                "reference": "8.x-1.60"
+                "reference": "8.x-1.62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/geofield-8.x-1.60.zip",
-                "reference": "8.x-1.60",
-                "shasum": "ffb1891148b343208e7a190c8cc606a339c74ee1"
+                "url": "https://ftp.drupal.org/files/projects/geofield-8.x-1.62.zip",
+                "reference": "8.x-1.62",
+                "shasum": "0d5a59c934c96f38dcf2742f6d715316b695ec7e"
             },
             "require": {
                 "drupal/core": "^9 || ^10 || ^11",
@@ -2412,8 +2412,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.60",
-                    "datestamp": "1722078200",
+                    "version": "8.x-1.62",
+                    "datestamp": "1730931913",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
