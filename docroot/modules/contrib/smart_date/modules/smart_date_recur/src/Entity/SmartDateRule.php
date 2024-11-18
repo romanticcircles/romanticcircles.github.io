@@ -333,7 +333,7 @@ class SmartDateRule extends ContentEntityBase {
   public function getTextRule() {
     $freq = $this->get('freq')->getString();
     $repeat = $freq;
-    $repeat_separator = NULL;
+    $repeat_separator = '';
     $params = $this->getParametersArray();
     $day_labels = [
       'MO' => $this->t('Monday'),
@@ -627,14 +627,14 @@ class SmartDateRule extends ContentEntityBase {
       '#repeat' => $repeat,
       '#repeat_separator' => $repeat_separator,
       '#day' => $day,
-      '#day_separator' => $day_separator,
+      '#day_separator' => $day_separator ?? '',
       '#days_array' => $days_array,
       '#month' => $month,
-      '#month_separator' => $month_separator,
+      '#month_separator' => $month_separator ?? '',
       '#time' => $time,
-      '#time_separator' => $time_separator,
+      '#time_separator' => $time_separator ?? '',
       '#limit' => $limit,
-      '#limit_separator' => $limit_separator,
+      '#limit_separator' => $limit_separator ?? '',
     ];
   }
 
@@ -945,8 +945,8 @@ class SmartDateRule extends ContentEntityBase {
     if ($element['repeat']['#value'] != 'DAILY' || empty($element['repeat-advanced']['byday']['#value'])) {
       return;
     }
-    $start_time = $element['value']['#value']['object'];
-    $end_time = $element['end_value']['#value']['object'];
+    $start_time = $element['value']['#value']['object'] ?? NULL;
+    $end_time = $element['end_value']['#value']['object'] ?? NULL;
     if (!($start_time instanceof DrupalDateTime) || !($end_time instanceof DrupalDateTime)) {
       // Unable to process if an invalid start or end.
       return;
