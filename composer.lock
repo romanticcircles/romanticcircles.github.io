@@ -1325,17 +1325,17 @@
         },
         {
             "name": "drupal/auto_alter",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/auto_alter.git",
-                "reference": "2.0.3"
+                "reference": "2.0.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/auto_alter-2.0.3.zip",
-                "reference": "2.0.3",
-                "shasum": "55f276babfaf958d5b8d78e909beb7dc940cbbb3"
+                "url": "https://ftp.drupal.org/files/projects/auto_alter-2.0.4.zip",
+                "reference": "2.0.4",
+                "shasum": "9c2eecfa7d8982e4b1f1c5a2a686d342fac703b0"
             },
             "require": {
                 "drupal/core": "^9 || ^10 || ^11"
@@ -1343,8 +1343,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.3",
-                    "datestamp": "1720512242",
+                    "version": "2.0.4",
+                    "datestamp": "1724138041",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1369,17 +1369,17 @@
         },
         {
             "name": "drupal/bootstrap5",
-            "version": "3.0.13",
+            "version": "3.0.14",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/bootstrap5.git",
-                "reference": "3.0.13"
+                "reference": "3.0.14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap5-3.0.13.zip",
-                "reference": "3.0.13",
-                "shasum": "1b9c5b16e0882d3b0fd5510fa1d474c4b2717b2c"
+                "url": "https://ftp.drupal.org/files/projects/bootstrap5-3.0.14.zip",
+                "reference": "3.0.14",
+                "shasum": "a595afb1f983e96b4719f47592f08349792ef058"
             },
             "require": {
                 "drupal/core": "^9.4 || ^10"
@@ -1387,8 +1387,8 @@
             "type": "drupal-theme",
             "extra": {
                 "drupal": {
-                    "version": "3.0.13",
-                    "datestamp": "1716649113",
+                    "version": "3.0.14",
+                    "datestamp": "1723049842",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1406,7 +1406,7 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "VladimirAus",
+                    "name": "vladimiraus",
                     "homepage": "https://www.drupal.org/user/673120"
                 }
             ],
@@ -2138,17 +2138,17 @@
         },
         {
             "name": "drupal/feeds",
-            "version": "3.0.0-rc2",
+            "version": "3.0.0-rc3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/feeds.git",
-                "reference": "8.x-3.0-rc2"
+                "reference": "8.x-3.0-rc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/feeds-8.x-3.0-rc2.zip",
-                "reference": "8.x-3.0-rc2",
-                "shasum": "ad6c93ccc121b9f921902c5cad3f7b0ac67d0627"
+                "url": "https://ftp.drupal.org/files/projects/feeds-8.x-3.0-rc3.zip",
+                "reference": "8.x-3.0-rc3",
+                "shasum": "21d1f481da86e812288e8dc5b6e240263e9b8a82"
             },
             "require": {
                 "drupal/core": "^10.1 || ^11",
@@ -2161,8 +2161,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.0-rc2",
-                    "datestamp": "1726755546",
+                    "version": "8.x-3.0-rc3",
+                    "datestamp": "1733412633",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -2635,17 +2635,17 @@
         },
         {
             "name": "drupal/leaflet",
-            "version": "10.2.26",
+            "version": "10.2.29",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/leaflet.git",
-                "reference": "10.2.26"
+                "reference": "10.2.29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/leaflet-10.2.26.zip",
-                "reference": "10.2.26",
-                "shasum": "826389d325634e42587d4a3ec47485ab350f881a"
+                "url": "https://ftp.drupal.org/files/projects/leaflet-10.2.29.zip",
+                "reference": "10.2.29",
+                "shasum": "4f1026c86e9567ecb5217a65f6bec5df3e114a25"
             },
             "require": {
                 "drupal/core": "^9.3 || ^10 || ^11",
@@ -2654,8 +2654,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "10.2.26",
-                    "datestamp": "1730930365",
+                    "version": "10.2.29",
+                    "datestamp": "1733338203",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2797,7 +2797,7 @@
                     "homepage": "https://www.drupal.org/user/116002"
                 },
                 {
-                    "name": "Pol",
+                    "name": "pol",
                     "homepage": "https://www.drupal.org/user/47194"
                 },
                 {
@@ -3091,17 +3091,17 @@
         },
         {
             "name": "drupal/stage_file_proxy",
-            "version": "3.1.3",
+            "version": "3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/stage_file_proxy.git",
-                "reference": "3.1.3"
+                "reference": "3.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/stage_file_proxy-3.1.3.zip",
-                "reference": "3.1.3",
-                "shasum": "33fe8bf9cf0978a9e370627302b80340c972abd5"
+                "url": "https://ftp.drupal.org/files/projects/stage_file_proxy-3.1.4.zip",
+                "reference": "3.1.4",
+                "shasum": "57be6bfd1a429d41852e049e047b3ac0e277d277"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11",
@@ -3117,8 +3117,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.1.3",
-                    "datestamp": "1728406824",
+                    "version": "3.1.4",
+                    "datestamp": "1733151924",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3287,11 +3287,11 @@
             ],
             "authors": [
                 {
-                    "name": "Berdir",
+                    "name": "berdir",
                     "homepage": "https://www.drupal.org/user/214652"
                 },
                 {
-                    "name": "Dave Reid",
+                    "name": "dave reid",
                     "homepage": "https://www.drupal.org/user/53892"
                 },
                 {
@@ -3338,7 +3338,7 @@
             "extra": {
                 "drupal": {
                     "version": "5.4.1",
-                    "datestamp": "1722552101",
+                    "datestamp": "1725840934",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3800,16 +3800,16 @@
         },
         {
             "name": "gravitypdf/querypath",
-            "version": "3.2.3",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GravityPDF/querypath.git",
-                "reference": "e4b11dc1e713a405c8dee570c515affe9c04f232"
+                "reference": "a664e7706b3224f3c5d8cec382112c7cf1b90ce5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GravityPDF/querypath/zipball/e4b11dc1e713a405c8dee570c515affe9c04f232",
-                "reference": "e4b11dc1e713a405c8dee570c515affe9c04f232",
+                "url": "https://api.github.com/repos/GravityPDF/querypath/zipball/a664e7706b3224f3c5d8cec382112c7cf1b90ce5",
+                "reference": "a664e7706b3224f3c5d8cec382112c7cf1b90ce5",
                 "shasum": ""
             },
             "require": {
@@ -3860,7 +3860,7 @@
                     "type": "paypal"
                 }
             ],
-            "time": "2023-12-01T05:41:42+00:00"
+            "time": "2024-11-07T06:15:48+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -4634,16 +4634,16 @@
         },
         {
             "name": "mtdowling/jmespath.php",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jmespath/jmespath.php.git",
-                "reference": "bbb69a935c2cbb0c03d7f481a238027430f6440b"
+                "reference": "a2a865e05d5f420b50cc2f85bb78d565db12a6bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jmespath/jmespath.php/zipball/bbb69a935c2cbb0c03d7f481a238027430f6440b",
-                "reference": "bbb69a935c2cbb0c03d7f481a238027430f6440b",
+                "url": "https://api.github.com/repos/jmespath/jmespath.php/zipball/a2a865e05d5f420b50cc2f85bb78d565db12a6bc",
+                "reference": "a2a865e05d5f420b50cc2f85bb78d565db12a6bc",
                 "shasum": ""
             },
             "require": {
@@ -4660,7 +4660,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -4694,9 +4694,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jmespath/jmespath.php/issues",
-                "source": "https://github.com/jmespath/jmespath.php/tree/2.7.0"
+                "source": "https://github.com/jmespath/jmespath.php/tree/2.8.0"
             },
-            "time": "2023-08-25T10:54:48+00:00"
+            "time": "2024-09-04T18:46:31+00:00"
         },
         {
             "name": "nikic/php-parser",

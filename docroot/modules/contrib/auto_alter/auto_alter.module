@@ -12,6 +12,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\file\Entity\File;
+use Masterminds\HTML5;
 
 /**
  * Implements hook_modules_installed().
@@ -51,8 +52,10 @@ function auto_alter_entity_presave(EntityInterface $entity) {
         $changed = false;
         foreach ($texts as $key => $text) {
           $raw = $text->getValue();
-          $dom = new DomDocument();
-          $dom->loadHTML($raw['value']);
+          $html5 = new HTML5(['disable_html_ns' => TRUE]);
+          $dom = $html5->loadHTML($raw['value']);
+
+
 
           foreach($dom->getElementsByTagName('img') as $imgs) {
             $nodes = [];

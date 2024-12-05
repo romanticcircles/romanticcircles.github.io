@@ -8,7 +8,7 @@ configure: auto_alter.settings
 dependencies:
   - drupal:image
 
-# Information added by Drupal.org packaging script on 2024-07-09
-version: '2.0.3'
+# Information added by Drupal.org packaging script on 2024-08-20
+version: '2.0.4'
 project: 'auto_alter'
-datestamp: 1720512244
+datestamp: 1724138046
