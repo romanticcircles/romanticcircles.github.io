@@ -777,3 +777,11 @@ if (file_exists('/var/www/site-php')) {
 $settings['config_sync_directory'] = 'sites/default/files/config_zsYP6UBV6_DOTsbCeUrlRqedlmjoc5gwFd3UPbp9PIS8__bfEJd1TI9PphSs-VK5_xfwdz9Egw/sync';
 $config['system.logging']['error_level'] = 'verbose';
 
+/**
+ * Set state cache flag.
+ * 
+ * Sets state cache flag to true 
+ * It is recommended to be set to TRUE in settings.php unless there are too many state keys. 
+ * Drupal 11 will default to having state cache enabled.
+ */
+$settings['state_cache'] = TRUE;
