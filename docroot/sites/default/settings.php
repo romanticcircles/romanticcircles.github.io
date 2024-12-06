@@ -771,7 +771,15 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # }
 
 if (file_exists('/var/www/site-php')) {
+  global $conf, $databases;
+  $conf['acquia_hosting_settings_autoconnect'] = FALSE;
   require '/var/www/site-php/romanticcircles/romanticcircles-settings.inc';
+  $databases['default']['default']['init_commands'] = array(
+    'isolation_level' => "SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED",
+  );
+  if (function_exists("acquia_hosting_db_choose_active")) {
+    acquia_hosting_db_choose_active();
+  }
 }
 
 $settings['config_sync_directory'] = 'sites/default/files/config_zsYP6UBV6_DOTsbCeUrlRqedlmjoc5gwFd3UPbp9PIS8__bfEJd1TI9PphSs-VK5_xfwdz9Egw/sync';
