@@ -3,7 +3,7 @@
         'name' => 'romanticcircles/rc-website',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '4d238e54c3a69f593677042ec3f7586427736a88',
+        'reference' => '6251dd17083e09afc33be51c140be817c80edf5c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -565,6 +565,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/scanner' => array(
+            'pretty_version' => '1.0.0-rc7',
+            'version' => '1.0.0.0-RC7',
+            'reference' => '8.x-1.0-rc7',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../docroot/modules/contrib/scanner',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/smart_date' => array(
             'pretty_version' => '4.2.1',
             'version' => '4.2.1.0',
@@ -983,7 +992,7 @@
         'romanticcircles/rc-website' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '4d238e54c3a69f593677042ec3f7586427736a88',
+            'reference' => '6251dd17083e09afc33be51c140be817c80edf5c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
