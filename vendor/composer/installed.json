@@ -2821,28 +2821,28 @@
         },
         {
             "name": "drupal/leaflet_layers",
-            "version": "1.1.4",
-            "version_normalized": "1.1.4.0",
+            "version": "1.1.5",
+            "version_normalized": "1.1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/leaflet_layers.git",
-                "reference": "1.1.4"
+                "reference": "1.1.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/leaflet_layers-1.1.4.zip",
-                "reference": "1.1.4",
-                "shasum": "937f9e6e2f51521787a6a813e67ec6e57607dd40"
+                "url": "https://ftp.drupal.org/files/projects/leaflet_layers-1.1.5.zip",
+                "reference": "1.1.5",
+                "shasum": "df79633f34bf73045daea3400e812da8dbbe9039"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9 || ^10",
+                "drupal/core": "^8.8 || ^9 || ^10 || ^11",
                 "drupal/leaflet": "^2.0 || ^10.0"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.1.4",
-                    "datestamp": "1671980897",
+                    "version": "1.1.5",
+                    "datestamp": "1743521705",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2862,6 +2862,10 @@
                 {
                     "name": "askildolsen",
                     "homepage": "https://www.drupal.org/user/1856380"
+                },
+                {
+                    "name": "kllrthr",
+                    "homepage": "https://www.drupal.org/user/3173573"
                 }
             ],
             "description": "Provide configurable config for Leaflet.",
