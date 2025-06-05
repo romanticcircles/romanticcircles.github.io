@@ -2170,27 +2170,27 @@
         },
         {
             "name": "drupal/dxpr_theme_helper",
-            "version": "1.0.4",
-            "version_normalized": "1.0.4.0",
+            "version": "1.0.6",
+            "version_normalized": "1.0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/dxpr_theme_helper.git",
-                "reference": "1.0.4"
+                "reference": "1.0.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/dxpr_theme_helper-1.0.4.zip",
-                "reference": "1.0.4",
-                "shasum": "2bec0b61082d8f4a28877f234628e159ad2c473e"
+                "url": "https://ftp.drupal.org/files/projects/dxpr_theme_helper-1.0.6.zip",
+                "reference": "1.0.6",
+                "shasum": "235ddc8f0e1643f5c3662be8c606210d618d5dac"
             },
             "require": {
-                "drupal/core": "^8 || ^9 || ^10"
+                "drupal/core": "^9.3 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.4",
-                    "datestamp": "1662462208",
+                    "version": "1.0.6",
+                    "datestamp": "1733939051",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
