@@ -112,7 +112,7 @@ class LeafletDefaultWidget extends GeofieldDefaultWidget {
     ModuleHandlerInterface $module_handler,
     LinkGeneratorInterface $link_generator,
     Token $token,
-    LanguageManagerInterface $languageManager
+    LanguageManagerInterface $languageManager,
   ) {
     parent::__construct(
       $plugin_id,
@@ -225,8 +225,17 @@ class LeafletDefaultWidget extends GeofieldDefaultWidget {
    * {@inheritdoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
+
+    // Fixes possible error related to
+    // Warning: Undefined array key in
+    // Drupal\field ui\Form\EntityDisplayFormBase->copyFrom Values Entity()
+    // @see: https://www.drupal.org/project/office_hours/issues/3413697
+    if (isset($form['#after_build'])) {
+      $form['#after_build'] = NULL;
+    }
+
     // Inherit basic settings form from GeofieldDefaultWidget:
-    $form = parent::settingsForm($form, $form_state);
+    $form = array_merge($form, parent::settingsForm($form, $form_state));
     $map_settings = $this->getSetting('map');
     $default_settings = self::defaultSettings();
 
@@ -411,7 +420,7 @@ class LeafletDefaultWidget extends GeofieldDefaultWidget {
     $delta,
     array $element,
     array &$form,
-    FormStateInterface $form_state
+    FormStateInterface $form_state,
   ) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
@@ -457,7 +466,7 @@ class LeafletDefaultWidget extends GeofieldDefaultWidget {
       'reset_map' => $this->getSetting('reset_map'),
       'map_scale' => $this->getSetting('map_scale'),
       'fullscreen' => $this->getSetting('fullscreen'),
-      'path' => str_replace(["\n", "\r"], "", $this->token->replace($this->getSetting('path'), $tokens)),
+      'path' => htmlspecialchars_decode(str_replace(["\n", "\r"], "", $this->token->replace($this->getSetting('path'), $tokens))),
       'geocoder' => $this->getSetting('geocoder'),
       'locate' => $this->getSetting('locate'),
     ]);
@@ -518,6 +527,7 @@ class LeafletDefaultWidget extends GeofieldDefaultWidget {
     $element['map']['#attached']['drupalSettings']['leaflet'][$element['map']['#map_id']]['leaflet_widget'] = $leaflet_widget_js_settings;
 
     // Convert default value to geoJSON format.
+    /** @var \Geometry|null $geom */
     if ($geom = $this->geoPhpWrapper->load($element['value']['#default_value'])) {
       $element['value']['#default_value'] = $geom->out('json');
     }
