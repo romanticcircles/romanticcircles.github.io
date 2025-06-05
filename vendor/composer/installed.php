@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'romanticcircles/rc-website',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => 'c35e8c843d8d82b88787bbeeb5f2b1df951e5f08',
+        'pretty_version' => 'dev-10.4.7-no-ng-lightbox',
+        'version' => 'dev-10.4.7-no-ng-lightbox',
+        'reference' => '4fff45d2430e259fce187627d71e3737d67e7f5d',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -620,9 +620,9 @@
             'dev_requirement' => false,
         ),
         'drupal/views_contextual_filters_or' => array(
-            'pretty_version' => '1.4.0',
-            'version' => '1.4.0.0',
-            'reference' => '8.x-1.4',
+            'pretty_version' => '1.5.0',
+            'version' => '1.5.0.0',
+            'reference' => '8.x-1.5',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../docroot/modules/contrib/views_contextual_filters_or',
             'aliases' => array(),
@@ -990,9 +990,9 @@
             'dev_requirement' => false,
         ),
         'romanticcircles/rc-website' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'c35e8c843d8d82b88787bbeeb5f2b1df951e5f08',
+            'pretty_version' => 'dev-10.4.7-no-ng-lightbox',
+            'version' => 'dev-10.4.7-no-ng-lightbox',
+            'reference' => '4fff45d2430e259fce187627d71e3737d67e7f5d',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
