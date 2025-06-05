@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'romanticcircles/rc-website',
-        'pretty_version' => 'dev-10.4.7-no-ng-lightbox',
-        'version' => 'dev-10.4.7-no-ng-lightbox',
-        'reference' => 'f3596c2950a4c2a534fa788f6651a269d5750021',
+        'pretty_version' => 'dev-10.4.7-add-ng-lightbox',
+        'version' => 'dev-10.4.7-add-ng-lightbox',
+        'reference' => 'cd2a9f2b73c9e014fddcd71b571048abe02a3d85',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -548,9 +548,9 @@
             'dev_requirement' => false,
         ),
         'drupal/ng_lightbox' => array(
-            'pretty_version' => '2.0.0',
-            'version' => '2.0.0.0',
-            'reference' => '2.0.0',
+            'pretty_version' => '2.1.0',
+            'version' => '2.1.0.0',
+            'reference' => '2.1.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../docroot/modules/contrib/ng_lightbox',
             'aliases' => array(),
@@ -990,9 +990,9 @@
             'dev_requirement' => false,
         ),
         'romanticcircles/rc-website' => array(
-            'pretty_version' => 'dev-10.4.7-no-ng-lightbox',
-            'version' => 'dev-10.4.7-no-ng-lightbox',
-            'reference' => 'f3596c2950a4c2a534fa788f6651a269d5750021',
+            'pretty_version' => 'dev-10.4.7-add-ng-lightbox',
+            'version' => 'dev-10.4.7-add-ng-lightbox',
+            'reference' => 'cd2a9f2b73c9e014fddcd71b571048abe02a3d85',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
